@@ -18,7 +18,6 @@
       {
         "group": "Signals",
         "pages": [
-          "how-signals-work",
           "creating-signals",
           "improving-signals",
           "muting-signals",
