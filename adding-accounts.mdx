@@ -1,3 +1,74 @@
 ---
 title: "Adding Accounts"
+description: "Add accounts to WhiteWhale from a domain list, a CSV, or let the Signal Suggestion Engine pick the best ones from a large list."
 ---
+
+<iframe src="https://www.loom.com/embed/360a3deafa0e42c88946789c5bb0f578" title="How to Add Accounts in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+
+There are two ways to add accounts: paste a list of domains directly, or use the Signal Suggestion Engine to find the best accounts from a larger list. Both start from the **Accounts** page in the left nav.
+
+## Option 1: Add a list of domains
+
+Use this when you have a list that fits within your account limit — assigned accounts from your CRM, closed-lost deals, a target list, or anything else.
+
+<Steps>
+  <Step title="Go to the Accounts page and click Add Accounts">
+    You'll see a text box where you can paste company domains.
+  </Step>
+  <Step title="Paste your domains">
+    Paste them in any format — comma separated, line by line, straight from a CSV dump. WhiteWhale will clean them up automatically.
+  </Step>
+  <Step title="Add tags (optional)">
+    Label the batch with a tag like _Enterprise Targets_, _Closed Lost_, or _Hunting_ to keep your list organized.
+  </Step>
+  <Step title="Click Add">
+    WhiteWhale will start scanning the accounts immediately.
+  </Step>
+</Steps>
+
+## Option 2: Find the best accounts from a large list
+
+Use this when you have more domains than available credits and want WhiteWhale to identify which accounts are worth adding first.
+
+<Steps>
+  <Step title="Paste your full list of domains">
+    Add all the domains you have — even thousands. WhiteWhale will scan the entire list.
+  </Step>
+  <Step title="Open Advanced Settings">
+    Click **Advanced Settings** below the domain input box.
+  </Step>
+  <Step title="Set how many accounts to add">
+    Enter the number of accounts that fits your credit limit. WhiteWhale will scan the full list and pick the best matches based on your signals.
+  </Step>
+  <Step title="Click Add">
+    The top-scoring accounts are added to your active list. The remaining accounts — if they're a strong fit — are moved to your Account Suggestions so you can review them later or add them when you have more credits.
+  </Step>
+</Steps>
+
+<Tip>
+  Not sure which accounts to prioritize from a big list? This is the right approach. Let WhiteWhale do the filtering — it's faster and more accurate than manually sorting by hand.
+</Tip>
+
+## Option 3: Account Suggestions
+
+WhiteWhale can also recommend net-new accounts you haven't thought of yet based on your signals and ICP. See [How Account Suggestions Work](/how-account-suggestions-work) to set that up.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Archiving Accounts" icon="box-archive" href="/archiving-accounts">
+    Free up account slots without permanently removing accounts.
+  </Card>
+
+  <Card title="Removing Accounts" icon="trash" href="/removing-accounts">
+    Permanently delete accounts from your list.
+  </Card>
+
+  <Card title="Account Allocation" icon="users" href="/account-allocation">
+    Assign accounts across your team.
+  </Card>
+
+  <Card title="How Account Suggestions Work" icon="wand-magic-sparkles" href="/how-account-suggestions-work">
+    Let WhiteWhale surface net-new accounts that match your ICP.
+  </Card>
+</CardGroup>

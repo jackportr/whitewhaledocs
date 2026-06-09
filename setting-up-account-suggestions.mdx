@@ -1,3 +1,67 @@
 ---
 title: "Setting Up Account Suggestions"
+description: "Configure WhiteWhale to automatically find and surface net-new accounts that match your ICP."
 ---
+
+<iframe src="https://www.loom.com/embed/af0a75585e644bfaa762cb8adef33829" title="Setting Up Account Suggestions in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+
+## How to get to the setup screen
+
+There are two ways:
+
+- **Suggestions tab** → click **Turn On** (first time) or **Edit Search** (if already running)
+- **Add Accounts** → click **Find Accounts**
+
+Both take you to the same Find Accounts table.
+
+## Configure your search
+
+<Steps>
+  <Step title="Review your current search (if one exists)">
+    If suggestions is already running, the table will show what it's currently searching for. Use this to debug results that feel too broad or too narrow before making changes.
+  </Step>
+  <Step title="Set your signal filters">
+    Select which signals you want matched accounts to have. Each signal can be set to one of two modes — click once for **Any Of**, click twice for **Must Have**.
+
+    **Use Any Of.** Must Have means the account has to match that signal to appear in results. If you stack multiple Must Haves, you're requiring an account to hit all of them simultaneously — which is extremely rare. Stick to Any Of unless you have one specific signal that's a hard requirement.
+  </Step>
+  <Step title="Set your geography">
+    Select US states or countries. You can combine both.
+  </Step>
+  <Step title="Set your industries">
+    These map directly to LinkedIn's industry categories. If you're unsure what category a good-fit company falls under, look them up on LinkedIn and use whatever industry is listed on their profile. Add as many relevant industries as apply.
+  </Step>
+  <Step title="Set your employee count range">
+    Employee count is pulled from LinkedIn. Set the range that matches your ICP sweet spot.
+  </Step>
+  <Step title="Review the search summary">
+    Before running, WhiteWhale shows you:
+
+    - **Potential accounts** — total companies matching your filters, with or without signals
+    - **Already checked** — accounts scanned in previous searches
+    - **To be scanned** — accounts that will be searched when you run this
+
+    If the numbers look right, proceed. If too narrow, loosen your filters or reduce Must Have signals.
+  </Step>
+  <Step title="Click Find Recommendations">
+    WhiteWhale starts scanning. Results begin appearing in your Suggestions tab within 1–2 hours and continue to grow daily as more accounts are checked.
+  </Step>
+</Steps>
+
+<Tip>
+  Suggestions compounds over time. A search that returns 700 results one week may return 1,200 the next as WhiteWhale works through the remaining accounts in your criteria. Let it run.
+</Tip>
+
+## What happens next
+
+Once your search is running, matched accounts appear in the **Suggestions** tab. From there you can review, accept, or assign them to your team.
+
+<CardGroup cols={2}>
+  <Card title="Adjusting Your Suggestions" icon="sliders" href="/adjusting-your-suggestions">
+    Change your filters or signal requirements after the search is live.
+  </Card>
+
+  <Card title="Giving Feedback on Suggestions" icon="thumbs-up" href="/giving-feedback-on-suggestions">
+    Mark suggestions as good or bad fit to improve future results.
+  </Card>
+</CardGroup>

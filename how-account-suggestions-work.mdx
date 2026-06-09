@@ -1,3 +1,85 @@
 ---
 title: "How Account Suggestions Work"
+description: "Let WhiteWhale find net-new accounts that match your ICP and have active signals — without any manual prospecting."
 ---
+
+<iframe src="https://www.loom.com/embed/c29cfc6d811d49e5ab053ad4da7998a3" title="How Account Suggestions Work in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+
+<Info>
+  **Account Suggestions is WhiteWhale's prospecting engine.** Instead of uploading a list, you describe your ICP — industry, geography, company size, and signals — and WhiteWhale finds accounts that match and already have signal activity. It runs continuously and surfaces new accounts as they become relevant.
+</Info>
+
+## How to get to Suggestions
+
+There are two ways to reach the Suggestions setup:
+
+- Go to the **Suggestions** tab in the left nav and click **Turn On** or **Edit Search**
+- Go to **Add Accounts** and click **Find Accounts**
+
+Both take you to the same setup screen.
+
+## Setting up your search
+
+<Steps>
+  <Step title="Choose your signal filters (optional)">
+    Select any signals you want accounts to have matched. You can mark signals as **Must Have** or **Exclude** — but use this sparingly.
+
+    <Warning>
+      The more signals you mark as Must Have, the narrower your search becomes. Requiring five signals simultaneously means an account would need to hit all five at once — which almost never happens. If you are going to require signals, which is not needed, keep this as an **OR** search unless you have a very specific reason to narrow it down.
+    </Warning>
+  </Step>
+  <Step title="Set your ICP filters">
+    Fill in the standard firmographic filters:
+
+    - **Geography** — countries or US states
+    - **Industry** — maps to LinkedIn's industry categories. If you're not sure what to call an industry, look up a known good-fit customer on LinkedIn and use whatever industry is listed on their profile.
+    - **Employee count** — set a range that matches your ICP sweet spot
+  </Step>
+  <Step title="Review the estimate">
+    WhiteWhale will show you:
+
+    - How many potential companies match your criteria
+    - How many have already been scanned
+    - How many are currently active in your account list
+    - How many remain to be scanned
+
+    If the estimate looks right, proceed. If it's too narrow or too broad, adjust your filters before running.
+  </Step>
+  <Step title="Click Find Recommendations">
+    WhiteWhale will start scanning. Results typically begin appearing within 1–2 hours.
+  </Step>
+</Steps>
+
+## Reviewing and accepting suggestions
+
+Suggested accounts appear in the **Suggestions** tab highlighted in orange. For each one you'll see:
+
+- Which signals it matched
+- The date the signals were found
+- A preview of the company information
+
+To unlock the full signal data and add the account to your list, click **Activate**. Once added, the account appears in **All Accounts** or **My Accounts** depending on who it's assigned to — and that team member will receive an alert.
+
+<Tip>
+  You don't have to accept every suggestion. Browse them, look at which signals fired, and add the ones that look like real opportunities. The rest stay in your Suggestions queue.
+</Tip>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Setting Up Account Suggestions" icon="gear" href="/setting-up-account-suggestions">
+    Step-by-step guide to configuring your first Suggestions search.
+  </Card>
+
+  <Card title="Adjusting Your Suggestions" icon="sliders" href="/adjusting-your-suggestions">
+    Change your ICP filters or signal requirements after your search is running.
+  </Card>
+
+  <Card title="Giving Feedback on Suggestions" icon="thumbs-up" href="/giving-feedback-on-suggestions">
+    Tell WhiteWhale when a suggestion is a good or bad fit to improve future results.
+  </Card>
+
+  <Card title="Account Allocation" icon="users" href="/account-allocation">
+    Assign accepted accounts to team members.
+  </Card>
+</CardGroup>
