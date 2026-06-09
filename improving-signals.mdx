@@ -1,3 +1,100 @@
 ---
 title: "Improving Signals"
+description: "Fix signals that are returning results from the wrong geography, casting too wide a net, or surfacing stale information."
 ---
+
+<iframe src="https://www.loom.com/embed/12d93ebdaded42fc9ad809a73ca5b3bb" title="How to Improve Signals in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+
+If a signal isn't returning what you expected, you don't need to delete it and start over. Most signal issues fall into one of three categories — and each has a straightforward fix.
+
+## The three common signal problems
+
+<CardGroup cols={3}>
+  <Card title="Wrong geography" icon="location-dot">
+    Results are coming from countries or regions you don't serve.
+  </Card>
+
+  <Card title="Too broad" icon="arrows-left-right">
+    The signal is matching accounts that technically fit the question but aren't what you meant.
+  </Card>
+
+  <Card title="Results are stale" icon="clock">
+    The signal is surfacing old matches from months or years ago.
+  </Card>
+</CardGroup>
+
+## Fix 1: Wrong geography
+
+Use the **Context Window** to tell the system which countries or regions to restrict results to.
+
+<Steps>
+  <Step title="Find the signal">
+    From the Signals page, locate the signal returning results from the wrong location.
+  </Step>
+  <Step title="Open the Context Window">
+    Click the **book icon** next to the signal. This opens the Context Window where you can give the system additional instructions.
+  </Step>
+  <Step title="Add your geography constraint">
+    Type your restriction in plain language. For example:
+
+    - _Job listings from the United States only_
+    - _Headquarters in the US, UK, or Canada_
+    - _Exclude results outside North America_
+  </Step>
+  <Step title="Save">
+    Click **Save**. WhiteWhale will re-run the signal with the new constraint applied.
+  </Step>
+</Steps>
+
+## Fix 2: Signal is too broad
+
+When a signal is casting too wide a net, you have two options depending on how much you need to change.
+
+**For small edits** — use the inline signal editor. Click directly into the signal text and add the missing specificity. For example, changing _"Are they running an account-based marketing program?"_ to _"Are they running an email-based ABM program?"_ is a quick edit that takes seconds.
+
+**For bigger changes** — use the Context Window. If you need to add multiple conditions or explain nuance the signal text alone can't capture, open the book icon and write out the full context. For example: _Only match if the ABM program is focused on email outreach, not paid ads or direct mail._
+
+<Tip>
+  The core principle: just tell the system what you want. The more specific context you give it, the more precisely it will match.
+</Tip>
+
+## Fix 3: Results are stale
+
+By default, WhiteWhale searches across all time so you get the full picture on every account. If you only want recent activity, add a time constraint to the signal.
+
+Open the signal editor or Context Window and add language like:
+
+- _In the last 90 days_
+- _Recently_
+- _In the last 6 months_
+
+Once you save, WhiteWhale will re-run the signal and update both your account scores and your Account Suggestions with the fresh results.
+
+## Two ways to edit a signal
+
+| Method | Best for |
+| --- | --- |
+| **Edit the signal text** | Small, targeted word changes |
+| **Context Window (book icon)** | Geography constraints, multiple conditions, time limits, or anything requiring explanation |
+
+Both methods trigger a full re-scan of your accounts when saved.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Creating Signals" icon="plus" href="/creating-signals">
+    Add new signals using the description box or Signal Library.
+  </Card>
+
+  <Card title="Muting Signals" icon="bell-slash" href="/muting-signals">
+    Temporarily stop a signal from surfacing new matches.
+  </Card>
+
+  <Card title="How to Get Unique Signal Ideas" icon="lightbulb" href="/how-to-get-unique-signal-ideas">
+    Build a signal list tailored to your ICP from scratch.
+  </Card>
+
+  <Card title="Signal Library" icon="book" href="/signal-library">
+    Browse proven signal templates by use case.
+  </Card>
+</CardGroup>
