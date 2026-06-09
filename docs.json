@@ -1,0 +1,9 @@
+{
+  "name": "WhiteWhale",
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": ["index"]
+    }
+  ]
+}
