@@ -8,8 +8,99 @@
     "groups": [
       {
         "group": "Get Started",
-        "pages": ["index"]
+        "pages": [
+          "welcome",
+          "quick-start-admin",
+          "quick-start-rep",
+          "glossary"
+        ]
+      },
+      {
+        "group": "Signals",
+        "pages": [
+          "how-signals-work",
+          "creating-signals",
+          "improving-signals",
+          "muting-signals",
+          "deleting-signals",
+          "signal-library",
+          "how-to-get-unique-signal-ideas"
+        ]
+      },
+      {
+        "group": "Accounts",
+        "pages": [
+          "adding-accounts",
+          "archiving-accounts",
+          "removing-accounts",
+          "account-allocation"
+        ]
+      },
+      {
+        "group": "Account Suggestions",
+        "pages": [
+          "how-account-suggestions-work",
+          "setting-up-account-suggestions",
+          "adjusting-your-suggestions",
+          "giving-feedback-on-suggestions"
+        ]
+      },
+      {
+        "group": "Segments",
+        "pages": [
+          "how-segments-work",
+          "creating-segments",
+          "editing-segments",
+          "deleting-segments"
+        ]
+      },
+      {
+        "group": "How to drive deals with signals",
+        "pages": [
+          "how-to-see-all-new-signals",
+          "using-the-why-now-summary",
+          "pre-meeting-research-brief",
+          "best-outreach-we-ve-seen"
+        ]
+      },
+      {
+        "group": "Integrations",
+        "pages": [
+          "hub-spot",
+          "salesforce",
+          "slack",
+          "microsoft-teams",
+          "google-calendar",
+          "clay",
+          "api",
+          "webhooks",
+          "mcp"
+        ]
+      },
+      {
+        "group": "Team Management",
+        "pages": [
+          "adding-users",
+          "removing-users",
+          "roles-and-permissions"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "account-scoring-explained",
+          "credits-and-billing",
+          "faq"
+        ]
       }
+    ]
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "mcp",
+      "add-mcp"
     ]
   }
 }
