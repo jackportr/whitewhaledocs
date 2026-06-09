@@ -1,5 +1,6 @@
 {
-  "name": "WhiteWhale",
+  "name": "Your Docs Name",
+  "theme": "mint",
   "navigation": [
     {
       "group": "Get Started",
