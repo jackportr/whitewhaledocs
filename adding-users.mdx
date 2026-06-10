@@ -134,3 +134,69 @@ description: "Invite team members to WhiteWhale and configure what they can see 
     Assign accounts to team members after they've been added.
   </Card>
 </CardGroup>
+
+<iframe src="https://www.loom.com/embed/7bd3f3a49eb54c759f3d96e17e7d9b84" title="How to Add Users in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+
+## How to add a user
+
+<Steps>
+  <Step title="Go to the Team page">
+    Click **Team** in the left nav.
+  </Step>
+  <Step title="Click Add User">
+    Enter the new user's name and email address.
+  </Step>
+  <Step title="Select a role">
+    Choose between **Super Admin** or **Member**. See the role guide below.
+  </Step>
+  <Step title="Click Send Invite">
+    WhiteWhale will automatically send the user a login email with everything they need to get set up.
+  </Step>
+</Steps>
+
+## Roles
+
+<AccordionGroup>
+  <Accordion title="Super Admin">
+    Super Admins can see all accounts across the entire platform, regardless of who they're assigned to. They can also edit signals and manage Account Suggestions.
+
+    **Best for:** Sales leadership, RevOps, go-to-market engineers, or anyone who needs a full view of the team's book of business.
+  </Accordion>
+
+  <Accordion title="Member">
+    Members only see accounts assigned to them. They work their own list without visibility into other reps' accounts by default.
+
+    **Best for:** Individual AEs and SDRs working their own territory.
+
+    Members can be further configured with two optional permissions:
+
+    - **Admin access** — grants the member elevated permissions within the platform
+    - **Viewer access** — lets the member view another specific user's accounts without being assigned to them. Useful for SDR/AE pairs where the SDR needs visibility into the AE's accounts, or for SDRs working multiple AEs at once.
+  </Accordion>
+</AccordionGroup>
+
+## Who gets which role
+
+| Role | Super Admin | Member |
+| --- | --- | --- |
+| Sees all team accounts | ✓ | ✗ |
+| Sees only assigned accounts | — | ✓ |
+| Can edit signals | ✓ | ✗ |
+| Can manage Account Suggestions | ✓ | ✗ |
+| Can view another user's accounts | ✓ | ✓ (with viewer permission) |
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Removing Users" icon="user-minus" href="/removing-users">
+    Remove a team member from WhiteWhale.
+  </Card>
+
+  <Card title="Roles & Permissions" icon="shield" href="/roles-and-permissions">
+    Full breakdown of what each role can access and do.
+  </Card>
+
+  <Card title="Account Allocation" icon="users" href="/account-allocation">
+    Assign accounts to team members after they've been added.
+  </Card>
+</CardGroup>

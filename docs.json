@@ -55,15 +55,6 @@
         ]
       },
       {
-        "group": "How to drive deals with signals",
-        "pages": [
-          "how-to-see-all-new-signals",
-          "using-the-why-now-summary",
-          "pre-meeting-research-brief",
-          "best-outreach-we-ve-seen"
-        ]
-      },
-      {
         "group": "Team Management",
         "pages": [
           "adding-users",
@@ -83,6 +74,15 @@
           "api",
           "webhooks",
           "mcp"
+        ]
+      },
+      {
+        "group": "How to drive deals with signals",
+        "pages": [
+          "how-to-see-all-new-signals",
+          "using-the-why-now-summary",
+          "pre-meeting-research-brief",
+          "best-outreach-we-ve-seen"
         ]
       },
       {
