@@ -1,3 +1,180 @@
 ---
 title: "Webhooks"
+description: "Receive WhiteWhale signal and account events in real time by registering a webhook endpoint."
 ---
+
+WhiteWhale can POST events to any URL you specify whenever a signal fires or an account is added from suggestions. Use webhooks to pipe data into Clay, trigger automations, update internal tools, or build custom CRM integrations.
+
+## Setup
+
+There are two ways to register a webhook URL.
+
+**Option 1: In the platform:** Go to **Settings** → **API & Webhooks** → paste your endpoint URL and save.
+
+**Option 2:  Via the API:** `POST /v1/set_webhook` with your URL in the request body.
+
+```bash
+curl -X POST https://app.getwhitewhale.com/v1/set_webhook \
+  -H "api-key: YOUR_API_KEY" \
+  -H "user: you@company.com" \
+  -H "Content-Type: application/json" \
+  -d '{"webhook_url": "https://your-endpoint.com/whitewhale"}'
+```
+
+One webhook URL per account. The same endpoint receives all event types.
+
+---
+
+## Testing your webhook
+
+Before going live, send a test payload to your endpoint using the API.
+
+```bash
+curl -X POST https://app.getwhitewhale.com/v1/test_webhook \
+  -H "api-key: YOUR_API_KEY" \
+  -H "user: you@company.com" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "event_type": "account.signal",
+    "spoof_payload": true
+  }'
+```
+
+| Parameter | Description |
+| --- | --- |
+| `event_type` | `"account.upload"` or `"account.signal"` |
+| `spoof_payload` | `true` returns a fake payload with the correct structure. Requires at least one signal on an account. |
+| `icp_name` | Optional. If provided, returns a real signal and account name instead of spoofed data. |
+
+<Info>
+  The payload returned in the API response is unsigned. The payload delivered to your actual webhook endpoint will be signed.
+</Info>
+
+---
+
+## Event types
+
+WhiteWhale sends two types of events.
+
+<AccordionGroup>
+  <Accordion title="account.signal — A new signal fired on an account">
+    Sent every morning when a new signal match is found. This is the most common event type and the primary source of daily signal data.
+
+    **Payload structure:**
+
+    ```json
+    {
+      "event": "account.signal",
+      "event_time": "2025-06-10T08:00:00Z",
+      "data": [
+        {
+          "owner_email": "rep@company.com",
+          "account": "acme.com",
+          "signal_name": "New CRO Hired",
+          "source": "https://techcrunch.com/...",
+          "pub_date": "2025-06-09T14:30:00Z",
+          "why_now": "Acme just brought in a new CRO from Salesforce who has publicly committed to overhauling their outbound motion over the next 90 days.",
+          "full_signal_summary": "...",
+          "crm_account_id": "hs_123456",
+          "article_summary": {
+            "headline": "Acme Corp Appoints New Chief Revenue Officer",
+            "quotes": ["We're rebuilding our GTM from the ground up"],
+            "relevant_facts": ["New CRO previously led sales at Salesforce", "Acme targeting 3x revenue growth"],
+            "one_sentence_summary": "Acme hired a new CRO with a mandate to overhaul their sales motion.",
+            "signal_summary": "...",
+            "document_type": "news_article"
+          }
+        }
+      ]
+    }
+    ```
+
+    **Signal payload fields:**
+
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | `owner_email` | string | WhiteWhale user who owns the account |
+    | `account` | string | Account domain |
+    | `signal_name` | string | Name of the signal that fired |
+    | `source` | string | URL of the source document |
+    | `pub_date` | datetime | Publication date of the source |
+    | `why_now` | string | WhiteWhale's Why Now summary for the account |
+    | `full_signal_summary` | string | Extended summary of the signal |
+    | `crm_account_id` | string | CRM account ID if CRM is connected |
+    | `article_summary.headline` | string | Headline of the source document |
+    | `article_summary.quotes` | array | Key quotes from the source |
+    | `article_summary.relevant_facts` | array | Key facts extracted from the source |
+    | `article_summary.one_sentence_summary` | string | One-line summary of the source |
+    | `article_summary.document_type` | string | Type of source (news article, job posting, earnings call, etc.) |
+  </Accordion>
+
+  <Accordion title="account.upload — An account was uploaded or pre-scored">
+    Sent when a new account is uploaded or when Account Suggestions finishes pre-scoring an account. Returns the full account object including all signal data.
+
+    **Payload structure:**
+
+    ```json
+    {
+      "event": "account.upload",
+      "event_time": "2025-06-10T08:00:00Z",
+      "data": [
+        {
+          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "name": "Acme Corp",
+          "icp_name": "Master",
+          "icp_id": "9f0979ca-5f3a-40c5-afe5-41cfd70cde6a",
+          "owner_email": "rep@company.com",
+          "summary": "Acme is expanding into enterprise and just hired a new CRO...",
+          "scaled_score": 74,
+          "status": "farsight",
+          "account_data": {
+            "full_name": "Acme Corporation, Inc.",
+            "linkedin_url": "https://linkedin.com/company/acme",
+            "industry": "Software",
+            "li_employees": 320,
+            "location": {}
+          },
+          "signals": [...],
+          "signal_list": ["New CRO Hired", "Hiring SDRs", "Series B Funding"]
+        }
+      ]
+    }
+    ```
+
+    **Key account fields:**
+
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | `id` | string | WhiteWhale account UUID |
+    | `scaled_score` | number | Account score 0–100. If status is `farsight`, this is a prediction score. |
+    | `status` | string | `active`, `archived`, or `farsight` |
+    | `summary` | string | Why Now summary |
+    | `signal_list` | array | Names of all signals currently matching this account |
+    | `signals` | array | Full signal answer objects with sources, quotes, and dates |
+    | `account_data.li_employees` | integer | Employee count from LinkedIn |
+    | `account_data.linkedin_url` | string | Company LinkedIn URL |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Timing
+
+| Event | When it fires |
+| --- | --- |
+| `account.signal` | Daily, each morning when new signal matches are found |
+| `account.upload` | Immediately when an account is uploaded or activated, and when Account Suggestions finishes pre-scoring |
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api">
+    Full endpoint reference including `/v1/set_webhook` and `/v1/test_webhook`.
+  </Card>
+
+  <Card title="Clay" icon="table" href="/clay">
+    Use webhooks to pipe WhiteWhale data directly into Clay.
+  </Card>
+</CardGroup>

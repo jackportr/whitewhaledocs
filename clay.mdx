@@ -1,3 +1,94 @@
 ---
 title: "Clay"
+description: "Send WhiteWhale signal data into Clay automatically via webhook to power enrichment flows and outreach workflows."
 ---
+
+<iframe src="https://www.loom.com/embed/bd3121943f044f4dab7c88289ddc4d96" title="How to Connect WhiteWhale to Clay" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+
+WhiteWhale connects to Clay via webhook. Every morning when a new signal fires, WhiteWhale automatically sends the full signal payload to your Clay table — no manual exports, no copy-pasting.
+
+## What's included in the payload
+
+Each webhook event includes everything you need to build enrichment flows and run outreach from Clay:
+
+- Company URL and LinkedIn URL
+- All active signals for the account — not just the new one, but the full history
+- The Why Now summary
+- Signal sources, quotes, and facts
+- Current account owner (if you have multiple users)
+
+## How to connect
+
+<Steps>
+  <Step title="Create a webhook source in Clay">
+    In your Clay table, add a new data source and select **Webhook**. Clay will generate a webhook URL for your table.
+
+    If you haven't done this before, Clay's webhook setup guide walks through the full process — see the link below.
+  </Step>
+  <Step title="Copy the webhook URL from Clay">
+    Copy the URL Clay provides for your table's webhook source.
+  </Step>
+  <Step title="Add the URL to WhiteWhale">
+    In WhiteWhale, go to **Settings** and scroll down to **Webhook Settings**. Paste the Clay webhook URL into the field and click **Continue**, then **Save**.
+  </Step>
+</Steps>
+
+From this point forward, every new signal that fires will automatically send a payload to your Clay table each morning.
+
+<Tip>
+  The payload includes all signals on the account, not just the one that triggered the webhook. This gives you the full context to build a complete Why Now story inside Clay before running any enrichment or outreach.
+</Tip>
+
+## What to build in Clay
+
+Once the data is flowing, you can use the WhiteWhale payload fields to power enrichment flows. A common setup:
+
+- Pull **company name** and **owner** from the WhiteWhale payload
+- Use the **company URL** to find contacts and enrich with email, title, and LinkedIn
+- Build outreach sequences triggered by specific signals in the payload
+
+## One-off export: get your accounts into Clay now
+
+If you want to get your existing accounts into Clay without waiting for the webhook to run, you can export them directly as a CSV.
+
+<Steps>
+  <Step title="Go to the Accounts page">
+    Use the checkboxes to select the accounts you want to export. You can select individual accounts or all accounts at once.
+  </Step>
+  <Step title="Click Export">
+    WhiteWhale will download a CSV with your selected accounts and their signal data.
+  </Step>
+  <Step title="Import the CSV into Clay">
+    In Clay, create a new table and import the CSV file as your data source.
+  </Step>
+</Steps>
+
+<Card title="Clay CSV Import Guide" icon="file-csv" href="https://university.clay.com/docs/csv-import-overview">
+  Clay's full guide to importing and working with CSV data sources.
+</Card>
+
+Use the webhook for ongoing automation and the CSV export for one-time imports or backfills.
+
+---
+
+## Clay webhook documentation
+
+<Card title="Clay Webhook Integration Guide" icon="book" href="https://university.clay.com/docs/webhook-integration-guide">
+  Clay's full guide to setting up and working with webhook data sources.
+</Card>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Webhooks" icon="webhook" href="/webhooks">
+    Full reference for the WhiteWhale webhook payload and how to register endpoints.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/api">
+    Access WhiteWhale data programmatically via the API.
+  </Card>
+
+  <Card title="How Signals Work" icon="circle-info" href="/how-signals-work">
+    Understand what data WhiteWhale collects before building flows around it.
+  </Card>
+</CardGroup>

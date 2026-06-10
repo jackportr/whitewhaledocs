@@ -1,3 +1,165 @@
 ---
-title: "MCP (Claude, ChatGPT, etc)"
+title: "Claude MCP"
+description: "Talk to your WhiteWhale data in plain English using Claude — no technical knowledge required."
 ---
+
+The WhiteWhale MCP connects Claude directly to your WhiteWhale account. Once it's set up, you can ask Claude questions about your accounts and signals in plain English and get real answers from your live data.
+
+**GitHub:** [github.com/BirdDog-Intel/WhiteWhale-MCP](https://github.com/BirdDog-Intel/WhiteWhale-MCP)
+
+<Info>
+  **MCP stands for Model Context Protocol.** It's a way to give Claude access to tools and data outside of the conversation. You don't need to understand how it works — just follow the setup steps below and Claude will handle the rest.
+</Info>
+
+## What you can ask Claude
+
+<Frame>
+  ![Claude Whitewhale Chat](/claude-whitewhale-chat.png)
+</Frame>
+
+Once connected, ask Claude anything about your WhiteWhale data:
+
+- _"Which accounts should I reach out to today?"_
+- _"Add these 20 companies to my list: \[paste domains\]"_
+- _"What signals am I tracking and are they configured well?"_
+- _"How many account credits do I have left?"_
+- _"Find me new target accounts that match my ICP"_
+
+Claude will pull your live WhiteWhale data and respond in plain English — no dashboards, no exports, no copy-pasting.
+
+---
+
+## Prerequisites
+
+Before you start, you need:
+
+1. **Node.js version 18 or later** installed on your computer — [download it here](https://nodejs.org)
+2. A **WhiteWhale account** with an API key (see below)
+
+### Get your API key
+
+In WhiteWhale, go to **Settings** → **API & Webhooks** → click **Generate API Key**. Copy the key — you'll need it in the next step. Your **user** is the email address you use to log into WhiteWhale.
+
+---
+
+## Optional: faster startup
+
+By default, the MCP downloads fresh each time Claude starts. To make it launch faster, install it globally:
+
+```bash
+npm install -g @getbirddog/mcp
+```
+
+Then change `"command": "npx"` to `"command": "birddog-mcp"` and remove the `"args"` line from your config.
+
+---
+
+## Setup: Claude Desktop
+
+Claude Desktop is the app you download and run on your Mac or Windows computer.
+
+<Steps>
+  <Step title="Find your Claude Desktop config file">
+    Open this file in any text editor:
+
+    - **Mac:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+    - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+    If the file doesn't exist yet, create it.
+  </Step>
+  <Step title="Add WhiteWhale to the config">
+    Paste the following into the file, replacing the placeholder values with your actual API key and email:
+
+    ```json
+    {
+      "mcpServers": {
+        "whitewhale": {
+          "command": "npx",
+          "args": ["-y", "@getbirddog/mcp"],
+          "env": {
+            "BIRDDOG_API_KEY": "your-api-key-here",
+            "BIRDDOG_USER": "you@yourcompany.com"
+          }
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Restart Claude Desktop">
+    Fully quit and reopen Claude Desktop. You should see **whitewhale** appear in the tools list.
+  </Step>
+  <Step title="Try it">
+    Ask Claude: _"Show me my hottest WhiteWhale accounts"_ — Claude will pull your live data and respond.
+  </Step>
+</Steps>
+
+---
+
+## Setup: Claude Code
+
+If you use Claude Code (the command line version), run this command in your terminal:
+
+```bash
+claude mcp add whitewhale \
+  -e BIRDDOG_API_KEY=your-key \
+  -e BIRDDOG_USER=you@company.com \
+  -- npx -y @getbirddog/mcp
+```
+
+---
+
+## Built-in workflows
+
+Claude comes with a set of pre-built WhiteWhale workflows you can trigger with a single prompt:
+
+| Ask Claude | What it does |
+| --- | --- |
+| _"Show me my daily priorities"_ | Your highest-scoring accounts ranked by signal activity |
+| _"Add accounts"_ | Validates and uploads a list of companies |
+| _"Review my signals"_ | Checks your current signal setup and suggests improvements |
+| _"Find new accounts"_ | Runs Account Suggestions to discover new target accounts |
+| _"Give me an account overview"_ | Full summary of your WhiteWhale setup and health |
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="WhiteWhale isn't showing up in Claude's tools list">
+    Fully quit and restart Claude Desktop or Claude Code after editing the config file. A partial close won't pick up the changes.
+  </Accordion>
+
+  <Accordion title="Authentication failed (401 error)">
+    Check that your API key has no extra spaces or line breaks when you pasted it. Make sure `BIRDDOG_USER` is the exact email address you use to log into WhiteWhale.
+  </Accordion>
+
+  <Accordion title="Error: Missing credentials">
+    Make sure `BIRDDOG_API_KEY` and `BIRDDOG_USER` are inside the `"env"` block in your config file, not in the `"args"` section.
+  </Accordion>
+
+  <Accordion title="Node version error">
+    Run `node --version` in your terminal. If it shows lower than v18, [download the latest version of Node.js](https://nodejs.org).
+  </Accordion>
+
+  <Accordion title="How to update to the latest version">
+    Run `npx --yes @getbirddog/mcp@latest` in your terminal.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Warning>
+  Keep your API key secure. Never paste it into a shared document or commit your config file to version control. Add `claude_desktop_config.json` and `.claude/mcp.json` to your `.gitignore`.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api">
+    Access WhiteWhale data programmatically without Claude.
+  </Card>
+
+  <Card title="Using the Why Now Summary" icon="bolt" href="/using-the-why-now-summary">
+    Understand the account data Claude is pulling for you.
+  </Card>
+</CardGroup>

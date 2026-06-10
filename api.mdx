@@ -1,3 +1,426 @@
 ---
-title: "API"
+title: "API Reference"
+description: "Access and manage WhiteWhale data programmatically. Everything you can do in the platform, you can do via the API."
 ---
+
+## Overview
+
+The WhiteWhale API gives you full programmatic access to your account data, signals, users, and Account Suggestions. Common use cases:
+
+- Pipe WhiteWhale data into tools not covered by native integrations
+- Build your own CRM integration
+- Automate account uploads and status changes
+- Embed WhiteWhale signal data into your own platform or internal tooling
+
+**Base URL:** `https://app.getwhitewhale.com/v1`
+
+**API Docs:** [app.getbirddog.lol/api\_docs](https://app.getbirddog.lol/api_docs)
+
+---
+
+## Authentication
+
+Every request requires two headers:
+
+| Header | Description |
+| --- | --- |
+| `api-key` | Your WhiteWhale API key |
+| `user` | The email address of the user making the request |
+
+```bash
+curl -H "api-key: YOUR_API_KEY" \
+     -H "user: you@company.com" \
+     https://app.getwhitewhale.com/v1/get_user_data
+```
+
+### Getting your API key
+
+The API key is **shared across your whole team** — one key per WhiteWhale instance.
+
+<Steps>
+  <Step title="Go to Settings">
+    Click **Settings** in the left nav.
+  </Step>
+  <Step title="Scroll to API & Webhooks">
+    Find the **API & Webhooks** section — it manages both programmatic access and event delivery.
+  </Step>
+  <Step title="Click Generate API Key">
+    Your active API key will appear. Copy it and store it securely for the team.
+  </Step>
+</Steps>
+
+<Frame>
+  ![Generating Api Key](/generating-api-key.png)
+</Frame>
+
+<Warning>
+  Keep your API key secure and do not share it publicly or commit it to version control. Anyone with this key has full API access to your WhiteWhale instance.
+</Warning>
+
+---
+
+## Rate limits & global errors
+
+**Rate limit:** 600 requests per minute, global across all routes.
+
+| Status code | Meaning |
+| --- | --- |
+| `401` | Authentication failed — API key missing, incorrect, or user not found |
+| `404` | User or resource not found |
+| `429` | Rate limit exceeded |
+
+---
+
+## Endpoints
+
+### Accounts
+
+<AccordionGroup>
+  <Accordion title="GET /v1/get_accounts — Fetch account data">
+    Returns WhiteWhale data for your accounts. Filter by specific domains, status, or ICP. Includes signal data and account details.
+
+    **Key parameters:**
+
+    | Parameter | Type | Default | Description |
+    | --- | --- | --- | --- |
+    | `account_filter` | array | `[]` | Filter to specific account domains |
+    | `status` | string | `all` | Filter by status: `active`, `archived`, `farsight`, or `all` |
+    | `signal_data` | boolean | `true` | Include signal data in response |
+    | `lite` | boolean | `false` | Return lightweight response without full account data |
+    | `limit` | integer | `100` | Max accounts to return |
+    | `offset` | integer | `0` | Pagination offset |
+    | `icp_id` | string | — | Filter to a specific ICP |
+
+    **Response:** Array of `Account` objects including name, score, status, signal answers, and account details (LinkedIn URL, industry, employee count, etc.)
+  </Accordion>
+
+  <Accordion title="POST /v1/upload_accounts — Add new accounts">
+    Upload one or more accounts by domain. By default, accounts are first sent to Account Suggestions for pre-scoring before being activated.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `accounts` | array of strings | ✅ | List of account domains to upload |
+    | `farsight` | boolean | — | Default `true` — sends to Account Suggestions first. Set to `false` to add directly as active. |
+    | `icp` | string | — | ICP to upload accounts to. Default: `Master` |
+
+    <Info>
+      If `farsight: true` (default), uploaded accounts land in Account Suggestions and must be activated. If you have a webhook configured, you'll receive a pre-score payload when they're ready. If `farsight: false`, accounts are immediately active and will consume credits.
+    </Info>
+  </Accordion>
+
+  <Accordion title="POST /v1/change_accounts_status — Archive, activate, or delete accounts">
+    Change the status of one or more accounts. Activating accounts consumes credits.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `accounts` | array of strings | ✅ | Account domains to update |
+    | `new_status` | string | ✅ | `active`, `archive`, or `delete` |
+    | `icp` | string | — | ICP to apply changes to. Default: `Master` |
+  </Accordion>
+
+  <Accordion title="POST /v1/normalize_accounts — Validate and normalize domains">
+    Pass in a list of raw URLs and get back the normalized domains as WhiteWhale will store them. Useful for validating your input before uploading.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `accounts` | array of strings | ✅ | Raw account URLs to normalize |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+### Signals
+
+<AccordionGroup>
+  <Accordion title="GET /v1/get_signal_templates — List signal templates">
+    Returns the list of signal question formats the platform supports. Use these to validate signal text before adding via the API.
+
+    **Response:** Array of `Template` objects with the question format, a title, whether the template is complete, and examples for templates with placeholders.
+
+    ```json
+    {
+      "templates": [
+        {
+          "title": "M&A",
+          "question": "Did {account} recently acquire or merge with another company?",
+          "complete": true
+        },
+        {
+          "title": "Hiring",
+          "question": "Is {account} hiring for <<INSERT POSITION>>?",
+          "complete": false,
+          "examples": [
+            "Is {account} hiring for engineers?",
+            "Is {account} hiring for any sales positions?"
+          ]
+        }
+      ]
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="POST /v1/add_signals — Add signals to an ICP">
+    Add one or more signals programmatically. Signals must match a template format from `/v1/get_signal_templates`, unless `ignore_templates: true` is set.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `signals` | array | ✅ | Array of signal objects (see below) |
+    | `ignore_templates` | boolean | — | Default `false`. Set to `true` to add custom signals outside the template format. |
+
+    **Each signal object:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `signal` | string | ✅ | The signal question text |
+    | `name` | string | ✅ | A unique name for the signal within the ICP |
+    | `icp` | string | ✅ | Name of the ICP to add the signal to |
+    | `q_rank` | number | — | Signal rank: `0` (disqualify), `0.1` (low), `1` (normal), `6` (high) |
+
+    **Signal rank behavior:**
+
+    - `0` — any account matching this signal is set to an arbitrary negative score. Use to disqualify accounts.
+    - `6` — Account Suggestions uses High-ranked signals to find new accounts. At least one signal of rank `6` is required for Account Suggestions to work.
+  </Accordion>
+
+  <Accordion title="POST /v1/delete_signal — Remove a signal">
+    Delete a signal from an ICP by signal ID. Retrieve signal IDs from `/v1/get_user_data`.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `signal_id` | string | ✅ | UUID of the signal to delete |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+### Users
+
+<AccordionGroup>
+  <Accordion title="GET /v1/get_user_data — Get a user's data">
+    Returns signals, ICPs, remaining credits, and active account count for the authenticated user.
+
+    **Response:** `UserOverview` object with:
+
+    - `icps` — list of ICP names
+    - `icp_id_dict` — map of ICP name → ICP ID
+    - `signals` — all signals across the user's ICPs
+    - `credits_remaining` — remaining account credits
+    - `active_accounts` — current active account count
+  </Accordion>
+
+  <Accordion title="GET /v1/get_all_user_data — List all users in your instance">
+    Returns an array of `UserOverview` objects for every user in your WhiteWhale instance. Requires admin authentication.
+  </Accordion>
+
+  <Accordion title="POST /v1/create_user_request — Create a new user">
+    Programmatically invite a new user to your WhiteWhale instance.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `email` | string | ✅ | Email address for the new user. Stored entirely lowercase. |
+    | `email_alerts` | boolean | — | Default `false`. Set to `true` to enable email alerts for this user. |
+
+    **Errors:** `403` if out of user seats. `409` if a user with that email already exists.
+  </Accordion>
+
+  <Accordion title="POST /v1/delete_user_request — Delete a user">
+    Remove a user from your instance. Requires the authenticating user to be an admin.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `email` | string | ✅ | Email of the user to delete |
+
+    **Errors:** `403` if the user is not in your organization.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+### Account Suggestions (ICP)
+
+<AccordionGroup>
+  <Accordion title="GET /v1/icp/details — Get ICP details">
+    Returns details for one or all ICPs in your instance, including signals, Account Suggestions mode, and constraints.
+
+    **Parameters:**
+
+    | Parameter | Type | Description |
+    | --- | --- | --- |
+    | `icp_ids` | array | Optional. ICP IDs to fetch. If omitted, returns all ICPs in your instance. |
+  </Accordion>
+
+  <Accordion title="POST /v1/add_icp — Create a new ICP">
+    Creates a new ICP as a child of your Master ICP. The new ICP inherits the Master ICP's signals.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `icp_name` | string | ✅ | Name for the new ICP. Must be unique. |
+
+    **Errors:** `400` if an ICP with that name already exists.
+  </Accordion>
+
+  <Accordion title="POST /v1/swap_icp — Move accounts to a different ICP">
+    Switches one or more accounts to a different ICP.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `accounts` | array | ✅ | Account domains to move |
+    | `target_icp` | string | ✅ | Name of the ICP to move them to |
+
+    <Warning>
+      This operation can take as long as adding a new account. Plan accordingly for large batches.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="POST /v1/delete_icp_request — Delete an ICP">
+    Deletes an ICP and all its associated accounts and signals. Cannot be used to delete a Master ICP.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `icp_id` | string | ✅ | UUID of the ICP to delete |
+
+    **Errors:** `400` if ICP not found for user. `403` if attempting to delete a Master ICP.
+  </Accordion>
+
+  <Accordion title="POST /v1/icp/farsight_state_switch — Enable or disable Account Suggestions">
+    Activates or deactivates Account Suggestions for an ICP.
+
+    **Body:**
+
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | `icp_id` | string | ICP to update |
+    | `state` | string | `"false"` (off), `"limited"` (only scans uploaded accounts), or `"unlimited"` (scans the full internet within your constraints) |
+
+    <Info>
+      At least one signal of rank `6` (High) is required for Account Suggestions to find new accounts. Account Suggestions runs automatically at 3:00 UTC daily. To trigger immediately, use `/v1/icp/run_farsight`.
+    </Info>
+  </Accordion>
+
+  <Accordion title="POST /v1/icp/run_farsight — Trigger an immediate Account Suggestions scan">
+    Triggers an immediate Account Suggestions run for the specified ICP. Can only be called once every 2 hours.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `icp_id` | string | ✅ | ICP to run Account Suggestions for |
+  </Accordion>
+
+  <Accordion title="POST /v1/icp/farsight_constraints_change — Update Account Suggestions filters">
+    Update the geography and industry constraints for Account Suggestions. Filters take effect immediately and will reject any queued accounts that fall outside the new parameters.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `icp_id` | string | ✅ | ICP to update |
+    | `filter_list` | array | ✅ | List of countries, states, or industries to apply |
+    | `inclusion_or_exclusion` | string | ✅ | `"inclusion"` or `"exclusion"` |
+    | `list_type` | string | ✅ | `"country"`, `"state"`, or `"industry"` |
+
+    Use ISO 3166-1 alpha-2 codes for countries, two-digit codes for US states. Retrieve valid codes from `/v1/utilities/location_codes` and valid industries from `/v1/utilities/industries`.
+  </Accordion>
+
+  <Accordion title="POST /v1/icp/farsight_employee_bounds — Set employee count range">
+    Sets minimum and maximum employee count for Account Suggestions. Accounts outside this range are automatically rejected.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `icp_id` | string | ✅ | ICP to update |
+    | `min` | integer | — | Minimum employee count. Default: `0` |
+    | `max` | integer | — | Maximum employee count. Default: `0` |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+### Webhook
+
+<AccordionGroup>
+  <Accordion title="POST /v1/set_webhook — Register a webhook URL">
+    Sets the webhook endpoint for your account. WhiteWhale will POST signal and account events to this URL automatically.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `webhook_url` | string | ✅ | The URL WhiteWhale should send events to |
+
+    See the [Webhooks](/webhooks) page for full payload documentation.
+  </Accordion>
+
+  <Accordion title="POST /v1/test_webhook — Send a test webhook payload">
+    Sends a test payload to your registered webhook endpoint and returns the payload in the response so you can inspect it.
+
+    **Body:**
+
+    | Field | Type | Required | Description |
+    | --- | --- | --- | --- |
+    | `event_type` | string | ✅ | `"account.upload"` or `"account.signal"` |
+    | `spoof_payload` | boolean | — | Returns a fake payload with the correct data structure. Requires at least one signal on an account. |
+    | `icp_name` | string | — | If provided, returns a real signal and account name instead of spoofed data. |
+
+    <Info>
+      The payload returned via this route is unsigned. The actual test payload delivered to your webhook endpoint will be signed.
+    </Info>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+### Utilities
+
+<AccordionGroup>
+  <Accordion title="GET /v1/utilities/location_codes — Get valid location codes">
+    Returns a dictionary of valid country and state codes accepted by the API. Use these when setting Account Suggestions geography constraints.
+  </Accordion>
+
+  <Accordion title="GET /v1/utilities/industries — Get valid industry codes">
+    Returns all valid industry strings accepted by the API. Maps to LinkedIn's industry taxonomy.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Webhooks" icon="webhook" href="/webhooks">
+    Full payload reference and setup guide for WhiteWhale webhook events.
+  </Card>
+
+  <Card title="Clay" icon="table" href="/clay">
+    Connect WhiteWhale to Clay via webhook or CSV export.
+  </Card>
+
+  <Card title="HubSpot" icon="hubspot" href="/hub-spot">
+    Native HubSpot integration for CRM sync.
+  </Card>
+
+  <Card title="Salesforce" icon="cloud" href="/salesforce">
+    Native Salesforce integration for CRM sync.
+  </Card>
+</CardGroup>
