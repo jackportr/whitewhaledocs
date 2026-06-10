@@ -1,3 +1,64 @@
 ---
 title: "Account Scoring Explained"
+description: "Understand how WhiteWhale scores accounts and what a good score actually means."
 ---
+
+<iframe src="https://www.loom.com/embed/ed0cae56e2f74ebe893cb1a140a5803a" title="Account Scoring Explained in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+
+Every account in WhiteWhale gets a score from 0 to 100. The score tells you how recent and how relevant the signal activity is on that account — and by extension, how worth your time it is right now.
+
+## What the score actually means
+
+The score is a proxy for signal density and recency. A higher score means more of your signals have fired recently, and that those signals are higher priority.
+
+A perfect score of 100 would mean every single one of your signals fired on that account in the last 30 days simultaneously. In practice, that's nearly impossible — it would require a company to have a new CRO, be hiring for five different roles, shift their go-to-market motion, and hit every other signal you track all at the same time.
+
+Most accounts will never score above 60. That's completely normal and expected.
+
+## What good looks like
+
+| Score range | What it means |
+| --- | --- |
+| **0–10** | Few or no signals. Not worth prioritizing right now. |
+| **10–30** | The typical range for a solid account with real signal activity. Most of your workable accounts live here. |
+| **30–50** | VERY Strong signal activity — multiple recent, high-ranked signals. Worth prioritizing. |
+| **50–100** | Exceptional. Rare. Multiple high-priority signals firing simultaneously in a short window. |
+
+<Tip>
+  Don't anchor to a fixed number. Spend a week clicking through your accounts and you'll quickly develop a feel for what a "good score" means for your specific signal set. Every team's baseline is a little different.
+</Tip>
+
+## What drives the score up
+
+Two things push a score higher:
+
+- **Recency** — signals that fired in the last 30 days count more than older ones
+- **Signal rank** — High-ranked signals contribute more to the score than Low-ranked ones
+
+An account with one High-ranked signal that fired yesterday will outscore an account with five Low-ranked signals that fired six months ago.
+
+## What the score is not
+
+The score is not a lead score, a revenue predictor, or a guarantee of fit. It's purely a signal-activity indicator. An account can score low and still be a great prospect — it just means nothing notable has happened recently that WhiteWhale detected. Conversely, a high score means the timing looks good, not that the deal is certain.
+
+Use it as a prioritization tool, not a qualification filter.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="How Signals Work" icon="circle-info" href="/how-signals-work">
+    Understand what WhiteWhale monitors and how signals are detected.
+  </Card>
+
+  <Card title="How to See All New Signals" icon="bell" href="/how-to-see-all-new-signals">
+    Find your accounts with the freshest signal activity.
+  </Card>
+
+  <Card title="Improving Signals" icon="sliders" href="/improving-signals">
+    Better signals lead to more meaningful scores.
+  </Card>
+
+  <Card title="How Segments Work" icon="folder" href="/how-segments-work">
+    Save filtered views by score range to work your highest-priority accounts first.
+  </Card>
+</CardGroup>

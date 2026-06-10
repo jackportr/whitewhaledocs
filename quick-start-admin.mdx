@@ -1,3 +1,195 @@
 ---
 title: "Quick Start: Admin"
+description: "Get your team up and running on WhiteWhale in under an hour."
 ---
+
+This guide walks you through everything you need to do as an admin to get WhiteWhale fully configured for your team. Follow these steps in order — each one builds on the last.
+
+---
+
+## Step 1: Invite your team
+
+Add everyone who will be using WhiteWhale before you start assigning accounts.
+
+<Steps>
+  <Step title="Go to the Team page">
+    Click **Team** in the left nav and click **Add User**.
+  </Step>
+  <Step title="Add each team member">
+    Enter their name, email, and select a role:
+
+    - **Super Admin** — sales leadership, RevOps, anyone who needs full visibility
+    - **Member** — individual AEs and SDRs working their own territory
+  </Step>
+  <Step title="Click Send Invite">
+    WhiteWhale emails them their login automatically.
+  </Step>
+</Steps>
+
+<Card title="Adding Users" icon="user-plus" href="/adding-users">
+  Full guide to roles, permissions, and team configuration.
+</Card>
+
+---
+
+## Step 2: Build your signal list
+
+Signals are the questions WhiteWhale asks about every account. A good signal list is the foundation of everything — account scores, Account Suggestions, and the Why Now summaries all depend on it.
+
+**Aim for 10–15 signals.** Mark your top 5–8 as High priority.
+
+<Steps>
+  <Step title="Go to the Signals page">
+    Click **Signals** in the left nav, then click **Add Signal**.
+  </Step>
+  <Step title="Describe what you want to find">
+    Type what you're looking for in plain English. WhiteWhale will convert it into the right format. You don't need to phrase it as a question — just describe it.
+
+    Not sure what signals to add? Start here:
+
+    - Did they hire a new CRO or VP of Sales?
+    - Are they hiring multiple AEs or SDRs at once?
+    - Did they announce new funding?
+    - Are they expanding into a new market or geography?
+    - Do they mention a problem your product solves?
+  </Step>
+  <Step title="Set signal priority">
+    - **High** — your strongest buying signals. Use for 5–8 signals.
+    - **Normal** — standard weight signals.
+    - **Low** — background context, mute these so they don't flood your queue.
+  </Step>
+  <Step title="Add the signal and repeat">
+    Build up to 10–15 signals before moving on.
+  </Step>
+</Steps>
+
+<CardGroup cols={2}>
+  <Card title="Signal Library" icon="book" href="/signal-library">
+    Copy-paste templates organized by category — funding, hiring, leadership, technology, and more.
+  </Card>
+
+  <Card title="How to Get Unique Signal Ideas" icon="lightbulb" href="/how-to-get-unique-signal-ideas">
+    Build a signal list specific to your ICP and sales motion.
+  </Card>
+</CardGroup>
+
+---
+
+## Step 3: Add accounts or turn on Account Suggestions
+
+You have two options here — use one or **both**.
+
+<AccordionGroup>
+  <Accordion title="Option A: Add accounts from a list">
+    Use this if you already have a set of accounts you want to monitor — assigned territories, closed-lost deals, a target list from your CRM.
+
+    Go to the **Accounts** page → click **Add Accounts** → paste your company domains. WhiteWhale cleans up the formatting automatically.
+
+    If your list is larger than your credit limit, open **Advanced Settings** and set how many accounts to activate. WhiteWhale will scan the full list and pick the best ones based on your signals.
+
+    <Card title="Adding Accounts" icon="plus" href="/adding-accounts">
+      Full guide including the Signal Suggestion Engine for large lists.
+    </Card>
+  </Accordion>
+
+  <Accordion title="Option B: Turn on Account Suggestions (Recommended)">
+    Use this if you want WhiteWhale to find net-new accounts that match your ICP and already have signal activity.
+
+    Go to the **Suggestions** tab → click **Turn On** → set your filters:
+
+    - **Signals** — leave as Any Of (avoid Must Have for now)
+    - **Geography** — countries or US states you serve
+    - **Industry** — match to LinkedIn industry categories
+    - **Employee count** — your ICP range
+
+    Click **Find Recommendations**. Results start appearing within 1–2 hours and grow daily.
+
+    <Card title="Setting Up Account Suggestions" icon="wand-magic-sparkles" href="/setting-up-account-suggestions">
+      Full setup guide with filter recommendations.
+    </Card>
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  You can run both at the same time. Many teams start with a known list of accounts and turn on Account Suggestions to find net-new ones in parallel.
+</Info>
+
+---
+
+## Step 4: Connect your integrations
+
+Get WhiteWhale data flowing into the tools your team already uses.
+
+<AccordionGroup>
+  <Accordion title="CRM — HubSpot or Salesforce">
+    Go to **Settings** → **Integrations** → find HubSpot or Salesforce and click **Set Up**. Use the one-click setup for a standard configuration.
+
+    Once connected, WhiteWhale scores, signals, and Why Now summaries sync to your CRM daily.
+
+    <CardGroup cols={2}>
+      <Card title="HubSpot" icon="hubspot" href="/hub-spot">
+        Setup guide and field reference.
+      </Card>
+
+      <Card title="Salesforce" icon="cloud" href="/salesforce">
+        Setup guide and field reference.
+      </Card>
+    </CardGroup>
+  </Accordion>
+
+  <Accordion title="Slack or Microsoft Teams">
+    Go to **Settings** → **Integrations** → connect Slack or Teams. Once connected, your reps will get notified directly in their channel when a new signal fires on one of their accounts.
+
+    Have each rep go to **Settings** → **User Notifications** and turn on at minimum **Daily Signals** and **Assigned Accounts**.
+
+    <CardGroup cols={2}>
+      <Card title="Slack" icon="slack" href="/slack">
+        Setup guide and notification options.
+      </Card>
+
+      <Card title="Microsoft Teams" icon="windows" href="/microsoft-teams">
+        Setup guide and notification options.
+      </Card>
+    </CardGroup>
+  </Accordion>
+
+  <Accordion title="Google Calendar — pre-meeting briefs">
+    Go to **Settings** → **Integrations** → **Google Calendar** → click **Connect**. Choose **On** to receive research briefs 24 hours before any meeting with a tracked account.
+
+    <Card title="Pre-Meeting Research Brief" icon="calendar" href="/pre-meeting-research-brief">
+      Setup guide and mode options.
+    </Card>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Step 5: Assign accounts to your team
+
+Once accounts are in WhiteWhale — either added directly or accepted from Suggestions — assign them to your reps.
+
+**For accounts already in your list:** Go to **All Accounts** → click the **Owner** field on any account → select the rep it should go to.
+
+**For accounts coming in from Suggestions:** Go to the **Suggestions** tab → select accounts using the checkboxes → click **Activate** → choose to assign to one person or round-robin across the team.
+
+**Pro tip:** Filter suggestions by geography, industry, or employee count before assigning to quickly route accounts to the right rep by territory or segment.
+
+<CardGroup cols={2}>
+  <Card title="Account Allocation" icon="users" href="/account-allocation">
+    Reassign ownership on accounts already in your list.
+  </Card>
+
+  <Card title="Assigning Suggestions" icon="shuffle" href="/assign-suggestions-round-robin-etc">
+    Bulk assign or round-robin accounts from your Suggestions queue.
+  </Card>
+</CardGroup>
+
+---
+
+## You're set up. What's next?
+
+Send your reps to the **Rep Quick Start** guide so they know how to work their queue from day one.
+
+<Card title="Quick Start: Rep" icon="user" href="/quick-start-rep">
+  The rep's guide to working signals, using the Why Now, and booking meetings with WhiteWhale data.
+</Card>

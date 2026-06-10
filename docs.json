@@ -9,6 +9,7 @@
       {
         "group": "Get Started",
         "pages": [
+          "welcome",
           "quick-start-admin",
           "quick-start-rep",
           "glossary"
@@ -17,7 +18,6 @@
       {
         "group": "Signals",
         "pages": [
-          "welcome",
           "creating-signals",
           "improving-signals",
           "muting-signals",

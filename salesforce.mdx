@@ -1,3 +1,159 @@
 ---
 title: "Salesforce"
+description: "Connect WhiteWhale to Salesforce to sync account scores, signals, and Why Now summaries directly to your CRM."
 ---
+
+Connecting Salesforce keeps WhiteWhale data — scores, signals, and Why Now summaries — inside the CRM your reps already work in. No manual uploads, no spreadsheets.
+
+## What the integration does
+
+- **Daily sync** — WhiteWhale pulls your accounts and opportunities from Salesforce each day and pushes updated scores, signals, and Why Now summaries back to the mapped fields
+- **Real-time updates** — when a new account is added or activated in WhiteWhale, it immediately syncs to Salesforce
+- **Deal context** — mapping your opportunities lets WhiteWhale surface different signals based on where each prospect is in your pipeline
+
+## How to connect
+
+<Steps>
+  <Step title="Go to Settings">
+    Click **Settings** in the left nav, then navigate to **Integrations**.
+  </Step>
+  <Step title="Select Salesforce">
+    Scroll to the Integrations module and click **Salesforce**.
+  </Step>
+  <Step title="Choose your environment">
+    Select **Default** for your production org or **Sandbox** for testing, then click **Submit**.
+  </Step>
+  <Step title="Authenticate with Salesforce">
+    You'll be redirected to Salesforce. Log in with your Integration User credentials to complete the OAuth flow.
+  </Step>
+  <Step title="Map your fields">
+    Once connected, map your Salesforce fields to WhiteWhale's fields inside the platform. See the field reference below.
+  </Step>
+</Steps>
+
+<Tip>
+  Use a dedicated Integration User with API access and read/write permissions on Accounts, rather than a personal user account. This keeps the connection stable if individual users leave or change roles.
+</Tip>
+
+---
+
+## Field reference
+
+### Account fields
+
+| Field | Required | Description |
+| --- | --- | --- |
+| `sf_id` | ✅ | Salesforce Account ID |
+| `Account_Domain` | ✅ | Company website URL. WhiteWhale can only process accounts that have a domain on record. |
+| `BirdDog_Description` | Optional | WhiteWhale's Why Now summary for the account |
+| `BirdDog_Score` | Optional | Account score from 0–100 based on signal strength |
+| `BirdDog_Link` | Optional | Direct link to the account's report in WhiteWhale |
+| `BirdDog_User` | Optional | Links the account to the assigned WhiteWhale user. Most teams map this to the existing Account Owner field. |
+| `BirdDog_Signals` | Optional | Most recent signals matching this account |
+
+### Recommended custom field configurations
+
+Create these fields on the Account object in Salesforce before mapping. Make sure all fields are visible to relevant users and accessible to API integrations.
+
+<AccordionGroup>
+  <Accordion title="BirdDog_Description">
+    - **Type:** Text Area (Long)
+    - **Label:** BirdDog\_Description
+    - **Length:** 1,000 characters
+    - **Help text:** Summary of WhiteWhale signals for the account
+  </Accordion>
+
+  <Accordion title="BirdDog_Score">
+    - **Type:** Number (0–100)
+    - **Label:** BirdDog\_Score
+    - **Help text:** Auto-populated WhiteWhale signal score
+  </Accordion>
+
+  <Accordion title="BirdDog_Link">
+    - **Type:** URL
+    - **Label:** BirdDog\_Link
+    - **Help text:** Link to the full account report in WhiteWhale
+  </Accordion>
+
+  <Accordion title="BirdDog_Signals">
+    - **Type:** Rich Text
+    - **Label:** BirdDog\_Signals
+    - **Help text:** Latest WhiteWhale signals for the account
+  </Accordion>
+</AccordionGroup>
+
+### Opportunity fields
+
+Mapping opportunities is optional but lets WhiteWhale tailor signal recommendations based on deal stage and helps backtest which signals correlate with closed-won deals.
+
+| Field | Required | Description |
+| --- | --- | --- |
+| `sf_id` | ✅ | Salesforce Opportunity ID |
+| `sf_account_id` | ✅ | ID of the related account |
+| `Name` | Optional | Opportunity name |
+| `Stage_name` | Optional | Current deal stage |
+| `Amount` | Optional | Deal value |
+| `Close_date` | Optional | Expected close date |
+| `Prob` | Optional | Close probability |
+| `Next_step` | Optional | Next planned action |
+| `Lead_source` | Optional | Opportunity lead source |
+| `Is_closed` | Optional | Whether the deal is closed |
+| `Is_won` | Optional | Whether the deal is won |
+| `Created_date` | Optional | Date the opportunity was created |
+
+---
+
+## User mapping
+
+WhiteWhale identifies users by their company email address. To link WhiteWhale users to their Salesforce counterparts, send a two-column CSV (email, Salesforce user ID) to [hello@getwhitewhale.com](mailto:hello@getwhitewhale.com). This ensures signals, accounts, and opportunities are correctly attributed by rep.
+
+---
+
+## How the sync works
+
+- **Daily sync window:** WhiteWhale runs at least one pull and push operation per day, keeping your Salesforce fields up to date automatically
+- **Real-time updates:** When a new account is added or activated in WhiteWhale, Salesforce is updated immediately
+- **First week:** Expect a higher sync frequency while the integration calibrates. Around 100 API calls per day is typical after the initial period.
+- **Read/write scope:** WhiteWhale only reads from the fields you map and only writes to the WhiteWhale-specific fields you create. It will not modify any other Salesforce data.
+
+---
+
+## Authentication details
+
+WhiteWhale connects via a Salesforce Connected App hosted within WhiteWhale's org. When your first user authenticates, Salesforce automatically creates a shadow copy of the app in your own org — visible under **Setup → App Manager**. No package installation is required.
+
+**OAuth scopes:**
+
+- Manage user data via APIs (`api`)
+- Perform requests at any time (`refresh_token`, `offline_access`)
+- Access unique user identifiers (`openid`)
+
+**To revoke access:** Go to **Setup → Security → Connected Apps OAuth Usage** in Salesforce and revoke the token there. You can also contact WhiteWhale and we'll disconnect and delete all authentication data on request.
+
+**Sandbox support:** WhiteWhale supports Salesforce sandbox environments. Select **Sandbox** during setup to connect your test environment using the same flow as production.
+
+---
+
+## Need help?
+
+Contact the WhiteWhale team at [hello@getwhitewhale.com](mailto:hello@getwhitewhale.com) for setup assistance or advanced configuration help.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="HubSpot" icon="hubspot" href="/hub-spot">
+    Connect WhiteWhale to HubSpot.
+  </Card>
+
+  <Card title="Webhooks" icon="webhook" href="/webhooks">
+    Push WhiteWhale data to your own systems.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/api">
+    Access WhiteWhale data programmatically.
+  </Card>
+
+  <Card title="Slack" icon="slack" href="/slack">
+    Get signal alerts delivered to Slack.
+  </Card>
+</CardGroup>
