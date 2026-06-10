@@ -123,10 +123,5 @@
         "label": "Login"
       }
     ]
-  },
-  "background": {
-    "color": {
-      "dark": "#020202"
-    }
   }
 }
