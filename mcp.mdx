@@ -1,11 +1,10 @@
 ---
 title: "MCP"
 description: "Talk to your WhiteWhale data in plain English using Claude — no technical knowledge required."
+mode: "default"
 ---
 
 The WhiteWhale MCP connects Claude directly to your WhiteWhale account. Once it's set up, you can ask Claude questions about your accounts and signals in plain English and get real answers from your live data.
-
-**GitHub:** [github.com/BirdDog-Intel/WhiteWhale-MCP](https://github.com/BirdDog-Intel/WhiteWhale-MCP)
 
 <Info>
   **MCP stands for Model Context Protocol.** It's a way to give Claude access to tools and data outside of the conversation. You don't need to understand how it works — just follow the setup steps below and Claude will handle the rest.
@@ -13,19 +12,13 @@ The WhiteWhale MCP connects Claude directly to your WhiteWhale account. Once it'
 
 ## What you can ask Claude
 
-<Frame>
-  ![Claude Whitewhale Chat](/claude-whitewhale-chat.png)
-</Frame>
-
 Once connected, ask Claude anything about your WhiteWhale data:
 
 - _"Which accounts should I reach out to today?"_
 - _"Add these 20 companies to my list: \[paste domains\]"_
 - _"What signals am I tracking and are they configured well?"_
 - _"How many account credits do I have left?"_
-- _"Find me new target accounts that match my ICP"_
-
-Claude will pull your live WhiteWhale data and respond in plain English — no dashboards, no exports, no copy-pasting.
+- _"Find me new target accounts that match my ICP"_ Claude will pull your live WhiteWhale data and respond in plain English — no dashboards, no exports, no copy-pasting.
 
 ---
 
@@ -39,18 +32,6 @@ Before you start, you need:
 ### Get your API key
 
 In WhiteWhale, go to **Settings** → **API & Webhooks** → click **Generate API Key**. Copy the key — you'll need it in the next step. Your **user** is the email address you use to log into WhiteWhale.
-
----
-
-## Optional: faster startup
-
-By default, the MCP downloads fresh each time Claude starts. To make it launch faster, install it globally:
-
-```bash
-npm install -g @getbirddog/mcp
-```
-
-Then change `"command": "npx"` to `"command": "birddog-mcp"` and remove the `"args"` line from your config.
 
 ---
 
@@ -148,9 +129,23 @@ Claude comes with a set of pre-built WhiteWhale workflows you can trigger with a
 
 ---
 
+## Optional: faster startup
+
+By default, the MCP downloads fresh each time Claude starts. To make it launch faster, install it globally:
+
+```bash
+npm install -g @getbirddog/mcp
+```
+
+Then change `"command": "npx"` to `"command": "birddog-mcp"` and remove the `"args"` line from your config.
+
+---
+
 <Warning>
   Keep your API key secure. Never paste it into a shared document or commit your config file to version control. Add `claude_desktop_config.json` and `.claude/mcp.json` to your `.gitignore`.
 </Warning>
+
+**GitHub:** [github.com/BirdDog-Intel/WhiteWhale-MCP](https://github.com/BirdDog-Intel/WhiteWhale-MCP)
 
 ## Related
 
