@@ -2,7 +2,9 @@
   "name": "WhiteWhale",
   "theme": "maple",
   "colors": {
-    "primary": "#2B7BB9"
+    "primary": "#2B7BB9",
+    "light": "#53a4e1",
+    "dark": "#0e2638"
   },
   "navigation": {
     "groups": [
@@ -123,5 +125,11 @@
         "label": "Login"
       }
     ]
+  },
+  "background": {
+    "color": {
+      "light": "#ffffff",
+      "dark": "#000000"
+    }
   }
 }
