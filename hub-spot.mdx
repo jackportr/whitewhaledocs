@@ -42,189 +42,33 @@ Connecting HubSpot gives your reps WhiteWhale data — scores, signals, and Why 
 
 ---
 
-## Field reference
+## Setting up the HubSpot App Card
 
-### Company fields
-
-These are the fields WhiteWhale reads from and writes to on your HubSpot company records.
-
-| Field | Required | Description |
-| --- | --- | --- |
-| `crm_id` | ✅ | HubSpot object ID of the company (`hs_object_id`) |
-| `Company_Domain` | ✅ | Company website URL (`domain` or `website`). WhiteWhale can only process companies with a domain on record. |
-| `BirdDog_Description` | Optional | WhiteWhale's Why Now summary for the account |
-| `BirdDog_Score` | Optional | Account score from 0–100 based on signal strength |
-| `BirdDog_Link` | Optional | Direct link to the account's report in WhiteWhale |
-| `BirdDog_User` | Optional | Links the account to the appropriate WhiteWhale user for automatic assignment |
-| `BirdDog_Originated` | Optional | Records whether WhiteWhale originated the account, for attribution |
-| `BirdDog_Add_Date` | Optional | Date the account was first added to WhiteWhale |
-| `BirdDog_Signal_List` | Optional | All signals currently matching this account |
-
-### Recommended custom field configurations
-
-Create these fields in HubSpot before running setup. All fields should be grouped under **Company Information**.
-
-<AccordionGroup>
-  <Accordion title="BirdDog_Description">
-    - **Field type:** Single-line text
-    - **Label:** WhiteWhale Description
-    - **Description:** A summary of the most recent WhiteWhale signals for the company
-    - **Default value:** Blank
-  </Accordion>
-
-  <Accordion title="BirdDog_Score">
-    - **Field type:** Number
-    - **Label:** WhiteWhale Score
-    - **Description:** A score from 0–100 showing the strength of WhiteWhale signals for this company. Scores above 80 are strong but rare — even a score above 10 likely has valuable information.
-    - **Default value:** Blank
-  </Accordion>
-
-  <Accordion title="BirdDog_Link">
-    - **Field type:** URL
-    - **Label:** WhiteWhale Link
-    - **Description:** A link to the full account report in the WhiteWhale platform
-    - **Default value:** Blank
-  </Accordion>
-
-  <Accordion title="BirdDog_Signals">
-    - **Field type:** Rich text
-    - **Label:** WhiteWhale Signals
-    - **Description:** The most recent signals WhiteWhale found on the company
-    - **Default value:** Blank
-  </Accordion>
-
-  <Accordion title="BirdDog_Originated">
-    - **Field type:** Single checkbox
-    - **Label:** WhiteWhale Originated
-    - **Description:** Records if WhiteWhale originated the account
-    - **Default value:** Blank
-  </Accordion>
-
-  <Accordion title="BirdDog_Add_Date">
-    - **Field type:** Date and time picker
-    - **Label:** WhiteWhale Add Date
-    - **Description:** Records the date the account was originally added to WhiteWhale
-    - **Default value:** Blank
-  </Accordion>
-
-  <Accordion title="BirdDog_Signal_List">
-    - **Field type:** Multiple checkboxes
-    - **Label:** WhiteWhale Signal List
-    - **Description:** List of all WhiteWhale signals that apply to this account
-    - **Option style:** Tag (recommended)
-    - **Options:** Enter one placeholder option — WhiteWhale will override with the correct values automatically
-  </Accordion>
-</AccordionGroup>
-
-### Deal fields
-
-Mapping your deal pipeline is optional but unlocks two additional capabilities: signal recommendations that adapt based on deal stage, and the ability to backtest which signals correlate most strongly with closed-won deals.
-
-| Field | Required | Description |
-| --- | --- | --- |
-| `crm_id` | ✅ | HubSpot deal ID (`hs_object_id`) |
-| `crm_company_id` | ✅ | ID of the primary company on the deal (`hs_primary_associated_company`) |
-| `Name` | Optional | Deal name |
-| `Stage_name` | Optional | Current deal stage |
-| `Amount` | Optional | Deal size |
-| `Close_date` | Optional | Expected close date |
-| `Prob` | Optional | Close probability |
-| `Is_closed` | Optional | Whether the deal is closed |
-| `Is_won` | Optional | Whether the deal is won |
-| `Created_date` | Optional | Date the deal was created |
-
----
-
-## How the sync works
-
-- **Daily sync window:** 5–9 AM ET. WhiteWhale pulls your company and deal records and pushes updated WhiteWhale fields back to HubSpot.
-- **Real-time updates:** When a new account is added or activated in WhiteWhale, the CRM is updated immediately.
-- **First week:** Expect a higher volume of requests during initial calibration as the sync establishes its baseline.
-- **Read/write scope:** WhiteWhale only reads from the fields you map and only writes to the WhiteWhale-specific fields you create. It will not modify any other HubSpot data.
-
----
-
-## Permissions and scopes
-
-WhiteWhale connects via a verified HubSpot public app and requests the minimum permissions needed to function.
-
-**Required scopes:**
-
-- `crm.objects.companies.read`
-- `crm.objects.companies.write`
-- `crm.schemas.companies.read`
-- `oauth`
-
-**Optional scopes (unlocked when deal mapping is enabled):**
-
-- `crm.schemas.deals.read`
-- `crm.objects.deals.read`
-- `crm.objects.owners.read`
-- `crm.schemas.companies.write`
-- `sales-email-read`
-
----
-
-## Need help?
-
-If you run into errors during setup or need help with custom field mapping, contact the WhiteWhale team.
-
-## Related
-
-<CardGroup cols={2}>
-  <Card title="Salesforce" icon="cloud" href="/salesforce">
-    Connect WhiteWhale to Salesforce.
-  </Card>
-
-  <Card title="Slack" icon="slack" href="/slack">
-    Get signal alerts delivered to Slack.
-  </Card>
-
-  <Card title="Webhooks" icon="webhook" href="/webhooks">
-    Push WhiteWhale data to your own systems via webhook.
-  </Card>
-
-  <Card title="API Reference" icon="code" href="/api">
-    Access WhiteWhale data programmatically.
-  </Card>
-</CardGroup>
-
-<iframe src="https://www.loom.com/embed/b2c2212c5f8349d0b6121b07aa73abc9" title="How to Set Up HubSpot in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
-
-Connecting HubSpot gives your reps WhiteWhale data — scores, signals, and Why Now summaries — directly inside the CRM they already work in. No spreadsheets, no manual exports.
-
-## What the integration does
-
-- **Daily sync** — WhiteWhale pulls your company and deal data from HubSpot each day and pushes updated scores, signals, and Why Now summaries back to the mapped fields
-- **Real-time updates** — when a new account is added or activated in WhiteWhale, it immediately syncs to HubSpot
-- **Deal context** — mapping your deal pipeline lets WhiteWhale surface different signals based on where each prospect is in your sales cycle
-
-## How to connect
+Once your field mapping is complete, you can add the WhiteWhale app card to your HubSpot records so reps can see signal data directly inside HubSpot without leaving the CRM.
 
 <Steps>
-  <Step title="Go to Settings">
-    Click **Settings** in the left nav, then scroll to the HubSpot section.
-  </Step>
-  <Step title="Click Set Up">
-    You'll be prompted to connect your HubSpot account. Follow the authentication steps in the HubSpot portal.
-  </Step>
-  <Step title="Choose your setup method">
-    Once authenticated, you'll have two options:
+  <Step title="Install from the HubSpot App Marketplace">
+    Download the WhiteWhale app directly from the HubSpot App Marketplace:
 
-    - **One-click setup (recommended)** — WhiteWhale maps the standard fields automatically. Best for most teams.
-    - **Custom mapping** — manually map company and deal fields if you need non-standard field names or a more complex CRM setup.
+    <Card title="WhiteWhale on HubSpot Marketplace" icon="hubspot" href="https://app.hubspot.com/marketplace/48456852/listing/whitewhale">
+      Install the WhiteWhale app to your HubSpot instance.
+    </Card>
   </Step>
-  <Step title="Create the custom fields in HubSpot">
-    For one-click setup, WhiteWhale will show you a list of fields to create in HubSpot with their required field types. Create these fields in HubSpot first, then return and click **I've created these fields and I'm ready to map**.
+  <Step title="Authorize the connection">
+    Once installed, authorize WhiteWhale to connect to your HubSpot account:
+
+    <Card title="Authorize WhiteWhale" icon="link" href="https://app-na2.hubspot.com/oauth/authorize?client_id=419e3592-a2b0-4e01-9d5b-e37de9e51612&redirect_uri=https%3A%2F%2Fapp.getbirddog.lol%2Fhubspot%2Foauth%2Fcallback&scope=oauth+crm.objects.companies.read">
+      Click to complete the OAuth authorization.
+    </Card>
   </Step>
-  <Step title="Test the connection">
-    Click **Test Connection**. WhiteWhale will run its checks and flag any errors. Fix any issues and test again until the connection is confirmed.
+  <Step title="Add the app card in HubSpot">
+    In HubSpot, go to the **Card Library** and search for **BirdDog Research**. Add it to the company record layout so it appears on every account page.
+
+    Not sure how to add app cards? See [HubSpot's guide to installing and managing app cards](https://knowledge.hubspot.com/integrations/install-and-manage-app-cards).
   </Step>
 </Steps>
 
-<Tip>
-  Use one-click setup unless you have a specific reason to customize. It takes a couple of minutes and works for the vast majority of HubSpot instances.
-</Tip>
+Once the card is added, reps will see WhiteWhale signal data — scores, signals, and the Why Now summary — directly on the HubSpot company record without needing to open WhiteWhale separately.
 
 ---
 
