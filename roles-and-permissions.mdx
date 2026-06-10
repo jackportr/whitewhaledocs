@@ -1,3 +1,75 @@
 ---
 title: "Roles & Permissions"
+description: "Understand what Super Admins and Members can see and do in WhiteWhale."
 ---
+
+WhiteWhale has two roles: **Super Admin** and **Member**. Members can be further customized with optional viewer and admin permissions.
+
+## Role overview
+
+| Permission | Super Admin | Member | Member \+ Admin | Member \+ Viewer |
+| --- | --- | --- | --- | --- |
+| See all team accounts | ✓ | ✗ | ✓ | ✗ |
+| See assigned accounts only | ✗ | ✓ | ✓ | ✓ |
+| View a specific user's accounts | ✗ | ✗ | ✓ | ✓ |
+| Edit signals | ✓ | ✗ | ✓ | ✗ |
+| Manage Account Suggestions | ✓ | ✗ | ✓ | ✗ |
+| Manage team members | ✓ | ✗ | ✓ | ✗ |
+| Assign accounts to other users | ✓ | ✗ | ✓ | ✗ |
+
+## Super Admin
+
+Super Admins have full visibility and control across the platform. They can see every account regardless of who it's assigned to, edit signals, manage Account Suggestions, and administer the team.
+
+**Best for:** Sales leadership, RevOps, go-to-market engineers, and anyone who needs a complete view of the team's book of business.
+
+## Member
+
+Members work their own list. By default they only see accounts assigned to them — they have no visibility into other reps' accounts.
+
+**Best for:** Individual AEs and SDRs working their own territory.
+
+Members can be given two optional permissions when you add or edit them:
+
+**Admin access** — elevates a Member to have the same platform controls as a Super Admin, including signal editing, Suggestions management, and team administration. Use this for a team lead or senior rep who needs management access without a full Super Admin seat.
+
+**Viewer access** — lets a Member see a specific user's accounts without being assigned to them. The viewer cannot edit or reassign those accounts — read-only visibility only.
+
+<AccordionGroup>
+  <Accordion title="When to use Viewer access">
+    Viewer access is designed for SDR/AE pairs and team structures where one person needs visibility into another's book without owning it.
+
+    Common setups:
+
+    - An SDR needs to see their paired AE's accounts to support outreach
+    - An SDR is working with multiple AEs and needs visibility across all of them
+    - A manager wants a rep to have read-only access to a specific territory for learning or handoff purposes
+  </Accordion>
+</AccordionGroup>
+
+## Choosing the right role
+
+| If they are... | Give them... |
+| --- | --- |
+| A CRO, VP of Sales, or RevOps lead | Super Admin |
+| A go-to-market engineer or sales ops | Super Admin |
+| An AE working their own territory | Member |
+| An SDR working their own outreach | Member |
+| An SDR paired with an AE | Member \+ Viewer (of that AE) |
+| A team lead who needs to manage settings | Member \+ Admin |
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Adding Users" icon="user-plus" href="/adding-users">
+    Invite a new team member and assign their role.
+  </Card>
+
+  <Card title="Removing Users" icon="user-minus" href="/removing-users">
+    Remove a team member from the platform.
+  </Card>
+
+  <Card title="Account Allocation" icon="users" href="/account-allocation">
+    Assign accounts to team members after they've been added.
+  </Card>
+</CardGroup>

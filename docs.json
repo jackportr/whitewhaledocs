@@ -64,6 +64,14 @@
         ]
       },
       {
+        "group": "Team Management",
+        "pages": [
+          "adding-users",
+          "removing-users",
+          "roles-and-permissions"
+        ]
+      },
+      {
         "group": "Integrations",
         "pages": [
           "hub-spot",
@@ -75,14 +83,6 @@
           "api",
           "webhooks",
           "mcp"
-        ]
-      },
-      {
-        "group": "Team Management",
-        "pages": [
-          "adding-users",
-          "removing-users",
-          "roles-and-permissions"
         ]
       },
       {
