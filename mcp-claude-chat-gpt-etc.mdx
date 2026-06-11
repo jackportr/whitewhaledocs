@@ -24,10 +24,7 @@ Once connected, ask Claude anything about your WhiteWhale data:
 
 ## Prerequisites
 
-Before you start, you need:
-
-1. **Node.js version 18 or later** installed on your computer — [download it here](https://nodejs.org)
-2. A **WhiteWhale account** with an API key (see below)
+You need a **WhiteWhale account** with an API key.
 
 ### Get your API key
 
@@ -35,9 +32,32 @@ In WhiteWhale, go to **Settings** → **API & Webhooks** → click **Generate AP
 
 ---
 
-## Setup: Claude Desktop
+## Setup: Claude Connector (Easiest)
 
-Claude Desktop is the app you download and run on your Mac or Windows computer.
+This is the fastest way to connect — no downloads, no config files, no terminal.
+
+<Steps>
+  <Step title="Open Claude and go to Connectors">
+    In Claude, go to **Settings** → **Connectors** → **Custom Connectors**.
+  </Step>
+  <Step title="Add the WhiteWhale connector">
+    Paste this URL: `https://app.getwhitewhale.com/mcp`
+  </Step>
+  <Step title="Ask Claude to connect">
+    In any chat, ask Claude to connect to WhiteWhale. It will prompt you for your **API key** and **user email** — enter both and you're connected.
+  </Step>
+  <Step title="Try it">
+    Ask Claude: _"Show me my hottest WhiteWhale accounts"_ — Claude will pull your live data and respond.
+  </Step>
+</Steps>
+
+---
+
+## Setup: MCP (Advanced)
+
+If you use the Claude Code or ChatGPT, you can connect via a config file instead.
+
+**Requires:** [Node.js 18 or later](https://nodejs.org)
 
 <Steps>
   <Step title="Find your Claude Desktop config file">
@@ -68,9 +88,6 @@ Claude Desktop is the app you download and run on your Mac or Windows computer.
   </Step>
   <Step title="Restart Claude Desktop">
     Fully quit and reopen Claude Desktop. You should see **whitewhale** appear in the tools list.
-  </Step>
-  <Step title="Try it">
-    Ask Claude: _"Show me my hottest WhiteWhale accounts"_ — Claude will pull your live data and respond.
   </Step>
 </Steps>
 
