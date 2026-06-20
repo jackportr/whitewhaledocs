@@ -64,11 +64,79 @@ Notice what this message doesn't do: it doesn't pitch features, it doesn't ask f
 
 Before WhiteWhale, most reps are working a random selection of accounts. No idea if the timing is right. No signal to reference.
 
-When you layer in the framework above — personalized to the specific signal — the conversion rate goes up not just because showing the prospect that you understood their situation. You're also just reaching out to accounts more likely to be in-market, it will never be 100%, but this kind of research goes a long way.
+When you layer in the framework above — personalized to the specific signal — the conversion rate goes up not just because you're showing the prospect you understood their situation. You're also reaching out to accounts more likely to be in-market. It will never be 100%, but this kind of research goes a long way.
 
 <Tip>
   Use the Why Now summary as your research foundation. It connects the dots between all the signals on an account and gives you the "I noticed" and "I bet" in one place. Copy it into Claude or ChatGPT and ask it to help you turn the story into a message.
 </Tip>
+
+---
+
+## From signal to booked call — a partner playbook
+
+_The following playbook is from [Advanced Client](https://www.getwhitewhale.com/partner/advanced-client), a WhiteWhale Elite Agency partner that builds AI-native GTM systems for B2B companies._
+
+A signal is only worth something if someone acts on it. Here are two plays for getting from "a signal fired" to "a rep is having a relevant conversation" — pick the one that matches how your team works.
+
+### Play 1: The manual play
+
+Good if you want to keep things simple and let your reps drive.
+
+<Steps>
+  <Step title="A signal fires">
+    A new signal lands in your Slack, email, or the WhiteWhale platform.
+  </Step>
+  <Step title="Find the right contacts">
+    Use LinkedIn Sales Navigator to find the decision-makers at that account.
+  </Step>
+  <Step title="Source contact details">
+    Find their phone numbers and emails.
+  </Step>
+  <Step title="Add to your CRM with the signal">
+    Add the contacts to your CRM and include the signal data so the rep knows exactly why this account is worth their time.
+  </Step>
+</Steps>
+
+Simple, fast to start, no extra tooling. The trade-off is it relies on someone manually working each signal as it comes in.
+
+### Play 2: The automated RevOps play
+
+This is Advanced Client's recommended setup. It takes the manual work out of the first few steps so your team only spends time on the conversations that matter.
+
+<Steps>
+  <Step title="Pipe the signal into Clay">
+    Use WhiteWhale's webhook to send every new signal straight into a Clay table the moment it fires.
+  </Step>
+  <Step title="Find contacts automatically">
+    Configure the Clay table to search for your ICP at that account — sales leaders, founders, heads of marketing, whatever titles you target. They get found and added automatically.
+  </Step>
+  <Step title="Enrich with a waterfall">
+    Run Clay's waterfall enrichment (10\+ providers) to source a valid email and phone number for each contact.
+  </Step>
+  <Step title="Activate">
+    From here you have two options:
+
+    **Option A: Rep-led** — Push the enriched contact into your CRM, assign it to the right rep, and pass the signal data across so they can reach out with relevance.
+
+    **Option B: Fully automated** — Use a Claygent to write a personalized email from the signal data, then push the contact and the AI-written message into your email and LinkedIn tool to kick off a sequence automatically.
+  </Step>
+</Steps>
+
+### Stacking signals in your message
+
+The more signals you can reference, the stronger your message. A single signal is good. Two or three stacked together tells a story that's impossible to ignore.
+
+<Note>
+  Hey Steve, reaching out because of your recent funding round (congrats). It made sense to get in touch now you've just brought Sarah in as CRO, because we help with \[xyz\].
+</Note>
+
+Funding round plus a new exec hire plus hiring for sales roles tells a far stronger story than any one signal on its own. Layer them up wherever you can.
+
+<Card title="Advanced Client" icon="rocket" href="https://www.getwhitewhale.com/partner/advanced-client">
+  Want help setting up the automated play end to end? Advanced Client builds the Clay tables, enrichment, routing, and sequences so your WhiteWhale signals turn into booked calls without your team having to wire it together.
+</Card>
+
+---
 
 ## Related
 
@@ -77,12 +145,12 @@ When you layer in the framework above — personalized to the specific signal �
     Get the full signal story on an account before you write a word.
   </Card>
 
-  <Card title="How to See All New Signals" icon="bell" href="/how-to-see-all-new-signals">
-    Find the accounts with the freshest signal activity.
+  <Card title="Clay Integration" icon="table" href="/clay">
+    Connect WhiteWhale to Clay via webhook for the automated play.
   </Card>
 
-  <Card title="How Signals Work" icon="circle-info" href="/how-signals-work">
-    Understand what WhiteWhale is actually monitoring and why it matters.
+  <Card title="How to See All New Signals" icon="bell" href="/how-to-see-all-new-signals">
+    Find the accounts with the freshest signal activity.
   </Card>
 
   <Card title="Signal Library" icon="book" href="/signal-library">

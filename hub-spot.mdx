@@ -23,8 +23,22 @@ Connecting HubSpot gives your reps WhiteWhale data — scores, signals, and Why 
       ![Screenshot 2026 06 11 At 6 23 55 PM](/images/Screenshot-2026-06-11-at-6.23.55-PM.png)
     </Frame>
   </Step>
+  <Step title="Go to Settings">
+    Click **Settings** in the left nav, then scroll to the HubSpot section.
+
+    <Frame>
+      ![Screenshot 2026 06 11 At 6 23 55 PM](/images/Screenshot-2026-06-11-at-6.23.55-PM.png)
+    </Frame>
+  </Step>
   <Step title="Click Set Up">
     You'll be prompted to connect your HubSpot account. Follow the authentication steps in the HubSpot portal.\
+
+    <Frame>
+      ![Screenshot 2026 06 11 At 6 24 46 PM](/images/Screenshot-2026-06-11-at-6.24.46-PM.png)
+    </Frame>
+  </Step>
+  <Step title="Click Set Up">
+    You'll be prompted to connect your HubSpot account. Follow the authentication steps in the HubSpot portal.\\
 
     <Frame>
       ![Screenshot 2026 06 11 At 6 24 46 PM](/images/Screenshot-2026-06-11-at-6.24.46-PM.png)
@@ -198,6 +212,176 @@ Connecting HubSpot gives your reps WhiteWhale data — scores, signals, and Why 
 
       Mapping your deal pipeline is optional but unlocks two additional capabilities: signal recommendations that adapt based on deal stage, and the ability to backtest which signals correlate most strongly with closed-won deals.
     </Accordion>
+  </Step>
+  <Step title="Create the custom fields in HubSpot">
+    For one-click setup, WhiteWhale will show you a list of fields to create in HubSpot with their required field types. Create these fields in HubSpot first, then return and click **I've created these fields and I'm ready to map**.
+
+    For custom setups, open the below information card called "Fields to Create".
+
+    <Accordion title="Fields to Create">
+      ## Field reference
+
+      ### Company fields
+
+      These are the fields WhiteWhale reads from and writes to on your HubSpot company records.
+
+      | Field | Required | Description |
+      | :-- | :-- | :-- |
+      | `crm_id` | ✅ | HubSpot object ID of the company (`hs_object_id`) |
+      | `Company_Domain` | ✅ | Company website URL (`domain` or `website`). WhiteWhale can only process companies with a domain on record. |
+      | `BirdDog_Description` | Optional | WhiteWhale's Why Now summary for the account |
+      | `BirdDog_Score` | Optional | Account score from 0–100 based on signal strength |
+      | `BirdDog_Link` | Optional | Direct link to the account's report in WhiteWhale |
+      | `BirdDog_User` | Optional | Links the account to the appropriate WhiteWhale user for automatic assignment |
+      | `BirdDog_Originated` | Optional | Records whether WhiteWhale originated the account, for attribution |
+      | `BirdDog_Add_Date` | Optional | Date the account was first added to WhiteWhale |
+      | `BirdDog_Signal_List` | Optional | All signals currently matching this account |
+
+      ### Recommended custom field configurations
+
+      Create these fields in HubSpot before running setup. All fields should be grouped under **Company Information**.
+
+      <AccordionGroup>
+        <Accordion title="BirdDog_Description">
+          - **Field type:** Single-line text
+          - **Label:** WhiteWhale Description
+          - **Description:** A summary of the most recent WhiteWhale signals for the company
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Score">
+          - **Field type:** Number
+          - **Label:** WhiteWhale Score
+          - **Description:** A score from 0–100 showing the strength of WhiteWhale signals for this company. Scores above 80 are strong but rare — even a score above 10 likely has valuable information.
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Link">
+          - **Field type:** URL
+          - **Label:** WhiteWhale Link
+          - **Description:** A link to the full account report in the WhiteWhale platform
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Signals">
+          - **Field type:** Rich text
+          - **Label:** WhiteWhale Signals
+          - **Description:** The most recent signals WhiteWhale found on the company
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Originated">
+          - **Field type:** Single checkbox
+          - **Label:** WhiteWhale Originated
+          - **Description:** Records if WhiteWhale originated the account
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Add_Date">
+          - **Field type:** Date and time picker
+          - **Label:** WhiteWhale Add Date
+          - **Description:** Records the date the account was originally added to WhiteWhale
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Signal_List">
+          - **Field type:** Multiple checkboxes
+          - **Label:** WhiteWhale Signal List
+          - **Description:** List of all WhiteWhale signals that apply to this account
+          - **Option style:** Tag (recommended)
+          - **Options:** Enter one placeholder option — WhiteWhale will override with the correct values automatically
+        </Accordion>
+      </AccordionGroup>
+
+      ### Deal fields
+
+      Mapping your deal pipeline is optional but unlocks two additional capabilities: signal recommendations that adapt based on deal stage, and the ability to backtest which signals correlate most strongly with closed-won deals.
+
+      ## Field reference
+
+      ### Company fields
+
+      These are the fields WhiteWhale reads from and writes to on your HubSpot company records.
+
+      | Field | Required | Description |
+      | :-- | :-- | :-- |
+      | `crm_id` | ✅ | HubSpot object ID of the company (`hs_object_id`) |
+      | `Company_Domain` | ✅ | Company website URL (`domain` or `website`). WhiteWhale can only process companies with a domain on record. |
+      | `BirdDog_Description` | Optional | WhiteWhale's Why Now summary for the account |
+      | `BirdDog_Score` | Optional | Account score from 0–100 based on signal strength |
+      | `BirdDog_Link` | Optional | Direct link to the account's report in WhiteWhale |
+      | `BirdDog_User` | Optional | Links the account to the appropriate WhiteWhale user for automatic assignment |
+      | `BirdDog_Originated` | Optional | Records whether WhiteWhale originated the account, for attribution |
+      | `BirdDog_Add_Date` | Optional | Date the account was first added to WhiteWhale |
+      | `BirdDog_Signal_List` | Optional | All signals currently matching this account |
+
+      ### Recommended custom field configurations
+
+      Create these fields in HubSpot before running setup. All fields should be grouped under **Company Information**.
+
+      <AccordionGroup>
+        <Accordion title="BirdDog_Description">
+          - **Field type:** Single-line text
+          - **Label:** WhiteWhale Description
+          - **Description:** A summary of the most recent WhiteWhale signals for the company
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Score">
+          - **Field type:** Number
+          - **Label:** WhiteWhale Score
+          - **Description:** A score from 0–100 showing the strength of WhiteWhale signals for this company. Scores above 80 are strong but rare — even a score above 10 likely has valuable information.
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Link">
+          - **Field type:** URL
+          - **Label:** WhiteWhale Link
+          - **Description:** A link to the full account report in the WhiteWhale platform
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Signals">
+          - **Field type:** Rich text
+          - **Label:** WhiteWhale Signals
+          - **Description:** The most recent signals WhiteWhale found on the company
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Originated">
+          - **Field type:** Single checkbox
+          - **Label:** WhiteWhale Originated
+          - **Description:** Records if WhiteWhale originated the account
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Add_Date">
+          - **Field type:** Date and time picker
+          - **Label:** WhiteWhale Add Date
+          - **Description:** Records the date the account was originally added to WhiteWhale
+          - **Default value:** Blank
+        </Accordion>
+
+        <Accordion title="BirdDog_Signal_List">
+          - **Field type:** Multiple checkboxes
+          - **Label:** WhiteWhale Signal List
+          - **Description:** List of all WhiteWhale signals that apply to this account
+          - **Option style:** Tag (recommended)
+          - **Options:** Enter one placeholder option — WhiteWhale will override with the correct values automatically
+        </Accordion>
+      </AccordionGroup>
+
+      ### Deal fields
+
+      Mapping your deal pipeline is optional but unlocks two additional capabilities: signal recommendations that adapt based on deal stage, and the ability to backtest which signals correlate most strongly with closed-won deals.
+    </Accordion>
+  </Step>
+  <Step title="Test the connection">
+    Click **Test Connection**. WhiteWhale will run its checks and flag any errors. Fix any issues and test again until the connection is confirmed.
+
+    <Frame>
+      ![Screenshot 2026 06 11 At 6 27 04 PM](/images/Screenshot-2026-06-11-at-6.27.04-PM.png)
+    </Frame>
   </Step>
   <Step title="Test the connection">
     Click **Test Connection**. WhiteWhale will run its checks and flag any errors. Fix any issues and test again until the connection is confirmed.
