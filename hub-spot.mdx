@@ -61,7 +61,7 @@ WhiteWhale connects via a verified HubSpot public app and requests the minimum p
     </Frame>
   </Step>
   <Step title="Click Set Up">
-    You'll be prompted to connect your HubSpot account. Follow the authentication steps in the HubSpot portal.\
+    You'll be prompted to connect your HubSpot account. Follow the authentication steps in the HubSpot portal.\\
 
     <Frame>
       ![Screenshot 2026 06 11 At 6 24 46 PM](/images/Screenshot-2026-06-11-at-6.24.46-PM.png)
@@ -187,49 +187,49 @@ WhiteWhale connects via a verified HubSpot public app and requests the minimum p
       Create these fields in HubSpot before running setup. All fields should be grouped under **Company Information**.
 
       <AccordionGroup>
-        <Accordion title="BirdDog_Description">
+        <Accordion title="whitewhale_description">
           - **Field type:** Single-line text
           - **Label:** WhiteWhale Description
           - **Description:** A summary of the most recent WhiteWhale signals for the company
           - **Default value:** Blank
         </Accordion>
 
-        <Accordion title="BirdDog_Score">
+        <Accordion title="whitewhale_score">
           - **Field type:** Number
           - **Label:** WhiteWhale Score
           - **Description:** A score from 0–100 showing the strength of WhiteWhale signals for this company. Scores above 80 are strong but rare — even a score above 10 likely has valuable information.
           - **Default value:** Blank
         </Accordion>
 
-        <Accordion title="BirdDog_Link">
+        <Accordion title="whitewhale_link">
           - **Field type:** URL
           - **Label:** WhiteWhale Link
           - **Description:** A link to the full account report in the WhiteWhale platform
           - **Default value:** Blank
         </Accordion>
 
-        <Accordion title="BirdDog_Signals">
+        <Accordion title="whitewhale_signals">
           - **Field type:** Rich text
           - **Label:** WhiteWhale Signals
           - **Description:** The most recent signals WhiteWhale found on the company
           - **Default value:** Blank
         </Accordion>
 
-        <Accordion title="BirdDog_Originated">
+        <Accordion title="whitewhale_originated">
           - **Field type:** Single checkbox
           - **Label:** WhiteWhale Originated
           - **Description:** Records if WhiteWhale originated the account
           - **Default value:** Blank
         </Accordion>
 
-        <Accordion title="BirdDog_Add_Date">
+        <Accordion title="whitewhale_add_date">
           - **Field type:** Date and time picker
           - **Label:** WhiteWhale Add Date
           - **Description:** Records the date the account was originally added to WhiteWhale
           - **Default value:** Blank
         </Accordion>
 
-        <Accordion title="BirdDog_Signal_List">
+        <Accordion title="whitewhale_signal_list">
           - **Field type:** Multiple checkboxes
           - **Label:** WhiteWhale Signal List
           - **Description:** List of all WhiteWhale signals that apply to this account
@@ -249,49 +249,49 @@ WhiteWhale connects via a verified HubSpot public app and requests the minimum p
     For custom setups, you'll need to have fields of the same type for the system to be able to publish data.
 
     <AccordionGroup>
-      <Accordion title="BirdDog_Description" defaultOpen>
+      <Accordion title="whitewhale_description" defaultOpen>
         - **Field type:** Single-line text
         - **Label:** WhiteWhale Description
         - **Description:** A summary of the most recent WhiteWhale signals for the company
         - **Default value:** Blank
       </Accordion>
 
-      <Accordion title="BirdDog_Score" defaultOpen>
+      <Accordion title="whitewhale_score" defaultOpen>
         - **Field type:** Number
         - **Label:** WhiteWhale Score
         - **Description:** A score from 0–100 showing the strength of WhiteWhale signals for this company. Scores above 80 are strong but rare — even a score above 10 likely has valuable information.
         - **Default value:** Blank
       </Accordion>
 
-      <Accordion title="BirdDog_Link" defaultOpen>
+      <Accordion title="whitewhale_link" defaultOpen>
         - **Field type:** URL
         - **Label:** WhiteWhale Link
         - **Description:** A link to the full account report in the WhiteWhale platform
         - **Default value:** Blank
       </Accordion>
 
-      <Accordion title="BirdDog_Signals" defaultOpen>
+      <Accordion title="whitewhale_signals" defaultOpen>
         - **Field type:** Rich text
         - **Label:** WhiteWhale Signals
         - **Description:** The most recent signals WhiteWhale found on the company
         - **Default value:** Blank
       </Accordion>
 
-      <Accordion title="BirdDog_Originated" defaultOpen>
+      <Accordion title="whitewhale_originated" defaultOpen>
         - **Field type:** Single checkbox
         - **Label:** WhiteWhale Originated
         - **Description:** Records if WhiteWhale originated the account
         - **Default value:** Blank
       </Accordion>
 
-      <Accordion title="BirdDog_Add_Date" defaultOpen>
+      <Accordion title="whitewhale_add_date" defaultOpen>
         - **Field type:** Date and time picker
         - **Label:** WhiteWhale Add Date
         - **Description:** Records the date the account was originally added to WhiteWhale
         - **Default value:** Blank
       </Accordion>
 
-      <Accordion title="BirdDog_Signal_List" defaultOpen>
+      <Accordion title="whitewhale_signal_list" defaultOpen>
         - **Field type:** Multiple checkboxes
         - **Label:** WhiteWhale Signal List
         - **Description:** List of all WhiteWhale signals that apply to this account
@@ -362,62 +362,62 @@ These are the fields WhiteWhale reads from and writes to on your HubSpot company
 | --- | --- | --- |
 | `crm_id` | ✅ | HubSpot object ID of the company (`hs_object_id`) |
 | `Company_Domain` | ✅ | Company website URL (`domain` or `website`). WhiteWhale can only process companies with a domain on record. |
-| `BirdDog_Description` | Optional | WhiteWhale's Why Now summary for the account |
-| `BirdDog_Score` | Optional | Account score from 0–100 based on signal strength |
-| `BirdDog_Link` | Optional | Direct link to the account's report in WhiteWhale |
-| `BirdDog_User` | Optional | Links the account to the appropriate WhiteWhale user for automatic assignment |
-| `BirdDog_Originated` | Optional | Records whether WhiteWhale originated the account, for attribution |
-| `BirdDog_Add_Date` | Optional | Date the account was first added to WhiteWhale |
-| `BirdDog_Signal_List` | Optional | All signals currently matching this account |
+| `whitewhale_description` | Optional | WhiteWhale's Why Now summary for the account |
+| `whitewhale_score` | Optional | Account score from 0–100 based on signal strength |
+| `whitewhale_link` | Optional | Direct link to the account's report in WhiteWhale |
+| `whitewhale_user` | Optional | Links the account to the appropriate WhiteWhale user for automatic assignment |
+| `whitewhale_originated` | Optional | Records whether WhiteWhale originated the account, for attribution |
+| `whitewhale_add_date` | Optional | Date the account was first added to WhiteWhale |
+| `whitewhale_signal_list` | Optional | All signals currently matching this account |
 
 ### Recommended custom field configurations
 
 Create these fields in HubSpot before running setup. All fields should be grouped under **Company Information**.
 
 <AccordionGroup>
-  <Accordion title="BirdDog_Description">
+  <Accordion title="whitewhale_description">
     - **Field type:** Single-line text
     - **Label:** WhiteWhale Description
     - **Description:** A summary of the most recent WhiteWhale signals for the company
     - **Default value:** Blank
   </Accordion>
 
-  <Accordion title="BirdDog_Score">
+  <Accordion title="whitewhale_score">
     - **Field type:** Number
     - **Label:** WhiteWhale Score
     - **Description:** A score from 0–100 showing the strength of WhiteWhale signals for this company. Scores above 80 are strong but rare — even a score above 10 likely has valuable information.
     - **Default value:** Blank
   </Accordion>
 
-  <Accordion title="BirdDog_Link">
+  <Accordion title="whitewhale_link">
     - **Field type:** URL
     - **Label:** WhiteWhale Link
     - **Description:** A link to the full account report in the WhiteWhale platform
     - **Default value:** Blank
   </Accordion>
 
-  <Accordion title="BirdDog_Signals">
+  <Accordion title="whitewhale_signals">
     - **Field type:** Rich text
     - **Label:** WhiteWhale Signals
     - **Description:** The most recent signals WhiteWhale found on the company
     - **Default value:** Blank
   </Accordion>
 
-  <Accordion title="BirdDog_Originated">
+  <Accordion title="whitewhale_originated">
     - **Field type:** Single checkbox
     - **Label:** WhiteWhale Originated
     - **Description:** Records if WhiteWhale originated the account
     - **Default value:** Blank
   </Accordion>
 
-  <Accordion title="BirdDog_Add_Date">
+  <Accordion title="whitewhale_add_date">
     - **Field type:** Date and time picker
     - **Label:** WhiteWhale Add Date
     - **Description:** Records the date the account was originally added to WhiteWhale
     - **Default value:** Blank
   </Accordion>
 
-  <Accordion title="BirdDog_Signal_List">
+  <Accordion title="whitewhale_signal_list">
     - **Field type:** Multiple checkboxes
     - **Label:** WhiteWhale Signal List
     - **Description:** List of all WhiteWhale signals that apply to this account
