@@ -1,0 +1,335 @@
+---
+title: "Workflow Guides"
+description: "Step-by-step automation workflows that turn WhiteWhale signals into pipeline — using Claude, Clay, HubSpot, and your outreach tools."
+---
+
+These workflows show you how to connect WhiteWhale to your existing stack and automate the path from "a signal fired" to "a rep is having a conversation." Pick the ones that match your tools.
+
+---
+
+## Workflow 1: Signal → Contact Enrichment → Multi-Channel Sequence (Claude \+ Apollo/Zoominfo/Other Contact Tool)
+
+**What it does:** When a signal fires, Claude automatically finds the right contacts at that account, enriches them with verified emails and phone numbers, and drafts a personalized multi-channel sequence — all from a single conversation.
+
+**Tools needed:** WhiteWhale (Claude connector), Apollo (Claude connector)
+
+### Setup
+
+<Steps>
+  <Step title="Connect WhiteWhale to Claude">
+    Go to Claude → **Settings** → **Connectors** → **Custom Connectors** → add `https://app.getwhitewhale.com/mcp`. When prompted, enter your API key and user email.
+  </Step>
+  <Step title="Connect Apollo to Claude">
+    In Claude, go to **Settings** → **Connectors** → search for **Apollo.io** → click **Connect** and authorize via OAuth. No API key needed — it uses your Apollo account directly.
+
+    After connecting, go to **Connectors** → **Configure** beside Apollo.io and review permissions for each action.
+  </Step>
+</Steps>
+
+### The workflow
+
+Open a new Claude chat with both WhiteWhale and Apollo connectors enabled, then run through these prompts:
+
+**Step 1 — Pull your hottest accounts**
+
+```text
+Show me my top 10 WhiteWhale accounts by score that have had
+a signal fire in the last 7 days. For each one, show me the
+account name, score, and the Why Now summary.
+```
+
+**Step 2 — Pick an account and find contacts**
+
+```text
+For [COMPANY NAME], search Apollo for the following people:
+- VP Sales, CRO, or Head of Revenue
+- VP Marketing or Head of Demand Gen
+- Head of RevOps or Sales Operations
+
+Only include people based in the United States. Grab their emails and phone numbers.
+```
+
+**Step 3 — Draft a personalized sequence**
+
+```text
+Using the WhiteWhale Why Now summary for [COMPANY] and the
+contact details you just found, write a 3-step outbound sequence
+for [CONTACT NAME], [TITLE]:
+
+Step 1: LinkedIn connection request (under 300 characters)
+Step 2: Email (use the I noticed / I bet / here's how we help
+/ lead magnet framework)
+Step 3: Follow-up email 3 days later (short, reference the
+first email)
+
+We sell [YOUR PRODUCT] that helps companies [YOUR VALUE PROP].
+Use the specific signals — don't be generic.
+```
+
+**Step 4 — Add to Apollo sequence (optional)**
+
+```text
+Create these contacts in Apollo and add them to the
+[SEQUENCE NAME] sequence using my [EMAIL ACCOUNT] sending account.
+```
+
+<Warning>
+  Adding contacts to an Apollo sequence can trigger live outbound depending on your sequence settings. Always confirm the sequence name, sending account, and volume before approving.
+</Warning>
+
+<Tip>
+  You can also use ZoomInfo's MCP connector instead of Apollo for contact enrichment. The workflow is the same — connect ZoomInfo in Claude's Connectors settings, then swap the Apollo search and enrich prompts for ZoomInfo equivalents.
+</Tip>
+
+---
+
+## Workflow 2: Strategic One-Pager for a Target Account (Claude)
+
+**What it does:** Claude creates a polished, branded one-pager for a specific account — using WhiteWhale's Why Now and signal data to show the prospect exactly how your product maps to their situation. Send it as a leave-behind, attach it to a cold email, or use it as a pre-meeting document.
+
+**Tools needed:** WhiteWhale (Claude connector), Claude
+
+### The workflow
+
+**Step 1 — Pull the account data**
+
+```text
+Connect to WhiteWhale and pull the full account details for
+[COMPANY DOMAIN]. Show me:
+- The Why Now summary
+- All active signals with their sources and dates
+- The account score
+```
+
+**Step 2 — Generate the one-pager**
+
+```text
+Create a one-page PDF or document for [COMPANY NAME] with the
+following sections:
+
+HEADER:
+- Our logo [attach or describe your logo/brand colors]
+- Title: "How [YOUR COMPANY] Can Help [COMPANY NAME]"
+- Date
+
+SECTION 1 — What We Noticed
+Summarize the 2-3 most relevant signals in plain English.
+Don't list them — tell the story of what's happening at the
+company right now.
+
+SECTION 2 — What This Usually Means
+Based on those signals, describe the problems they're likely
+facing. Be specific. Reference their industry and situation.
+
+SECTION 3 — How We Help
+Describe our product and how it specifically addresses the
+problems above. Include 1-2 relevant customer proof points
+if I provide them.
+
+SECTION 4 — Suggested Next Step
+A single, low-friction CTA. Example: "We built this brief
+specifically for your team. Happy to walk through it in
+15 minutes — here's my calendar link."
+
+FORMATTING:
+- Use [BRAND COLOR] as the accent color
+- Clean, modern layout
+- No more than one page
+- Professional tone, not salesy
+```
+
+**Step 3 — Iterate**
+
+```text
+Update the "How We Help" section to emphasize [SPECIFIC FEATURE]
+and add this customer proof point: [PASTE CASE STUDY OR STAT]
+```
+
+<Tip>
+  Save your best one-pager as a template prompt. Once you have the format dialed in, you can generate a new one for any account in under 60 seconds — just swap the company name and Claude pulls fresh signal data from WhiteWhale automatically.
+</Tip>
+
+---
+
+## Workflow 3: Auto-Create CRM Tasks When Signals Fire (HubSpot)
+
+**What it does:** When a WhiteWhale signal fires, a task is automatically created in HubSpot and assigned to the account owner — with the signal details, Why Now, and source included in the task description. Reps see the task in their HubSpot queue and know exactly what to do.
+
+**Tools needed:** WhiteWhale webhook, HubSpot Workflows (Operations Hub Professional or Enterprise)
+
+### How it works
+
+```text
+WhiteWhale signal fires
+    → Webhook sends payload to HubSpot workflow
+    → HubSpot creates a task on the matching company
+    → Task assigned to the account owner with signal context
+    → Rep sees task in their HubSpot queue
+```
+
+### Setup
+
+<Steps>
+  <Step title="Create a HubSpot workflow with a webhook trigger">
+    In HubSpot, go to **Automation → Workflows** and create a new workflow. Add a **Send a webhook** action (under Data ops). Set the method to **POST** and paste your WhiteWhale webhook URL.
+
+    For a full walkthrough of setting up webhook-triggered workflows in HubSpot, watch this guide: [HubSpot Webhook Workflows →](https://www.youtube.com/watch?v=gyHk8bVt1pE)
+  </Step>
+  <Step title="Register the webhook in WhiteWhale">
+    Go to **Settings** → **API & Webhooks** → paste the HubSpot webhook URL and save. WhiteWhale will now POST signal events directly to your HubSpot workflow every morning when signals fire.
+  </Step>
+  <Step title="Test the webhook">
+    In WhiteWhale, go to **Settings** → **Test Webhook** and send a test payload. Confirm it arrives in your HubSpot workflow and triggers correctly.
+  </Step>
+  <Step title="Build the task creation action">
+    In your HubSpot workflow, add a **Create Task** action after the webhook trigger. Map the fields from the WhiteWhale payload:
+
+    | HubSpot task field | WhiteWhale source |
+    | --- | --- |
+    | Subject | `Signal: {signal_name} — {account}` |
+    | Body | `Why Now: {why_now}\n\nSource: {article_summary.headline}\n{source}` |
+    | Associated company | Match using `crm_account_id` or search by `account` domain |
+    | Assigned to | Match using `owner_email` |
+    | Due date | Today \+ 1 day |
+    | Priority | High |
+    | Type | To-do |
+  </Step>
+</Steps>
+
+### What the rep sees
+
+A task appears in their HubSpot queue:
+
+> **Signal: New CRO Hired — acme.com**
+>
+> Why Now: Acme just brought in a new CRO from Salesforce who has publicly committed to overhauling their outbound motion over the next 90 days. Combined with their recent Series B, they're scaling the sales team fast.
+>
+> Source: TechCrunch — Acme Corp Appoints New Chief Revenue Officer [https://techcrunch.com/](https://techcrunch.com/)...
+
+The rep opens the task, reads the Why Now, and reaches out — without ever logging into WhiteWhale.
+
+---
+
+## Workflow 4: Signal → Enriched Contacts → Automated Outreach (Clay)
+
+**What it does:** WhiteWhale signals flow into Clay automatically via webhook. Clay finds the right contacts at each account, enriches them with verified emails and phone numbers, and either pushes them to your CRM for rep-led follow-up or kicks off an automated sequence.
+
+**Tools needed:** WhiteWhale webhook, Clay, your CRM (HubSpot/Salesforce), email/LinkedIn outreach tool (Instantly, Lemlist, HeyReach, etc.)
+
+### Setup
+
+<Steps>
+  <Step title="Create a Clay table with a webhook source">
+    In Clay, create a new table and add **Webhook** as the data source. Clay will generate a webhook URL.
+
+    Reference: [Clay Webhook Integration Guide](https://university.clay.com/docs/webhook-integration-guide)
+  </Step>
+  <Step title="Register the Clay webhook in WhiteWhale">
+    Go to **Settings** → **API & Webhooks** → paste the Clay webhook URL and save.
+
+    Every morning when a signal fires, WhiteWhale sends the full payload to your Clay table — including the company URL, LinkedIn URL, all signals, the Why Now, sources, quotes, and the account owner.
+  </Step>
+  <Step title="Build your enrichment flow in Clay">
+    Add the following columns to your Clay table:
+
+    **Column 1 — Company name** Pull from the WhiteWhale payload `account` field.
+
+    **Column 2 — Account owner** Pull from `owner_email` so you know which rep owns the account.
+
+    **Column 3 — Find contacts** Use Clay's **Find People at Company** enrichment. Set it to search for your target titles (VP Sales, Head of Marketing, etc.) at the company URL from the WhiteWhale payload.
+
+    **Column 4 — Waterfall enrichment** Run Clay's waterfall enrichment on each contact to source verified email addresses and phone numbers from 10\+ providers.
+  </Step>
+  <Step title="Choose your activation path">
+    **Option A: Rep-led (push to CRM)**
+
+    Add a Clay integration to push the enriched contact into HubSpot or Salesforce. Include the signal name and Why Now summary in a custom field so the rep has full context when they see the record.
+
+    **Option B: Fully automated (push to outreach tool)**
+
+    Add a **Claygent** column that takes the WhiteWhale signals, Why Now, and contact details and writes a personalized first-touch email. Then push the contact and the AI-written email into Instantly, Lemlist, or HeyReach to kick off a sequence automatically.
+  </Step>
+</Steps>
+
+### One-off export alternative
+
+If you don't want ongoing automation and just need to get your current accounts into Clay:
+
+1. Go to the **Accounts** page in WhiteWhale
+2. Select the accounts you want to export using the checkboxes
+3. Click **Export** — WhiteWhale downloads a CSV
+4. Import the CSV into Clay as a new table
+
+Reference: [Clay CSV Import Guide](https://university.clay.com/docs/csv-import-overview)
+
+<Tip>
+  The WhiteWhale webhook payload includes all signals on an account — not just the one that triggered the event. This means your Claygent can reference the full signal story when writing outreach, not just a single data point.
+</Tip>
+
+---
+
+## Workflow 5: Daily Account Briefing in Slack (WhiteWhale \+ Claude \+ Slack)
+
+**What it does:** Every morning, Claude pulls your top-priority accounts from WhiteWhale and posts a summary to a Slack channel — so your team starts the day knowing exactly which accounts to work.
+
+**Tools needed:** WhiteWhale (Claude connector), Slack (Claude connector), Claude Cowork
+
+### The workflow
+
+Set up a recurring Cowork task or run this manually each morning:
+
+```text
+Connect to WhiteWhale and pull my top 5 accounts by score
+that have had a signal fire in the last 3 days.
+
+For each account, format a brief like this:
+
+**[Company Name]** (Score: [X])
+Why Now: [1-2 sentence summary]
+Signal: [Most recent signal name] — [date]
+
+Then post this to the #sales-signals Slack channel with the
+header "🐋 Morning Signal Brief — [Today's Date]"
+```
+
+### What the team sees in Slack
+
+> **🐋 Morning Signal Brief — June 25, 2026**
+>
+> **Acme Corp** (Score: 62) Why Now: Acme just hired a new CRO from Salesforce and raised a \$40M Series B. They're scaling the sales team aggressively. Signal: New CRO Hired — Jun 24
+>
+> **Globex Industries** (Score: 48) Why Now: Globex is consolidating their sales tech stack after acquiring two companies. Job postings mention replacing their current outbound tools. Signal: Vendor Consolidation — Jun 23
+>
+> _\[3 more accounts...\]_
+
+---
+
+## Which workflow should I start with?
+
+| If you want... | Start with... |
+| --- | --- |
+| The fastest results with no setup | Workflow 1 (Claude \+ Apollo/Zoominfo/Other Contact Tool) — runs in a single chat |
+| Personalized collateral for enterprise deals | Workflow 2 (One-pagers) |
+| Tasks auto-created for reps in HubSpot | Workflow 3 (HubSpot webhook) |
+| Fully automated signal → outreach pipeline | Workflow 4 (Clay) |
+| A daily team briefing | Workflow 5 (Slack) |
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Best Outreach We've Seen" icon="message" href="/best-outreach-we-ve-seen">
+    The messaging framework and partner playbooks that make these workflows convert.
+  </Card>
+
+  <Card title="Webhooks" icon="webhook" href="/webhooks">
+    Full payload reference for building custom automations.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/api">
+    Access WhiteWhale data programmatically for custom workflows.
+  </Card>
+
+  <Card title="Clay Integration" icon="table" href="/clay">
+    Setup guide for connecting WhiteWhale to Clay.
+  </Card>
+</CardGroup>
