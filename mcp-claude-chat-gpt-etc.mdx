@@ -43,11 +43,19 @@ This is the fastest way to connect — no downloads, no config files, no termina
   <Step title="Add the WhiteWhale connector">
     Paste this URL: `https://app.getwhitewhale.com/mcp`
   </Step>
-  <Step title="Ask Claude to connect">
-    In any chat, ask Claude to connect to WhiteWhale. It will prompt you for your **API key** and **user email** — enter both and you're connected.
+  <Step title="Start a new chat and give Claude your credentials">
+    Open a new chat and tell Claude who you are and what you want. Include your API key and email directly in the message — Claude needs these to connect to your account. Example prompt:
+
+    ```text
+    Please pull my best 5 accounts from WhiteWhale for [YOUR COMPANY].
+    Here is my API key: [PASTE YOUR API KEY]
+    And my email: [YOUR WHITEWHALE LOGIN EMAIL]
+    ```
+
+    Claude will use these to connect and pull your live data. **You only need to provide credentials once per conversation.** If you start a new conversation you may need to give claude the credentials again, keep that prompt handy or save it as a skill.
   </Step>
-  <Step title="Try it">
-    Ask Claude: _"Show me my hottest WhiteWhale accounts"_ — Claude will pull your live data and respond.
+  <Step title="You're connected">
+    Claude will respond with your actual WhiteWhale data. From here, keep asking questions in plain English — "Show me signals on \[company\]", "What's my score on \[account\]", "Add these domains to my list."
   </Step>
 </Steps>
 
