@@ -1,92 +1,74 @@
 ---
-title: "Adjusting Your Suggestions"
-description: "Invite unlimited team members to WhiteWhale at no extra cost. Configure roles, permissions, and account visibility so every rep sees the right signals."
+title: "Fixing/Improving Suggestions"
+description: "Tune your account searches to surface better-fit accounts and fix common issues."
 ---
 
-Account Suggestions will never be perfect — but with a few adjustments, 80–90% of what surfaces should be accounts you'd actually want to work. This page covers how to tune your search when results are too broad, too narrow, or just slightly off.
+<iframe src="https://www.loom.com/embed/c40eba08cb0745aeb2157b60eebc4606" title="Adjusting Account Suggestions in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
 
-## How to edit your search
+Account Suggestions will never be perfect — but with a few adjustments, 80–95% of what surfaces should be accounts you'd actually want to work. This page covers how to tune your searches when results are too broad, too narrow, or just slightly off.
 
-From the **Suggestions** tab, click **Edit Search**. This opens the same Find Accounts table you used during setup.
+## Providing feedback on individual accounts
 
-<Frame>
-  ![Screenshot 2026 06 09 At 7 21 19 PM](/images/Screenshot-2026-06-09-at-7.21.19-PM.png)
-</Frame>
+When a suggestion isn't a fit, click the **X** next to the account to reject it. WhiteWhale will ask you why — too big, too small, wrong industry, wrong signals.
 
-{/* Screenshot: Edit Search button in the Suggestions tab */}
+Based on your feedback, the system will prompt you to edit the search directly. For example, if you reject an account because it's the wrong industry, WhiteWhale will open the industry filter so you can remove the one that doesn't fit.
 
-From here you can change any of your filters — signals, geography, industries, or employee count — and re-run the search.
+Over time, this feedback loop tightens your results without you having to think about the filters separately.
 
-<Frame>
-  ![Screenshot 2026 06 09 At 7 21 36 PM](/images/Screenshot-2026-06-09-at-7.21.36-PM.png)
-</Frame>
+## Editing your search
 
-{/* Screenshot: Find Accounts UI showing signal filters, geography, industry, and employee count fields */}
+You can update any live search at any time. Click into the search and adjust your signal selections, time range, company size, industry, or location. The search will re-run automatically with the new parameters.
 
-## What to adjust and when
+WhiteWhale will also throw warnings in the search builder if your parameters are too narrow or too broad — and tell you what to fix.
+
+## Common problems and how to fix them
 
 <AccordionGroup>
-  <Accordion title="Getting too many low-quality suggestions">
-    Your filters are too broad. Try one or more of these:
+  <Accordion title="Not enough results">
+    Usually caused by one of these: **Too many Must Have signals.** If you require five signals, an account needs all five to appear. Four out of five won't show up. Switch to **Any Match** (the light purple default) unless you have one specific signal that's a hard requirement.
 
-    - **Tighten your industry list** — remove industries where you rarely win deals
-    - **Narrow your employee count range** — if your sweet spot is 100–500, don't include 10–50
-    - **Add a signal filter** — require at least one signal to be present before an account surfaces. Set it to **Any Of** so you're not excluding too much.
-    - **Tighten your geography** — if you only serve certain US states or countries, make sure that's reflected
+    **Signals that don't logically co-exist.** If you require both VC funding and PE investment as Must Haves, that's a rare combination that doesn't make practical sense. Make sure your Must Have signals would logically appear together on a real account.
+
+    **Too few companies in the search pool.** If you're searching for software companies in Bermuda, there are only two. WhiteWhale can't find 200 suggestions from a pool of two. Widen your location or industry filters to increase the pool. The sweet spot is somewhere between a few hundred and 20,000 companies.
   </Accordion>
 
-  <Accordion title="Getting too few suggestions or near-zero results">
-    Your filters are too narrow. The most common cause is too many **Must Have** signals. Try one or more of these:
-
-    - **Switch Must Have signals to Any Of** — this alone usually fixes a near-zero result count
-    - **Remove signal filters entirely** — let firmographics do the filtering and use signals just for ranking
-    - **Expand your industry list** — add adjacent industries where you've won deals before
-    - **Widen your employee count range** — try going slightly above or below your typical range
+  <Accordion title="Results coming in too slowly">
+    Your search pool is probably too large. If WhiteWhale is scanning 800,000 or a million companies, it takes time to work through all of them. Results will trickle in rather than flood in. Narrow your filters — tighten industry, location, or company size — to bring the search pool down to the 20,000 or under range. You'll see faster, higher-quality results.
   </Accordion>
 
-  <Accordion title="Suggestions are the right size but wrong type of company">
-    Your firmographic filters need refinement. Try:
+  <Accordion title="Getting suggestions that are the wrong type of company">
+    Your firmographic filters need refinement.
 
-    - **Revisiting your industry list** — go to LinkedIn, look up 5–10 of your best current customers, and check which industry they've selected. Make sure all of them are in your filter.
-    - **Adjusting employee count** — if the accounts feel too small or too large, tighten the range
-    - **Adding a geography constraint** — if you're seeing accounts from regions you don't serve, filter them out
+    - **Wrong industry** — click reject on a bad account, tell WhiteWhale it's the wrong industry, and it will prompt you to edit the industry filter directly
+    - **Wrong size** — tighten the employee count range
+    - **Wrong geography** — check your location filter for regions you don't actually serve
   </Accordion>
 
   <Accordion title="Suggestions look good but signals feel irrelevant">
-    Your signal list may need a refresh. Suggestions surfaces accounts that have matched your signals — if the signals aren't specific enough to your ICP, the matches won't feel relevant.
-
-    See [How to Get Unique Signal Ideas](/how-to-get-unique-signal-ideas) for a guide on writing signals that surface actual buying moments.
+    The search finds accounts that match your signals — if the signals aren't specific enough, the matches won't feel relevant. Tighten up the signal descriptions or add context. See [Improving Signals](/improving-signals) for a guide on making signals more precise.
   </Accordion>
 </AccordionGroup>
 
-## Set realistic expectations
+## Experiment freely
 
-The goal isn't a perfect list — it's a high-signal queue where the majority of what surfaces is worth a look. Here's what good looks like in practice:
-
-- **80–90% of suggestions** should be companies you'd consider reaching out to
-- **Some will be off** — That's expected. Use the feedback tools to train the system over time.
-- **Results improve as you iterate** — each adjustment compounds. A search you've tuned over a few weeks will perform significantly better than one you set up once and never touched.
+There's no limit on how many searches you can create. Run different variations — test different signal combinations, industries, and company sizes — and see what comes back. Keep the ones that produce good results. Delete the ones that don't.
 
 <Tip>
-  After any adjustment, give the search 24–48 hours before evaluating. WhiteWhale scans accounts on a daily cycle, so changes take a full pass to fully reflect in your results.
+  The best search setup is usually 2–3 signals set to Any Match, in the industries you win in most, with a company pool between a few hundred and 20,000. Start there and adjust based on what you see.
 </Tip>
 
 ## Related
 
 <CardGroup cols={2}>
   <Card title="Giving Feedback on Suggestions" icon="thumbs-up" href="/giving-feedback-on-suggestions">
-    Mark suggestions as good or bad fit to help WhiteWhale improve over time.
+    Reject suggestions to help WhiteWhale improve your search results.
   </Card>
 
   <Card title="Setting Up Account Suggestions" icon="gear" href="/setting-up-account-suggestions">
-    Review the full setup guide if you want to start your search from scratch.
-  </Card>
-
-  <Card title="How to Get Unique Signal Ideas" icon="lightbulb" href="/how-to-get-unique-signal-ideas">
-    Better signals lead to better suggestions.
+    Create a new search from scratch.
   </Card>
 
   <Card title="Improving Signals" icon="sliders" href="/improving-signals">
-    Fix signals that are too broad or returning the wrong results.
+    Better signals lead to better search results.
   </Card>
 </CardGroup>

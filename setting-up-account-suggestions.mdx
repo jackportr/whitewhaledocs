@@ -1,60 +1,75 @@
 ---
 title: "Setting Up Account Suggestions"
-description: "Configure WhiteWhale to automatically discover and surface net-new target accounts that match your ICP and have active buying signals. Step-by-step setup guide."
+description: "Run a live search to find net-new accounts with your signals across millions of companies."
 ---
 
-<iframe src="https://www.loom.com/embed/af0a75585e644bfaa762cb8adef33829" title="Setting Up Account Suggestions in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
+<iframe src="https://www.loom.com/embed/09882d444e0c4ed497d3df2655eb78b7" title="Setting Up Account Suggestions in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
 
-## How to get to the setup screen
+Account Suggestions is one of the most powerful features in WhiteWhale. It searches through millions of companies and tens of millions of sources — news articles, press releases, job postings, websites — to find accounts that match your signals right now.
 
-There are two ways:
-
-- **Suggestions tab** → click **Turn On** (first time) or **Edit Search** (if already running)
-- **Add Accounts** → click **Find Accounts**
-
-Both take you to the same Find Accounts table.
-
-## Configure your search
+## How to run a search
 
 <Steps>
-  <Step title="Review your current search (if one exists)">
-    If suggestions is already running, the table will show what it's currently searching for. Use this to debug results that feel too broad or too narrow before making changes.
+  <Step title="Click New Search on the Accounts page">
+    Select **Find New Accounts** (not Upload a List — that's for adding accounts you already have).
   </Step>
-  <Step title="Set your signal filters">
-    Select which signals you want matched accounts to have. Each signal can be set to one of two modes — click once for **Any Of**, click twice for **Must Have**.
+  <Step title="Name your search">
+    Give it a descriptive name — for example, _Building Outbound_ or _New CROs in SaaS_.
+  </Step>
+  <Step title="Select your signals">
+    Choose which signals you want accounts to match. Each signal can be set to **Any Match** (light purple — the default) or **Must Have** (requires every account to have that signal).
 
-    **Use Any Of.** Must Have means the account has to match that signal to appear in results. If you stack multiple Must Haves, you're requiring an account to hit all of them simultaneously — which is extremely rare. Stick to Any Of unless you have one specific signal that's a hard requirement.
+    <Warning>
+      Avoid using Must Have on more than one signal. If you require five signals, an account needs all five to show up — which almost never happens. Stick to Any Match unless you're narrowing by a single defining characteristic like "uses usage-based pricing."
+    </Warning>
   </Step>
-  <Step title="Set your geography">
-    Select US states or countries. You can combine both.
-  </Step>
-  <Step title="Set your industries">
-    These map directly to LinkedIn's industry categories. If you're unsure what category a good-fit company falls under, look them up on LinkedIn and use whatever industry is listed on their profile. Add as many relevant industries as apply.
-  </Step>
-  <Step title="Set your employee count range">
-    Employee count is pulled from LinkedIn. Set the range that matches your ICP sweet spot.
-  </Step>
-  <Step title="Review the search summary">
-    Before running, WhiteWhale shows you:
+  <Step title="Set your filters">
+    Configure the remaining parameters:
 
-    - **Potential accounts** — total companies matching your filters, with or without signals
-    - **Already checked** — accounts scanned in previous searches
-    - **To be scanned** — accounts that will be searched when you run this
-
-    If the numbers look right, proceed. If too narrow, loosen your filters or reduce Must Have signals.
+    - **Time range** — how recent signals need to be (e.g., within the last year)
+    - **Company size** — employee count range that fits your ICP
+    - **Industry** — one or more industries you typically sell into
+    - **Location** — countries or US states
   </Step>
-  <Step title="Click Find Recommendations">
-    WhiteWhale starts scanning. Results begin appearing in your Suggestions tab within 1–2 hours and continue to grow daily as more accounts are checked.
+  <Step title="Review the estimate">
+    WhiteWhale will show you the total number of companies that fit your filters. This is how many records it will search through for your signals.
+
+    A search across 10,000 records will return results quickly. A search across 800,000 records will take significantly longer — consider narrowing your filters if the number is too high.
+  </Step>
+  <Step title="Click Save and Make Live Search">
+    WhiteWhale starts scanning immediately. You'll often see results within minutes — accounts that already have your signals. More will continue to appear every day as the search runs through the remaining records.
   </Step>
 </Steps>
 
+## How live searches work
+
+A live search runs automatically every night, searching through your parameters for new accounts with your signals. Results show up in your search list and keep growing over time.
+
+Your plan includes a set number of live searches (default is one). You can update the filters on a live search at any time, and the search will re-run with the new parameters.
+
 <Tip>
-  Suggestions compounds over time. A search that returns 700 results one week may return 1,200 the next as WhiteWhale works through the remaining accounts in your criteria. Let it run.
+  Start narrow and expand. A focused search across 10,000 records with 2–3 signals will return high-quality results fast. You can always widen the filters later once you see what's coming in.
 </Tip>
+
+## Common mistakes
+
+<AccordionGroup>
+  <Accordion title="Too many companies in the search">
+    If your search is scanning 800,000 records, it will take days or weeks to work through them all. Results will trickle in slowly. Narrow your filters — tighten industry, location, or company size — to bring the number down to a more manageable range.
+  </Accordion>
+
+  <Accordion title="Too many Must Have signals">
+    If you set multiple signals to Must Have, an account needs every single one to appear. Four out of five won't cut it. This is the most common reason for zero or near-zero results. Switch to Any Match and results will increase significantly.
+  </Accordion>
+
+  <Accordion title="Getting zero results">
+    Check both of the above first. Then verify your signals are actually firing on your existing accounts — if a signal returns zero results on accounts you already track, it won't return results in a search either. See [Improving Signals](/improving-signals).
+  </Accordion>
+</AccordionGroup>
 
 ## What happens next
 
-Once your search is running, matched accounts appear in the **Suggestions** tab. From there you can review, accept, or assign them to your team.
+Matched accounts appear in your search results. From there you can activate them, assign them to reps, or round-robin them across the team.
 
 <CardGroup cols={2}>
   <Card title="Adjusting Your Suggestions" icon="sliders" href="/adjusting-your-suggestions">
@@ -63,5 +78,9 @@ Once your search is running, matched accounts appear in the **Suggestions** tab.
 
   <Card title="Giving Feedback on Suggestions" icon="thumbs-up" href="/giving-feedback-on-suggestions">
     Mark suggestions as good or bad fit to improve future results.
+  </Card>
+
+  <Card title="Assigning Suggestions" icon="shuffle" href="/assign-suggestions-round-robin-etc">
+    Assign accounts to reps individually, in bulk, or via round-robin.
   </Card>
 </CardGroup>
