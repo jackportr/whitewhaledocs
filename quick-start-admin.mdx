@@ -34,7 +34,7 @@ Add everyone who will be using WhiteWhale before you start assigning accounts.
 
 ## Step 2: Build your signal list
 
-Signals are the questions WhiteWhale asks about every account. A good signal list is the foundation of everything — account scores, Account Suggestions, and the Why Now summaries all depend on it.
+Signals are the questions WhiteWhale asks about every account. A good signal list is the foundation of everything — account scores, live searches, and the Why Now summaries all depend on it.
 
 **Aim for 10–15 signals.** Mark your top 5–8 as High priority.
 
@@ -75,34 +75,35 @@ Signals are the questions WhiteWhale asks about every account. A good signal lis
 
 ---
 
-## Step 3: Add accounts or turn on Account Suggestions
+## Step 3: Add accounts or run a search
 
 You have two options here — use one or **both**.
 
 <AccordionGroup>
-  <Accordion title="Option A: Add accounts from a list">
+  <Accordion title="Option A: Upload a list of accounts">
     Use this if you already have a set of accounts you want to monitor — assigned territories, closed-lost deals, a target list from your CRM.
 
-    Go to the **Accounts** page → click **Add Accounts** → paste your company domains. WhiteWhale cleans up the formatting automatically.
+    Go to the **Accounts** page → click **New Search** → select **Upload a List**. Name the list, paste your company domains, and assign an owner. WhiteWhale cleans up the formatting automatically.
 
-    If your list is larger than your credit limit, open **Advanced Settings** and set how many accounts to activate. WhiteWhale will scan the full list and pick the best ones based on your signals.
+    If your list is larger than your credit limit, toggle on **Clean the List** to filter by signals and firmographics before uploading — so only the best accounts use your credits.
 
     <Card title="Adding Accounts" icon="plus" href="/adding-accounts">
-      Full guide including the Signal Suggestion Engine for large lists.
+      Full guide including the Clean the List feature for large lists.
     </Card>
   </Accordion>
 
-  <Accordion title="Option B: Turn on Account Suggestions (Recommended)">
+  <Accordion title="Option B: Run a live search to find new accounts (Recommended)">
     Use this if you want WhiteWhale to find net-new accounts that match your ICP and already have signal activity.
 
-    Go to the **Suggestions** tab → click **Turn On** → set your filters:
+    Go to the **Accounts** page → click **New Search** → select **Find New Accounts**. Name the search, then set your filters:
 
-    - **Signals** — leave as Any Of (avoid Must Have for now)
-    - **Geography** — countries or US states you serve
+    - **Signals** — leave as Any Match (avoid Must Have for now)
+    - **Time range** — how recent signals need to be
+    - **Company size** — employee count range for your ICP
     - **Industry** — match to LinkedIn industry categories
-    - **Employee count** — your ICP range
+    - **Location** — countries or US states you serve
 
-    Click **Find Recommendations**. Results start appearing within 1–2 hours and grow daily.
+    Click **Save and Make Live Search**. Results often appear within minutes and grow daily as the search runs.
 
     <Card title="Setting Up Account Suggestions" icon="wand-magic-sparkles" href="/setting-up-account-suggestions">
       Full setup guide with filter recommendations.
@@ -111,7 +112,7 @@ You have two options here — use one or **both**.
 </AccordionGroup>
 
 <Info>
-  You can run both at the same time. Many teams start with a known list of accounts and turn on Account Suggestions to find net-new ones in parallel.
+  You can run both at the same time. Many teams upload a known list of accounts and run a live search to find net-new ones in parallel.
 </Info>
 
 ---
@@ -166,13 +167,13 @@ Get WhiteWhale data flowing into the tools your team already uses.
 
 ## Step 5: Assign accounts to your team
 
-Once accounts are in WhiteWhale — either added directly or accepted from Suggestions — assign them to your reps.
+Once accounts are in WhiteWhale — either uploaded directly or found by a live search — assign them to your reps.
 
-**For accounts already in your list:** Go to **All Accounts** → click the **Owner** field on any account → select the rep it should go to.
+**For accounts already in your list:** Click the **Owner** name on any account and select the rep it should go to.
 
-**For accounts coming in from Suggestions:** Go to the **Suggestions** tab → select accounts using the checkboxes → click **Activate** → choose to assign to one person or round-robin across the team.
+**For accounts from a search:** Select the suggestions (shown in orange) using the checkboxes → click **Activate** → choose to assign to one person or round-robin across the team.
 
-**Pro tip:** Filter suggestions by geography, industry, or employee count before assigning to quickly route accounts to the right rep by territory or segment.
+**Pro tip:** Filter by geography, industry, or employee count before assigning to quickly route accounts to the right rep by territory or segment.
 
 <CardGroup cols={2}>
   <Card title="Account Allocation" icon="users" href="/account-allocation">
@@ -180,7 +181,7 @@ Once accounts are in WhiteWhale — either added directly or accepted from Sugge
   </Card>
 
   <Card title="Assigning Suggestions" icon="shuffle" href="/assign-suggestions-round-robin-etc">
-    Bulk assign or round-robin accounts from your Suggestions queue.
+    Bulk assign or round-robin accounts from your search results.
   </Card>
 </CardGroup>
 
