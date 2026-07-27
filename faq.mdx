@@ -1,31 +1,65 @@
 ---
 title: "FAQ"
-description: "Answers to the most common questions about WhiteWhale, including how signals work, what data sources are used, pricing, integrations, and account monitoring."
+description: "Answers to the most common questions about WhiteWhale — signals, accounts, searches, scoring, integrations, billing, and troubleshooting."
 ---
 
 ## Signals
 
 <AccordionGroup>
   <Accordion title="How many signals should I have?">
-    Aim for 10–15 active signals. Enough to get a detailed picture of every account without flooding your queue. Mark your top 5–8 as High priority — these will drive your account scores and Account Suggestions.
+    Between 15 and 20 active signals. This gives you enough coverage to find activity across your accounts regularly. Mark your top 5–8 as High priority — these drive your account scores and Account Suggestions. If you only have 1–2 signals on a small number of accounts, you won't see enough results to be useful.
 
-    See [Creating Signals](/creating-signals) and the [Signal Library](/signal-library) to build your list.
+    See [Creating Signals](/creating-signals) and the [Signal Library](/signal-library).
   </Accordion>
 
-  <Accordion title="My signals are returning results from the wrong country. How do I fix that?">
-    Open the **Context Window** (the book icon next to the signal) and add a geography constraint in plain language. For example: _"Job listings from the United States only"_ or _"Exclude results outside North America."_
-
-    See [Improving Signals](/improving-signals) for the full guide.
+  <Accordion title="Can I add and edit signals anytime?">
+    Yes. You can add, edit, mute, or delete signals as much as you want at any time. There's no limit and no cooldown.
   </Accordion>
 
-  <Accordion title="My signal is too broad and matching accounts that aren't relevant. How do I narrow it?">
-    For small changes, click directly into the signal and edit the text. For bigger changes — multiple conditions, geography, time range — use the Context Window to add detailed instructions. The core principle: just tell the system what you want.
-
-    See [Improving Signals](/improving-signals).
+  <Accordion title="Can I add a signal for something very specific to my ICP?">
+    Yes. WhiteWhale supports fully custom signals — describe anything you want to find in plain language and the platform will convert it into the right format. If a signal doesn't match a standard template, you can still add it using `ignore_templates: true` via the API, or by contacting the WhiteWhale team. See [Creating Signals](/creating-signals).
   </Accordion>
 
-  <Accordion title="My signal is returning old results. How do I get more recent activity?">
-    Add a time constraint to the signal. Open the signal editor or Context Window and add language like _"In the last 90 days"_ or _"Recently."_ WhiteWhale will re-run the signal and update your results.
+  <Accordion title="How do I add new signals?">
+    Two ways:
+
+    1. **Describe it** — click Add Signal and type your idea in plain language. WhiteWhale will interpret it and create one or more signals formatted for the sources it checks.
+    2. **Signal Library** — click Signal Library for ideas generated based on your business. If the suggestions don't feel relevant, go to **Settings** → **Business Context** and **Signal Context** and update the information about what you sell. The platform uses this to generate better library suggestions and improve signals across the board.
+
+    See [Creating Signals](/creating-signals) and [Signal Library](/signal-library).
+  </Accordion>
+
+  <Accordion title="What sources does WhiteWhale monitor?">
+    News articles, press releases, the company's website, job postings directly from the company's ATS (Greenhouse, Lever, Workday), earnings calls, earnings reports, and company social posts (LinkedIn). Sources are checked daily. See [How Signals Work](https://www.getwhitewhale.com/blog/what-is-a-sales-signal).
+  </Accordion>
+
+  <Accordion title="My signal is still loading">
+    When you add a new signal, WhiteWhale searches across all your active accounts and suggestions. This typically takes 10–15 minutes, sometimes longer depending on how many accounts you have. A loader icon appears over the signal count while it's running. Go back to the Signals page at any time to check progress.
+  </Accordion>
+
+  <Accordion title="My signal found zero results">
+    Two possible causes:
+
+    1. **The signal is too narrow.** The information doesn't exist in any of the sources WhiteWhale checks. Try broadening the signal question or removing overly specific qualifiers.
+    2. **It hasn't found it yet.** Your current accounts may not have this signal, but other companies might. Run a search specifically for this signal to find accounts that match. WhiteWhale will also throw an error after a period of time if it can't find the signal at all.
+  </Accordion>
+
+  <Accordion title="My signal is too noisy or firing too many results">
+    Mute the signal so it stops sending alerts. Go to the **Signals** page, find the signal, and click the **bell icon** in the mute column. When it turns red, the signal is muted — it still runs in the background but won't notify you.
+
+    If you want to keep alerts but tighten the results, add context to the signal instead. See below.
+  </Accordion>
+
+  <Accordion title="My signal isn't returning what I meant — wrong geography, too broad, or old results">
+    The system can only understand as much as you give it. Add more context so it knows exactly what you're looking for.
+
+    Go to the **Signals** page → find the signal → click the **book icon** under options. This opens the Context Window where you can add qualifications in plain language:
+
+    - **Geography:** _"Only job postings in the United States"_
+    - **Time period:** _"In the last 12 months"_
+    - **Specificity:** _"Only if they mention replacing their current CRM, not just using one"_
+
+    You can also edit the signal text directly for small changes. Both methods trigger a re-scan when saved.
 
     See [Improving Signals](/improving-signals).
   </Accordion>
@@ -35,15 +69,7 @@ description: "Answers to the most common questions about WhiteWhale, including h
 
     **Deleting** removes the signal entirely and re-scores all your accounts. It cannot be undone.
 
-    Use muting for background signals you want to keep but not get interrupted by. Use deleting when you want to remove a signal permanently. See [Muting Signals](/muting-signals) and [Deleting Signals](/deleting-signals).
-  </Accordion>
-
-  <Accordion title="What sources does WhiteWhale monitor?">
-    WhiteWhale checks news articles, press releases, the company's website, job postings directly from the company's ATS (Greenhouse, Lever, Workday), earnings calls, earnings reports, and company social posts. Sources are checked daily. See [How Signals Work](https://www.getwhitewhale.com/blog/what-is-a-sales-signal).
-  </Accordion>
-
-  <Accordion title="Can I add a signal for something very specific to my ICP?">
-    Yes. WhiteWhale supports fully custom signals — you can describe anything you want to find in plain English and the platform will convert it into the right format. If a signal doesn't match a standard template, you can still add it using `ignore_templates: true` via the API, or by contacting the WhiteWhale team. See [Creating Signals](/creating-signals).
+    Use muting for background context signals. Use deleting when you want to remove a signal permanently. See [Muting Signals](/muting-signals) and [Deleting Signals](/deleting-signals).
   </Accordion>
 </AccordionGroup>
 
@@ -53,15 +79,15 @@ description: "Answers to the most common questions about WhiteWhale, including h
 
 <AccordionGroup>
   <Accordion title="How do I see how many credits I have left?">
-    Click **Add Accounts** in the top right of the Accounts page. You'll see your total credit limit, how many accounts you're currently monitoring, and how many more you can add this month. See [Credits & Billing](/credits-and-billing).
+    Check the **Searches** page — it shows your current credit usage, how much space you have, and lets you add more credits if needed. See [Credits & Billing](/credits-and-billing).
   </Accordion>
 
   <Accordion title="What uses a credit?">
-    Adding an account directly or activating an account from Account Suggestions each use one credit. Accounts in your Suggestions queue that haven't been activated do not use credits — they're previews only.
+    Adding an account directly or activating an account from suggestions each use one credit. Accounts in your suggestions that haven't been activated do not use credits — they're previews only.
   </Accordion>
 
   <Accordion title="What's the difference between archiving and deleting an account?">
-    **Archiving** pauses an account, preserves all its signal history, and frees up a credit slot. It can only be done once per month per account.
+    **Archiving** pauses an account, preserves all its signal history, and frees up a credit slot.
 
     **Deleting** permanently removes the account and all its data. It cannot be undone.
 
@@ -69,43 +95,82 @@ description: "Answers to the most common questions about WhiteWhale, including h
   </Accordion>
 
   <Accordion title="I have more accounts than credits. What's the best way to add a large list?">
-    Go to **Add Accounts**, paste your full domain list, then open **Advanced Settings** and set how many accounts to activate. WhiteWhale will scan the entire list and activate the best-scoring accounts up to your limit. The rest go to Account Suggestions for review later.
+    Go to **New Search** → **Upload Your List** and paste all your domains. Toggle on **Clean the List** at the bottom to filter by signals, employee count, geography, and industry before uploading — so only the best accounts use your credits.
 
     See [Adding Accounts](/adding-accounts).
   </Accordion>
 
-  <Accordion title="Can I rotate my account list monthly?">
-    Yes. Archive your current accounts to free up slots, then add a fresh set. You can cycle through your full prospect list this way — archiving up to your full account limit each month. See [Archiving Accounts](/archiving-accounts).
+  <Accordion title="How do I rotate my account list?">
+    Go to your active accounts and either archive or delete the ones you're done with. Archiving is better because it preserves signal history. Once you've freed up slots, add new accounts from uploads or activate suggestions.
+
+    Credits reset every month, so you can rotate your full list monthly — archive the current set and add a fresh batch. See [Archiving Accounts](/archiving-accounts).
+  </Accordion>
+
+  <Accordion title="I've run out of credits for the month">
+    Your credit limit resets every month. If you need more accounts before the reset:
+
+    1. **Free up space** — archive or delete accounts you're no longer working
+    2. **Upgrade your plan** — go to **Settings** → **Manage License** to move to a higher tier
+
+    See [Credits & Billing](/credits-and-billing).
+  </Accordion>
+
+  <Accordion title="I want to track closed-lost or revived deals">
+    Connect HubSpot or Salesforce so WhiteWhale can read your deal data. This enables automatic ownership updates and pushes WhiteWhale data into your CRM.
+
+    If you only want WhiteWhale to read ownership without writing data back, just don't map the write fields during setup.
+
+    See [HubSpot](/hub-spot) or [Salesforce](/salesforce).
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Account Suggestions
+## Searches & Account Suggestions
 
 <AccordionGroup>
   <Accordion title="How is Account Suggestions different from adding accounts manually?">
-    When you add accounts manually, you already know which companies you want to monitor. Account Suggestions finds companies you haven't thought of yet — it searches the internet for companies that match your ICP filters (industry, geography, employee count) and already have signal activity. See [How Account Suggestions Work](/how-account-suggestions-work).
+    When you add accounts manually, you already know which companies to monitor. Account Suggestions searches across millions of companies to find ones you haven't thought of yet — companies that match your ICP filters and already have signal activity. See [How Account Suggestions Work](/how-account-suggestions-work).
   </Accordion>
 
-  <Accordion title="I turned on Account Suggestions but I'm getting very few results. What's wrong?">
-    The most common cause is too many **Must Have** signals. Requiring multiple signals simultaneously means an account has to match all of them at the same time — which almost never happens. Switch your signals to **Any Of** and your results will increase significantly.
+  <Accordion title="I ran a search and I'm not getting results">
+    Check these in order:
 
-    If that doesn't help, expand your industry list or employee count range. See [Setting Up Account Suggestions](/setting-up-account-suggestions).
+    **1. Did the search finish?** Searches typically take a couple of hours. The page shows if it's running, how many hours are left, and what percentage is complete. Check the **Jobs** button at the top for active searches in the queue.
+
+    **2. Is it a live search?** If the search isn't set to live, it won't run automatically. Make it live to start a run that continues every day.
+
+    **3. Are your parameters too restrictive?** Click **Edit Search** and check the bottom — it shows how many companies match your filters. Under 100 is too few. Over a million will take a long time. The sweet spot is a few hundred to 20,000.
+
+    **4. Are your signals too rare?** If your signals are extremely specific, even a large pool won't return results. Broaden the signal or check if it fires on any existing accounts first.
   </Accordion>
 
-  <Accordion title="I'm getting a lot of suggestions that aren't a good fit. How do I improve them?">
-    Start by checking your firmographic filters — geography, industry, and employee count are the most common culprits. Then consider adding a characteristic signal as a **Must Have** to define a hard ICP requirement (for example, _"Does this account use Salesforce?"_).
+  <Accordion title="Too many Must Have signals">
+    If you require multiple signals as Must Have, every account needs all of them simultaneously. Four out of five won't show up. Also make sure your Must Have signals logically co-exist — requiring both VC funding and PE investment doesn't make practical sense.
 
-    See [Adjusting Your Suggestions](/adjusting-your-suggestions) and [Giving Feedback on Suggestions](/giving-feedback-on-suggestions).
+    Stick to **Any Match** (light purple) unless you have one specific characteristic that's a hard requirement.
+
+    See [Adjusting Your Suggestions](/adjusting-your-suggestions).
   </Accordion>
 
-  <Accordion title="How long does it take for suggestions to appear after I turn it on?">
-    Results typically start appearing within 1–2 hours. The count grows daily as WhiteWhale works through all the accounts that match your criteria. A search that returns 700 results on day one may return 1,200\+ by the end of the week.
+  <Accordion title="I'm getting suggestions that aren't a good fit">
+    Click the **X** on bad suggestions to reject them and provide feedback (too big, too small, wrong industry). WhiteWhale will prompt you to edit the search filters directly.
+
+    If you're rejecting a lot, check your firmographic filters first — geography, industry, and employee count are the most common culprits. Then consider adding a characteristic signal as a **Must Have** to define a hard ICP requirement.
+
+    See [Adjusting Your Suggestions](/adjusting-your-suggestions).
+  </Accordion>
+
+  <Accordion title="How long does it take for suggestions to appear?">
+    Results often start appearing within minutes. The count grows daily as WhiteWhale works through all the matching companies. A search that returns 59 results on day one may return hundreds by the end of the week.
+  </Accordion>
+
+  <Accordion title="How many live searches should I have?">
+    The best results come from 3–5 searches running at any given time. Many users exceed that and run ten or more. Each search can target a different signal combination, industry, or company size.
   </Accordion>
 
   <Accordion title="Can I assign suggestions to specific reps?">
-    Yes. From the Suggestions tab, select accounts using the checkboxes and click **Activate**. You can assign them to one person or round-robin across your team. You can also filter by geography, industry, or employee count first to route accounts to the right rep by territory. See [Assigning Suggestions](/assign-suggestions-round-robin-etc).
+    Yes. Select accounts using the checkboxes and click **Activate**. You can assign them to one person or round-robin across your team. See [Assigning Suggestions](/assign-suggestions-round-robin-etc).
   </Accordion>
 </AccordionGroup>
 
@@ -115,15 +180,37 @@ description: "Answers to the most common questions about WhiteWhale, including h
 
 <AccordionGroup>
   <Accordion title="What does the account score mean?">
-    The score (0–100) reflects how much recent, high-ranked signal activity an account has. A higher score means more of your signals have fired recently on that account. It's a prioritization tool — use it to decide which accounts to work first. See [Account Scoring Explained](/account-scoring-explained).
+    The score (0–100) reflects how much recent, high-ranked signal activity an account has. It's a prioritization tool — use it to decide which accounts to work first. See [Account Scoring Explained](/account-scoring-explained).
   </Accordion>
 
   <Accordion title="What's a good score?">
-    Most workable accounts score between 15 and 50. Scores above 50 are strong. Scores above 70 are rare — they'd require multiple high-ranked signals firing simultaneously in a short window. Don't anchor to a fixed number; spend a week clicking through your accounts and you'll develop a feel for what "good" looks like for your signal set.
+    Most workable accounts score between 15 and 50. Scores above 50 are strong. Scores above 70 are rare — they'd require multiple high-ranked signals firing simultaneously. Don't anchor to a fixed number; spend a week clicking through your accounts and you'll develop a feel for what "good" looks like for your signal set.
   </Accordion>
 
   <Accordion title="Why did an account's score change?">
-    Scores update daily as new signals fire and older signals age out. An account that scored 40 last week might score 20 this week if no new signals fired and the existing ones became less recent. A score drop doesn't mean the account is less interesting — it just means nothing new happened.
+    Scores update daily as new signals fire and older signals age out. A score drop doesn't mean the account is less interesting — it just means nothing new happened recently.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Alerts & Notifications
+
+<AccordionGroup>
+  <Accordion title="I'm not seeing any new signals or alerts">
+    Check three things:
+
+    1. **Do you have active accounts?** Monitored accounts show a green indicator on the Accounts page. If nothing is monitored, there's nothing to alert on.
+    2. **Are your notifications turned on?** Go to **Settings** → **User Notifications** and make sure **Daily Signals** is enabled.
+    3. **Do your signals have results?** If you only have a few signals on a small number of accounts, alerts will be infrequent. Add more accounts (up to your plan limit) and aim for 15–20 signals.
+  </Accordion>
+
+  <Accordion title="I want to be tagged in Slack alerts">
+    Go to **Settings** and enter your **Slack Member ID**. To find it: in Slack, click your profile → three-dot menu (⋯) → **Copy Member ID**. Paste it into WhiteWhale and save.
+  </Accordion>
+
+  <Accordion title="I want to change which AI tool opens (Claude, Gemini, ChatGPT)">
+    Go to **Settings** and change the default AI option to whichever tool you prefer.
   </Accordion>
 </AccordionGroup>
 
@@ -133,7 +220,7 @@ description: "Answers to the most common questions about WhiteWhale, including h
 
 <AccordionGroup>
   <Accordion title="How do I connect HubSpot or Salesforce?">
-    Go to **Settings** → **Integrations** → find your CRM and click **Set Up**. Use the one-click setup for a standard configuration. You'll need to create a handful of custom fields in your CRM first — the setup screen shows you exactly which ones. See [HubSpot](/hub-spot) or [Salesforce](/salesforce).
+    Go to **Settings** → **Integrations** → find your CRM and click **Set Up**. Use the one-click setup for a standard configuration. You'll need to create a handful of custom fields first — the setup screen shows you exactly which ones. See [HubSpot](/hub-spot) or [Salesforce](/salesforce).
   </Accordion>
 
   <Accordion title="How often does WhiteWhale sync with my CRM?">
@@ -141,7 +228,7 @@ description: "Answers to the most common questions about WhiteWhale, including h
   </Accordion>
 
   <Accordion title="How do I get signal alerts in Slack?">
-    Go to **Settings** → **Integrations** → connect Slack. Then go to **Settings** → **User Notifications** and turn on **Daily Signals** and **Assigned Accounts**. To get personally tagged in alerts, copy your Slack Member ID and add it to your WhiteWhale profile. See [Slack](/slack).
+    Go to **Settings** → **Integrations** → connect Slack. Then go to **Settings** → **User Notifications** and turn on **Daily Signals** and **Assigned Accounts**. To get personally tagged, copy your Slack Member ID and add it to your WhiteWhale profile. See [Slack](/slack).
   </Accordion>
 
   <Accordion title="Is Microsoft Teams supported?">
@@ -149,7 +236,7 @@ description: "Answers to the most common questions about WhiteWhale, including h
   </Accordion>
 
   <Accordion title="How do I connect WhiteWhale to Claude?">
-    Install the WhiteWhale MCP — it connects Claude directly to your live account data. You'll need Node.js 18\+ and your API key from **Settings** → **API & Webhooks**. See [Claude MCP](/mcp) for the full setup guide.
+    The fastest way: go to Claude → **Settings** → **Connectors** → **Custom Connectors** → add `https://app.getwhitewhale.com/mcp`. Then start a new chat and give Claude your API key and email. See [Claude MCP](/claude-mcp) for the full setup guide.
   </Accordion>
 
   <Accordion title="Where do I find my API key?">
@@ -171,11 +258,37 @@ description: "Answers to the most common questions about WhiteWhale, including h
   </Accordion>
 
   <Accordion title="Can an SDR see their AE's accounts?">
-    Yes. Give the SDR **Viewer** access to the AE's account. They'll have read-only visibility — they can see signals and account data but can't reassign or edit. See [Adding Users](/adding-users).
+    Yes. Give the SDR **Viewer** access to the AE. They'll have read-only visibility — signals and account data, but can't reassign or edit. See [Adding Users](/adding-users).
   </Accordion>
 
-  <Accordion title="What happens to an account when I remove a user?">
-    Removing a user deletes their profile and all their settings. Their accounts remain in the system but lose their assignment. Reassign the accounts to another rep before removing the user. See [Removing Users](/removing-users).
+  <Accordion title="A team member can't see certain accounts">
+    They're most likely a **Member** without viewer access. Members only see accounts assigned to them by default. Either make them a viewer of the relevant user's accounts, or make them a Super Admin if they need full visibility. See [Roles & Permissions](/roles-and-permissions).
+  </Accordion>
+
+  <Accordion title="What happens to accounts when I remove a user?">
+    Removing a user deletes their profile and settings. Their accounts remain in the system but lose their assignment. Reassign accounts to another rep before removing the user. See [Removing Users](/removing-users).
+  </Accordion>
+
+  <Accordion title="I want to change my email address">
+    Email [hello@getwhitewhale.com](mailto:hello@getwhitewhale.com) with the email you'd like to switch to and we'll update it for you.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Billing & Plans
+
+<AccordionGroup>
+  <Accordion title="How do I upgrade, downgrade, or cancel my plan?">
+    Go to **Settings** → **Manage License**. If you are the account owner (the person who signed up with their email in Stripe or Lemon Squeezy), you'll have direct access to change, upgrade, or cancel.
+
+    If you're not the owner, either ask the owner to make the change or check your email for a link to view the Stripe subscription. The manage license section also shows the support email at the bottom.
+  </Accordion>
+
+  <Accordion title="Do you offer trials?">
+    We don't do traditional trials, but you can preview your signals before purchasing. Go to the website, click **See Your Signals**, and enter your website. WhiteWhale will generate and validate signals for you. If they look useful, select a plan.
+
+    If you have questions after previewing, [book a meeting](https://www.getwhitewhale.com) with the team.
   </Accordion>
 </AccordionGroup>
 
@@ -183,4 +296,4 @@ description: "Answers to the most common questions about WhiteWhale, including h
 
 ## Still have questions?
 
-Reach out to the WhiteWhale team at [hello@getwhitewhale.com](mailto:hello@getwhitewhale.com).
+Email [hello@getwhitewhale.com](mailto:hello@getwhitewhale.com) or [book a call](https://www.getwhitewhale.com) with the team.
