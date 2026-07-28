@@ -45,39 +45,39 @@ Connecting Salesforce keeps WhiteWhale data — scores, signals, and Why Now sum
 | --- | --- | --- |
 | `sf_id` | ✅ | Salesforce Account ID |
 | `Account_Domain` | ✅ | Company website URL. WhiteWhale can only process accounts that have a domain on record. |
-| `BirdDog_Description` | Optional | WhiteWhale's Why Now summary for the account |
-| `BirdDog_Score` | Optional | Account score from 0–100 based on signal strength |
-| `BirdDog_Link` | Optional | Direct link to the account's report in WhiteWhale |
-| `BirdDog_User` | Optional | Links the account to the assigned WhiteWhale user. Most teams map this to the existing Account Owner field. |
-| `BirdDog_Signals` | Optional | Most recent signals matching this account |
+| `WhiteWhale_Description` | Optional | WhiteWhale's Why Now summary for the account |
+| `WhiteWhale_Score` | Optional | Account score from 0–100 based on signal strength |
+| `WhiteWhale_Link` | Optional | Direct link to the account's report in WhiteWhale |
+| `WhiteWhale_User` | Optional | Links the account to the assigned WhiteWhale user. Most teams map this to the existing Account Owner field. |
+| `WhiteWhale_Signals` | Optional | Most recent signals matching this account |
 
 ### Recommended custom field configurations
 
 Create these fields on the Account object in Salesforce before mapping. Make sure all fields are visible to relevant users and accessible to API integrations.
 
 <AccordionGroup>
-  <Accordion title="BirdDog_Description">
+  <Accordion title="WhiteWhale_Description">
     - **Type:** Text Area (Long)
-    - **Label:** BirdDog\_Description
+    - **Label:** WhiteWhale\_Description
     - **Length:** 1,000 characters
     - **Help text:** Summary of WhiteWhale signals for the account
   </Accordion>
 
-  <Accordion title="BirdDog_Score">
+  <Accordion title="WhiteWhale_Score">
     - **Type:** Number (0–100)
-    - **Label:** BirdDog\_Score
+    - **Label:** WhiteWhale\_Score
     - **Help text:** Auto-populated WhiteWhale signal score
   </Accordion>
 
-  <Accordion title="BirdDog_Link">
+  <Accordion title="WhiteWhale_Link">
     - **Type:** URL
-    - **Label:** BirdDog\_Link
+    - **Label:** WhiteWhale\_Link
     - **Help text:** Link to the full account report in WhiteWhale
   </Accordion>
 
-  <Accordion title="BirdDog_Signals">
+  <Accordion title="WhiteWhale_Signals">
     - **Type:** Rich Text
-    - **Label:** BirdDog\_Signals
+    - **Label:** WhiteWhale\_Signals
     - **Help text:** Latest WhiteWhale signals for the account
   </Accordion>
 </AccordionGroup>
