@@ -1,6 +1,6 @@
 ---
 title: "Glossary"
-description: "Definitions for every term in WhiteWhale, including signals, Why Now summaries, account scoring, live searches, ICP parameters, and credit allocation."
+description: "Definitions for every term in WhiteWhale, including signals, Why Now summaries, account scoring, searches, ICP parameters, and credit allocation."
 ---
 
 ## Account
@@ -15,21 +15,21 @@ A number from 0 to 100 that reflects how much recent, high-ranked signal activit
 
 ---
 
-## Account Suggestions
+## Active Account (Monitored)
 
-WhiteWhale's built-in prospecting engine. You describe your ICP — industry, geography, company size, and signals — and WhiteWhale finds companies that match and already have signal activity. Results appear in the Suggestions tab and grow daily. Formerly called Farsight. See [How Account Suggestions Work](/how-account-suggestions-work).
-
----
-
-## Active Account
-
-An account that is being monitored daily and consuming a credit slot. Active accounts have full signal data available — sources, quotes, facts, and the Why Now summary.
+An account that is being monitored daily and consuming a credit slot. Monitored accounts show a green indicator and have full signal data available — sources, quotes, facts, and the Why Now summary.
 
 ---
 
 ## Archived Account
 
-An account that has been paused. Archiving stops new signals from firing and frees up the credit slot. Historical signal data is preserved. Can only be done once per month per account. See [Archiving Accounts](/archiving-accounts).
+An account that has been paused. Archiving stops new signals from firing and frees up the credit slot. Historical signal data is preserved. See [Archiving Accounts](/archiving-accounts).
+
+---
+
+## Clean the List
+
+An option when uploading accounts via New Search → Upload a List. Lets you filter a large list by signals, employee count, geography, and industry before uploading — so only accounts that pass your criteria use credits. See [Adding Accounts](/adding-accounts).
 
 ---
 
@@ -41,19 +41,25 @@ The additional instruction field on each signal (shown as a book icon). Use it t
 
 ## Credit
 
-One credit = one actively monitored account for the month. Adding an account directly or activating an account from Suggestions each use one credit. Your plan determines your total monthly credit limit. See [Credits & Billing](/credits-and-billing).
+One credit = one actively monitored account for the month. Uploading an account or activating a suggestion each use one credit. Credits reset monthly. Your plan determines your total monthly credit limit. See [Credits & Billing](/credits-and-billing).
 
 ---
 
 ## ICP (Ideal Customer Profile)
 
-The definition of your target customer. In WhiteWhale, your ICP determines which signals you track, which accounts you monitor, and what Account Suggestions looks for. You can have multiple ICPs — for example, organized by territory, product line, or team.
+The definition of your target customer. In WhiteWhale, your ICP determines which signals you track, which accounts you monitor, and what your searches look for.
+
+---
+
+## Live Search
+
+A search that is set to actively run. Live searches scan automatically every day, looking for new accounts that match your filters and have your signals. Your plan determines how many searches can be live at the same time — most plans allow one. Click on a search to check if it says **Live** at the top. See [Setting Up Searches](/setting-up-account-suggestions).
 
 ---
 
 ## MCP (Model Context Protocol)
 
-A protocol that lets Claude connect to external tools and data sources. The WhiteWhale MCP gives Claude direct access to your account data, signals, and scores so you can ask questions about your book of business in plain English. See [Claude MCP](/mcp).
+A protocol that lets Claude connect to external tools and data sources. The WhiteWhale MCP gives Claude direct access to your account data, signals, and scores so you can ask questions about your book of business in plain English. See [Claude MCP](/mcp-claude-chat-gpt-etc).
 
 ---
 
@@ -69,9 +75,26 @@ An email WhiteWhale sends 24 hours before any calendar meeting with a tracked ac
 
 ---
 
+## Search
+
+The core way to get accounts into WhiteWhale. Go to **New Search** on the Accounts page and choose one of two types:
+
+- **Upload a List** — paste company domains you already have. Use Advanced Settings to set a credit cap on large lists, and Clean the List to filter by signals and firmographics.
+- **Find New Accounts** — WhiteWhale searches across millions of companies to find ones that match your ICP and have signal activity. Make the search **Live** so it runs every day automatically.
+
+You can create as many searches as you want. Each one appears in your search list with its own results. See [Adding Accounts](/adding-accounts) and [Setting Up Searches](/setting-up-account-suggestions).
+
+---
+
+## Segment
+
+A saved set of account filters. Instead of rebuilding the same filter combination every time, you save it once and return to it with one click. Segments are live — they always reflect the accounts that match your filters right now. See [How Segments Work](/how-segments-work).
+
+---
+
 ## Signal
 
-A question WhiteWhale asks about every account daily, weekly, or monthly depending on the plan. For example: _Did they hire a new CRO? Are they hiring SDRs? Did they announce new funding?_ When the answer is yes, the account surfaces in your queue with the source, quotes, and a Why Now summary. See [How Signals Work](https://www.getwhitewhale.com/blog/what-is-a-sales-signal).
+A question WhiteWhale asks about every account every day. For example: _Did they hire a new CRO? Are they hiring SDRs? Did they announce new funding?_ When the answer is yes, the account surfaces with the source, quotes, and a Why Now summary. See [How Signals Work](https://www.getwhitewhale.com/blog/what-is-a-sales-signal).
 
 ---
 
@@ -81,22 +104,22 @@ A rank assigned to each signal that determines how much it influences an account
 
 | Rank | Weight | Use for |
 | --- | --- | --- |
-| **High** | 6.0 | Your strongest buying signals. Required for Account Suggestions to work. |
+| **High** | 6.0 | Your strongest buying signals. Required for live searches to find new accounts. |
 | **Normal** | 1.0 | Standard signals — the default for most. |
 | **Low** | 0.1 | Background context. Consider muting so they don't generate alerts. |
 | **Disqualify** | 0.0 | Negative signals. Accounts matching these are scored down. |
 
 ---
 
-## Suggestions Desk
+## Suggestion
 
-The Suggestions tab in WhiteWhale where Account Suggestions results appear. Suggested accounts are shown in orange with a preview of their signal data. You can activate, reject, or assign them from here.
+An account found by a search that hasn't been activated yet. Suggestions appear in orange with a preview of their signal data. Activate a suggestion to unlock full signal details and the Why Now summary — this uses one credit. See [Assigning Suggestions](/assign-suggestions-round-robin-etc).
 
 ---
 
 ## Super Admin
 
-A user role in WhiteWhale. Super Admins can see all accounts across the platform regardless of assignment, edit signals, manage Account Suggestions, and administer the team. See [Roles & Permissions](/roles-and-permissions).
+A user role in WhiteWhale. Super Admins can see all accounts across the platform regardless of assignment, edit signals, manage searches, and administer the team. See [Roles & Permissions](/roles-and-permissions).
 
 ---
 
