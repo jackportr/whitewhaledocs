@@ -1,38 +1,30 @@
 ---
 title: "MCP (Claude, ChatGPT, etc)"
-description: "Connect WhiteWhale to Claude, ChatGPT, or Gemini via MCP to chat with your signal data in plain English. Ask for top accounts, draft emails, and build one-pagers."
+description: "Connect WhiteWhale to Claude, ChatGPT, or Gemini via MCP to chat with your signal data in plain English."
 mode: "default"
 ---
 
-The WhiteWhale MCP connects Claude directly to your WhiteWhale account. Once it's set up, you can ask Claude questions about your accounts and signals in plain English and get real answers from your live data.
+The WhiteWhale MCP connects Claude, ChatGPT, or any MCP-compatible tool directly to your WhiteWhale account. Once connected, the AI can see all your account data, signals, and scores — and you can work with it in plain English.
 
 <Info>
-  **MCP stands for Model Context Protocol.** It's a way to give Claude access to tools and data outside of the conversation. You don't need to understand how it works — just follow the setup steps below and Claude will handle the rest.
+  **MCP stands for Model Context Protocol.** It's a way to give AI tools access to your data. The WhiteWhale MCP is a wrapper over the API — when connected, the AI sees every API route as a tool it can use. You don't need to understand how it works. Just connect and start asking questions.
 </Info>
 
-## What you can ask Claude
+## What you can ask
 
-Once connected, ask Claude anything about your WhiteWhale data:
+Once connected, ask anything about your WhiteWhale data:
 
 - _"Which accounts should I reach out to today?"_
 - _"Add these 20 companies to my list: \[paste domains\]"_
 - _"What signals am I tracking and are they configured well?"_
 - _"How many account credits do I have left?"_
-- _"Find me new target accounts that match my ICP"_ Claude will pull your live WhiteWhale data and respond in plain English — no dashboards, no exports, no copy-pasting.
+- _"Find me new target accounts that match my ICP"_
+
+The AI pulls your live WhiteWhale data and responds in plain English — no dashboards, no exports, no copy-pasting.
 
 ---
 
-## Prerequisites
-
-You need a **WhiteWhale account** with an API key.
-
-### Get your API key
-
-In WhiteWhale, go to **Settings** → **API & Webhooks** → click **Generate API Key**. Copy the key — you'll need it in the next step. Your **user** is the email address you use to log into WhiteWhale.
-
----
-
-## Setup: Claude Connector (Easiest)
+## Setup: Claude Connector
 
 This is the fastest way to connect — no downloads, no config files, no terminal.
 
@@ -41,88 +33,68 @@ This is the fastest way to connect — no downloads, no config files, no termina
     In Claude, go to **Settings** → **Connectors** → **Custom Connectors**.
   </Step>
   <Step title="Add the WhiteWhale connector">
-    Paste this URL: `https://app.getwhitewhale.com/mcp`
-
-    Press connect and in Claude you will be prompted to login to your account and authorize to complete the Claude connection.
-  </Step>
-  <Step title="Start a new chat with Claude">
-    Open a new chat and tell Claude who you are and what you want. Example prompt:
+    Paste this URL:
 
     ```text
-    Please pull my best 5 accounts from WhiteWhale for [YOUR COMPANY].
+    https://app.getwhitewhale.com/mcp
+    ```
+
+    Press **Connect**. Claude will prompt you to log in to your WhiteWhale account and authorize the connection via OAuth. No API key needed — authentication is handled automatically.
+  </Step>
+  <Step title="Start a new chat">
+    Open a new chat and ask WhiteWhale anything. Example:
+
+    ```text
+    Pull my best 5 accounts from WhiteWhale for [YOUR COMPANY].
     I want to know exactly why they are good for what I sell.
     ```
   </Step>
   <Step title="You're connected">
-    Claude will respond with your actual WhiteWhale data. From here, keep asking questions in plain English — "Show me signals on \[company\]", "What's my score on \[account\]", "Add these domains to my list."
+    Claude will respond with your actual WhiteWhale data. From here, keep asking questions — "Show me signals on \[company\]", "What's my score on \[account\]", "Add these domains to my list."
   </Step>
 </Steps>
 
 ---
 
-## Setup: MCP (Advanced)
+## Setup: MCP (ChatGPT, Claude Desktop, other tools)
 
-If you use the Claude Code or ChatGPT, you can connect via a config file instead.
+For any MCP-compatible tool, the connection uses the same endpoint and OAuth flow.
 
-**Requires:** [Node.js 18 or later](https://nodejs.org)
+**MCP URL:**
+
+```text
+https://app.getwhitewhale.com/mcp
+```
 
 <Steps>
-  <Step title="Find your Claude Desktop config file">
-    Open this file in any text editor:
-
-    - **Mac:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-    - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
-
-    If the file doesn't exist yet, create it.
+  <Step title="Open your AI tool's MCP settings">
+    - **ChatGPT:** Settings → Plugins → Developer Mode → Add Plugin → Input MCP url below.
+    - **Claude Desktop:** Settings → Connectors → Add Custom Connector → Input MCP url below.
+    - **Other tools:** Look for MCP, Plugins, or Integrations in settings
   </Step>
-  <Step title="Add WhiteWhale to the config">
-    Paste the following into the file, replacing the placeholder values with your actual API key and email:
-
-    ```json
-    {
-      "mcpServers": {
-        "whitewhale": {
-          "command": "npx",
-          "args": ["-y", "@getbirddog/mcp"],
-          "env": {
-            "BIRDDOG_API_KEY": "your-api-key-here",
-            "BIRDDOG_USER": "you@yourcompany.com"
-          }
-        }
-      }
-    }
-    ```
+  <Step title="Add the WhiteWhale MCP URL">
+    Paste `https://app.getwhitewhale.com/mcp` as the server URL.
   </Step>
-  <Step title="Restart Claude Desktop">
-    Fully quit and reopen Claude Desktop. You should see **whitewhale** appear in the tools list.
+  <Step title="Authorize with OAuth">
+    You'll be prompted to log in to your WhiteWhale account and authorize the connection. No API key or user email needed — authentication is handled automatically through OAuth.
+  </Step>
+  <Step title="Start a new chat and ask a question">
+    The AI now has access to all WhiteWhale API routes as tools. Try: _"Pull my top 5 accounts from WhiteWhale"_
   </Step>
 </Steps>
-
----
-
-## Setup: Claude Code
-
-If you use Claude Code (the command line version), run this command in your terminal:
-
-```bash
-claude mcp add whitewhale \
-  -e BIRDDOG_API_KEY=your-key \
-  -e BIRDDOG_USER=you@company.com \
-  -- npx -y @getbirddog/mcp
-```
 
 ---
 
 ## Built-in workflows
 
-Claude comes with a set of pre-built WhiteWhale workflows you can trigger with a single prompt:
+These are prompts you can use to get started immediately:
 
-| Ask Claude | What it does |
+| Ask the AI | What it does |
 | --- | --- |
 | _"Show me my daily priorities"_ | Your highest-scoring accounts ranked by signal activity |
 | _"Add accounts"_ | Validates and uploads a list of companies |
 | _"Review my signals"_ | Checks your current signal setup and suggests improvements |
-| _"Find new accounts"_ | Runs Account Suggestions to discover new target accounts |
+| _"Find new accounts"_ | Runs a search to discover new target accounts |
 | _"Give me an account overview"_ | Full summary of your WhiteWhale setup and health |
 
 ---
@@ -130,55 +102,37 @@ Claude comes with a set of pre-built WhiteWhale workflows you can trigger with a
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="WhiteWhale isn't showing up in Claude's tools list">
-    Fully quit and restart Claude Desktop or Claude Code after editing the config file. A partial close won't pick up the changes.
+  <Accordion title="Claude says it can't connect to WhiteWhale">
+    Make sure the connector URL is exactly `https://app.getwhitewhale.com/mcp` with no extra spaces or trailing slashes. Try removing and re-adding the connector, then start a fresh chat.
   </Accordion>
 
-  <Accordion title="Authentication failed (401 error)">
-    Check that your API key has no extra spaces or line breaks when you pasted it. Make sure `BIRDDOG_USER` is the exact email address you use to log into WhiteWhale.
+  <Accordion title="Authentication failed">
+    The MCP uses OAuth — you should be prompted to log in to WhiteWhale when connecting. If the login prompt doesn't appear, try disconnecting the connector in Claude's settings and reconnecting.
   </Accordion>
 
-  <Accordion title="Error: Missing credentials">
-    Make sure `BIRDDOG_API_KEY` and `BIRDDOG_USER` are inside the `"env"` block in your config file, not in the `"args"` section.
-  </Accordion>
-
-  <Accordion title="Node version error">
-    Run `node --version` in your terminal. If it shows lower than v18, [download the latest version of Node.js](https://nodejs.org).
-  </Accordion>
-
-  <Accordion title="How to update to the latest version">
-    Run `npx --yes @getbirddog/mcp@latest` in your terminal.
+  <Accordion title="Claude isn't seeing my accounts or signals">
+    Start a new chat after connecting. Connector changes don't always take effect in an existing conversation. If it still doesn't work, verify your WhiteWhale account has active accounts and signals.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Optional: faster startup
-
-By default, the MCP downloads fresh each time Claude starts. To make it launch faster, install it globally:
-
-```bash
-npm install -g @getbirddog/mcp
-```
-
-Then change `"command": "npx"` to `"command": "birddog-mcp"` and remove the `"args"` line from your config.
-
----
-
-<Warning>
-  Keep your API key secure. Never paste it into a shared document or commit your config file to version control. Add `claude_desktop_config.json` and `.claude/mcp.json` to your `.gitignore`.
-</Warning>
-
-**GitHub:** [github.com/BirdDog-Intel/WhiteWhale-MCP](https://github.com/BirdDog-Intel/WhiteWhale-MCP)
-
 ## Related
 
 <CardGroup cols={2}>
   <Card title="API Reference" icon="code" href="/api">
-    Access WhiteWhale data programmatically without Claude.
+    Full endpoint reference — the MCP exposes these same routes as tools.
+  </Card>
+
+  <Card title="API Docs (Live)" icon="book" href="https://app.getwhitewhale.com/api_docs">
+    Interactive API documentation.
   </Card>
 
   <Card title="Using the Why Now Summary" icon="bolt" href="/using-the-why-now-summary">
-    Understand the account data Claude is pulling for you.
+    Understand the account data the AI is pulling for you.
+  </Card>
+
+  <Card title="Workflow Guides" icon="route" href="/workflow-guides">
+    Advanced workflows using Claude \+ WhiteWhale \+ Apollo, Clay, and more.
   </Card>
 </CardGroup>
