@@ -98,8 +98,7 @@
   "description": "WhiteWhale is a custom sales signal intelligence platform for B2B outbound teams.WhiteWhale is a custom sales signal intelligence platform for B2B outbound teams. Monitor your accounts daily for buying signals you define, get a Why Now summary that connects the dots between multiple signals, and know exactly which accounts to contact and why — before your competitors do. Integrates with HubSpot, Salesforce, Slack, Google Calendar, Clay, and Claude.",
   "logo": {
     "light": "/images/Group242.png",
-    "dark": "/images/Group243.png",
-    "href": "https://docs.getwhitewhale.com/welcome"
+    "dark": "/images/Group243.png"
   },
   "favicon": {
     "light": "/images/Group2351(1).png",
