@@ -46,6 +46,12 @@
         ]
       },
       {
+        "group": "People/Contacts",
+        "pages": [
+          "contacts-overview"
+        ]
+      },
+      {
         "group": "Team Management",
         "pages": [
           "adding-users",

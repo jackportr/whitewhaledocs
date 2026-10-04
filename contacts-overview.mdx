@@ -1,0 +1,88 @@
+---
+title: "Contacts Overview"
+---
+
+WhiteWhale automatically finds contacts at your tracked accounts based on the job titles you care about. Contacts include verified email addresses and phone numbers so your team can act on signals immediately.
+
+## Setting up contact titles
+
+Your contact titles are configured in **Settings**. WhiteWhale generates a default list when you create your account — you can edit it at any time.
+
+<Info>
+  **Titles are ranked.** The first title in your list is the one WhiteWhale looks for first, then the second, and so on. Put your most important buyer persona at the top.
+</Info>
+
+Don't worry about abbreviations or formatting. WhiteWhale automatically converts shorthand — _VP_ becomes _Vice President_, _CRO_ becomes _Chief Revenue Officer_ — and checks both versions.
+
+## How contact matching works
+
+WhiteWhale finds contacts in this order:
+
+1. **Exact title match** — looks for contacts whose job title matches one of your listed titles
+2. **Headline match** — after checking all listed titles, WhiteWhale also matches against LinkedIn headlines. This catches contacts whose headline describes their role differently than their formal title.
+
+A contact is only included if at least one of **email or phone** is available. No contact data = no contact returned.
+
+## Signal Contacts
+
+A **Signal Contact** is a contact specifically related to the Why Now summary on an account. WhiteWhale identifies these through:
+
+- **Direct name match** — the contact's name appears in the signal source
+- **Direct role match** — the contact's title matches a role mentioned in the signal
+- **Inferred match** — the contact is a potential hiring manager for a role mentioned in the signal, or is in close proximity to a location referenced in the signal
+
+Signal Contacts give your reps a specific person to reach out to — not just anyone at the company, but someone connected to the thing that's actually happening.
+
+## CRM Contacts
+
+If you allow WhiteWhale to read contacts from your CRM, those contacts will be included alongside WhiteWhale-found contacts. CRM contacts include:
+
+- Last touch date from your CRM
+- Contact info already stored in your CRM
+
+This is **on by default** for any accounts created and synced with a CRM after October 5th, 2026. You can toggle this on or off in **Settings** once your CRM is integrated.
+
+<Info>
+  WhiteWhale reads contact data from your CRM but does not write any contact data back. Your CRM contact records are never modified.
+</Info>
+
+## Editing your contact titles
+
+You can add, remove, or reorder titles at any time in **Settings**.
+
+When you edit the list:
+
+- Contacts that **no longer match** any title are deleted immediately
+- Remaining contacts are updated the next time WhiteWhale re-analyzes the account
+
+## Accessing contacts via the API
+
+Contact data is available through the API at:
+
+```text
+GET /v1/get_account_contacts
+```
+
+You must supply the `account_id` to get contacts back. This endpoint is also exposed via the MCP — so you can ask Claude _"Show me the contacts at [company]"_ and it will pull them directly.
+
+See the [API Reference](/api) for full endpoint details.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Using the Why Now Summary" icon="bolt" href="/using-the-why-now-summary">
+    Understand the signal story that Signal Contacts are connected to.
+  </Card>
+
+  <Card title="HubSpot" icon="hubspot" href="/hub-spot">
+    Connect your CRM to include CRM contacts alongside WhiteWhale contacts.
+  </Card>
+
+  <Card title="Salesforce" icon="cloud" href="/salesforce">
+    Connect Salesforce to pull in CRM contact data.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/api">
+    Access contacts programmatically via /v1/get_account_contacts.
+  </Card>
+</CardGroup>
