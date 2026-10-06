@@ -24,8 +24,7 @@
           "improving-signals",
           "muting-signals",
           "deleting-signals",
-          "signal-library",
-          "how-to-get-unique-signal-ideas"
+          "signal-library"
         ]
       },
       {
@@ -38,7 +37,7 @@
         ]
       },
       {
-        "group": "Account Suggestions",
+        "group": "Searches",
         "pages": [
           "setting-up-account-suggestions",
           "adjusting-your-suggestions",
@@ -46,7 +45,7 @@
         ]
       },
       {
-        "group": "People/Contacts",
+        "group": "Contacts",
         "pages": [
           "contacts-overview"
         ]
@@ -74,7 +73,7 @@
         ]
       },
       {
-        "group": "How to drive deals with signals",
+        "group": "Using Your Signals",
         "pages": [
           "how-to-see-all-new-signals",
           "using-the-why-now-summary",
