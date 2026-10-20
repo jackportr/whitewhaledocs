@@ -67,7 +67,7 @@
           "microsoft-teams",
           "google-calendar",
           "clay",
-          "api",
+          "api-reference",
           "webhooks",
           "mcp-claude-chat-gpt-etc"
         ]
@@ -131,5 +131,12 @@
   "appearance": {
     "default": "light",
     "strict": false
-  }
+  },
+  "redirects": [
+    {
+      "source": "/api",
+      "destination": "/api-reference",
+      "permanent": true
+    }
+  ]
 }
