@@ -1,6 +1,6 @@
 ---
 title: "Adding Accounts"
-description: "Upload accounts to WhiteWhale, assign them to your team, and optionally clean the list using signals before they go live."
+description: "Upload accounts to WhiteWhale, assign them to your team, and optionally clean the list using signals before you start monitoring them."
 ---
 
 <iframe src="https://www.loom.com/embed/122eff0af0a54d449752f4ff0093c878" title="How to Add Accounts in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
@@ -21,12 +21,16 @@ description: "Upload accounts to WhiteWhale, assign them to your team, and optio
     Select who these accounts should be assigned to. You can assign them to yourself or to anyone else on the team — useful if you're uploading lists for other reps.
   </Step>
   <Step title="Add tags (optional)">
-    Tag the batch to keep things organized. Examples: _Enterprise_, _Working_, _Closed Lost_, _Reached Out_. Tags make it easy to filter and build segments later.
+    Tag the batch to keep things organized. Examples: _Enterprise_, _Working_, _Closed Lost_, _Reached Out_. Tags make it easy to filter your accounts later.
   </Step>
   <Step title="Click Upload">
-    WhiteWhale starts scanning immediately. Accounts that already exist in the system will appear right away. The rest will populate as they finish scraping — signals, details, and the Why Now will show up as they're ready.
+    WhiteWhale starts scanning immediately. Accounts that were already in your WhiteWhale account before may appear right away. The rest will populate as they finish scraping — signals, details, and the Why Now will show up as they're ready.
   </Step>
 </Steps>
+
+<Info>
+  **How long it takes:** a regular upload can take a few hours, depending on the size of the list.
+</Info>
 
 ## If you have a big list, find the best accounts
 
@@ -56,9 +60,17 @@ If you have more accounts than credits — say 5,000 domains but only 300 credit
   </Step>
 </Steps>
 
+<Info>
+  **This takes longer than a regular upload.** WhiteWhale scores every account on the list before it shows any of them in the platform, so accounts won't appear until scoring finishes. Accounts that were already in your WhiteWhale account before may appear right away.
+</Info>
+
 <Tip>
   **Advanced Settings** sets _how many_ accounts to add. **Clean the List** controls _which_ accounts qualify. Use Advanced Settings alone when you trust WhiteWhale to pick the best ones by signal score. Add Clean the List on top when you want to enforce specific criteria first.
 </Tip>
+
+## Fixing the wrong domain
+
+If an account was added with the wrong domain, it can't be edited. [Delete the account](/removing-accounts), then add it again with the correct domain.
 
 ## A third way: Account Suggestions
 

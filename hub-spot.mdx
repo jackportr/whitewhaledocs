@@ -138,6 +138,23 @@ WhiteWhale connects via a verified HubSpot public app and requests the minimum p
 
 ---
 
+## Filtering by your HubSpot custom fields
+
+You can't filter by HubSpot custom fields (such as fiscal year or customer status) inside WhiteWhale. Because WhiteWhale syncs all its data to HubSpot, build a list or segment in HubSpot instead, combining your custom fields with the WhiteWhale fields.
+
+---
+
+## Connected but not mapped
+
+If HubSpot shows as **connected but not mapped**, the company fields (and the optional deal fields) haven't been mapped yet. WhiteWhale can't sync any data to HubSpot until they are.
+
+To fix it, do one of these:
+
+- **Finish the one-click mapping** in the HubSpot setup flow above.
+- **Map the fields yourself:** in WhiteWhale, go to **Settings** → **HubSpot** and complete the company mappings, plus the deal mappings if you use them.
+
+---
+
 ## Setting up the HubSpot App Card
 
 Once your field mapping is complete, you can add the WhiteWhale app card to your HubSpot records so reps can see signal data directly inside HubSpot without leaving the CRM.
@@ -258,6 +275,14 @@ Mapping your deal pipeline is optional but unlocks two additional capabilities: 
 | `Is_closed` | Optional | Whether the deal is closed |
 | `Is_won` | Optional | Whether the deal is won |
 | `Created_date` | Optional | Date the deal was created |
+
+---
+
+## Disconnecting HubSpot
+
+Go to **Settings** and find the connected HubSpot integration. Click the **X** next to **Adjust Mappings** to disconnect.
+
+To start over after a setup that went wrong, disconnect first, then click **Set Up** to connect again.
 
 ---
 

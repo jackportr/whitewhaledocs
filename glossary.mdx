@@ -5,7 +5,7 @@ description: "Definitions for every term in WhiteWhale, including signals, Why N
 
 ## Account
 
-A company you are monitoring in WhiteWhale. Each active account uses one credit and is scanned daily for new signal activity.
+A company you are monitoring in WhiteWhale. Each monitored account uses one credit and is scanned daily for new signal activity.
 
 ---
 
@@ -15,7 +15,7 @@ A number from 0 to 100 that reflects how much recent, high-ranked signal activit
 
 ---
 
-## Active Account (Monitored)
+## Monitored Account
 
 An account that is being monitored daily and consuming a credit slot. Monitored accounts show a green indicator and have full signal data available — sources, quotes, facts, and the Why Now summary.
 
@@ -41,7 +41,7 @@ The additional instruction field on each signal (shown as a book icon). Use it t
 
 ## Credit
 
-One credit = one actively monitored account for the month. Uploading an account or activating a suggestion each use one credit. Credits reset monthly. Your plan determines your total monthly credit limit. See [Credits & Billing](/credits-and-billing).
+One credit = one monitored account for the month. Uploading an account or activating a suggestion each use one credit. Credits reset monthly. Your plan determines your total monthly credit limit. See [Credits & Billing](/credits-and-billing).
 
 ---
 
@@ -51,9 +51,9 @@ The definition of your target customer. In WhiteWhale, your ICP determines which
 
 ---
 
-## Live Search
+## Finding New Accounts
 
-A search that is set to actively run. Live searches scan automatically every day, looking for new accounts that match your filters and have your signals. Your plan determines how many searches can be live at the same time — most plans allow one. Click on a search to check if it says **Live** at the top. See [Setting Up Searches](/setting-up-account-suggestions).
+The setting that lets a search suggest new accounts. Accounts it finds show up as suggestions until you activate them. With Finding New Accounts on, a search scans automatically every day, looking for new accounts that match your filters and have your signals. The toggle is at the top of the account table on the Accounts page. Searches made from an uploaded list don't have it. See [Setting Up Searches](/setting-up-account-suggestions).
 
 ---
 
@@ -80,9 +80,9 @@ An email WhiteWhale sends 24 hours before any calendar meeting with a tracked ac
 The core way to get accounts into WhiteWhale. Go to **New Search** on the Accounts page and choose one of two types:
 
 - **Upload a List** — paste company domains you already have. Use Advanced Settings to set a credit cap on large lists, and Clean the List to filter by signals and firmographics.
-- **Find New Accounts** — WhiteWhale searches across millions of companies to find ones that match your ICP and have signal activity. Make the search **Live** so it runs every day automatically.
+- **Find New Accounts** — WhiteWhale searches across millions of companies to find ones that match your ICP and have signal activity. Turn on **Finding New Accounts** so it runs every day automatically.
 
-You can create as many searches as you want. Each one appears in your search list with its own results. See [Adding Accounts](/adding-accounts) and [Setting Up Searches](/setting-up-account-suggestions).
+You can create as many searches as you want. There are no separate segments — an account appears in every search whose filters it fits, and deleting an account removes it from all of them. See [How searches work](/setting-up-account-suggestions#how-searches-work) and [Adding Accounts](/adding-accounts).
 
 ---
 
@@ -98,7 +98,7 @@ A rank assigned to each signal that determines how much it influences an account
 
 | Rank | Weight | Use for |
 | --- | --- | --- |
-| **High** | 6.0 | Your strongest buying signals. Required for live searches to find new accounts. |
+| **High** | 6.0 | Your strongest buying signals. Required for searches to find new accounts. |
 | **Normal** | 1.0 | Standard signals — the default for most. |
 | **Low** | 0.1 | Background context. Consider muting so they don't generate alerts. |
 | **Disqualify** | 0.0 | Negative signals. Accounts matching these are scored down. |

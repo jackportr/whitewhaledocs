@@ -102,11 +102,11 @@ The API key is **shared across your whole team** — one key per WhiteWhale inst
     | Field | Type | Required | Description |
     | --- | --- | --- | --- |
     | `accounts` | array of strings | ✅ | List of account domains to upload |
-    | `farsight` | boolean | — | Default `true` — sends to Account Suggestions first. Set to `false` to add directly as active. |
+    | `farsight` | boolean | — | Default `true` — sends to Account Suggestions first. Set to `false` to add directly as monitored. |
     | `icp` | string | — | ICP to upload accounts to. Default: `Master` |
 
     <Info>
-      If `farsight: true` (default), uploaded accounts land in Account Suggestions and must be activated. If you have a webhook configured, you'll receive a pre-score payload when they're ready. If `farsight: false`, accounts are immediately active and will consume credits.
+      If `farsight: true` (default), uploaded accounts land in Account Suggestions and must be activated. If you have a webhook configured, you'll receive a pre-score payload when they're ready. If `farsight: false`, accounts are monitored immediately and will consume credits.
     </Info>
   </Accordion>
 
@@ -207,7 +207,7 @@ The API key is **shared across your whole team** — one key per WhiteWhale inst
 
 <AccordionGroup>
   <Accordion title="GET /v1/get_user_data — Get a user's data">
-    Returns signals, ICPs, remaining credits, and active account count for the authenticated user.
+    Returns signals, ICPs, remaining credits, and monitored account count for the authenticated user.
 
     **Response:** `UserOverview` object with:
 
@@ -215,7 +215,7 @@ The API key is **shared across your whole team** — one key per WhiteWhale inst
     - `icp_id_dict` — map of ICP name → ICP ID
     - `signals` — all signals across the user's ICPs
     - `credits_remaining` — remaining account credits
-    - `active_accounts` — current active account count
+    - `active_accounts` — current monitored account count
   </Accordion>
 
   <Accordion title="GET /v1/get_all_user_data — List all users in your instance">

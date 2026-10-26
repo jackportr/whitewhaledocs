@@ -34,7 +34,7 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   </Accordion>
 
   <Accordion title="My signal is still loading">
-    When you add a new signal, WhiteWhale searches across all your active accounts and suggestions. This typically takes 10–15 minutes, sometimes longer depending on how many accounts you have. A loader icon appears over the signal count while it's running. Go back to the Signals page at any time to check progress.
+    When you add a new signal, WhiteWhale searches across all your monitored accounts and suggestions. This typically takes 10–15 minutes, sometimes longer depending on how many accounts you have. A loader icon appears over the signal count while it's running. Go back to the Signals page at any time to check progress.
   </Accordion>
 
   <Accordion title="My signal found zero results">
@@ -56,12 +56,20 @@ description: "Answers to the most common questions about WhiteWhale — signals,
     Go to the **Signals** page → find the signal → click the **book icon** under options. This opens the Context Window where you can add qualifications in plain language:
 
     - **Geography:** _"Only job postings in the United States"_
-    - **Time period:** _"In the last 12 months"_
+    - **Time period:** _"Only in the last 6 months"_ (by default, WhiteWhale looks back 12 months for historical signals when you upload an account)
     - **Specificity:** _"Only if they mention replacing their current CRM, not just using one"_
 
     You can also edit the signal text directly for small changes. Both methods trigger a re-scan when saved.
 
     See [Improving Signals](/improving-signals).
+  </Accordion>
+
+  <Accordion title="A signal result on an account is wrong">
+    WhiteWhale will occasionally get something wrong. Please flag it to [hello@getwhitewhale.com](mailto:hello@getwhitewhale.com) so we can keep improving. In most cases you can fix it by adding clarification to the signal so it's clearer what you're looking for. See [Improving Signals](/improving-signals).
+  </Accordion>
+
+  <Accordion title="Can I find companies that use a specific tool?">
+    Yes. WhiteWhale supports technographic signals. Add a signal like _"Do they use Mindtickle?"_ and WhiteWhale checks the company's job posts for mentions of that tool. See [Creating Signals](/creating-signals).
   </Accordion>
 
   <Accordion title="What's the difference between muting and deleting a signal?">
@@ -79,7 +87,7 @@ description: "Answers to the most common questions about WhiteWhale — signals,
 
 <AccordionGroup>
   <Accordion title="How do I see how many credits I have left?">
-    Check the **Searches** page — it shows your current credit usage, how much space you have, and lets you add more credits if needed. See [Credits & Billing](/credits-and-billing).
+    Go to **New Search** → **Upload a List**. It shows your current credit usage, how many more accounts you can add, and how many accounts you can archive to free up space. See [Credits & Billing](/credits-and-billing).
   </Accordion>
 
   <Accordion title="What uses a credit?">
@@ -101,7 +109,7 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   </Accordion>
 
   <Accordion title="How do I rotate my account list?">
-    Go to your active accounts and either archive or delete the ones you're done with. Archiving is better because it preserves signal history. Once you've freed up slots, add new accounts from uploads or activate suggestions.
+    Go to your monitored accounts and either archive or delete the ones you're done with. Archiving is better because it preserves signal history. Once you've freed up slots, add new accounts from uploads or activate suggestions.
 
     Credits reset every month, so you can rotate your full list monthly — archive the current set and add a fresh batch. See [Archiving Accounts](/archiving-accounts).
   </Accordion>
@@ -113,6 +121,14 @@ description: "Answers to the most common questions about WhiteWhale — signals,
     2. **Upgrade your plan** — go to **Settings** → **Manage License** to move to a higher tier
 
     See [Credits & Billing](/credits-and-billing).
+  </Accordion>
+
+  <Accordion title="An account has the wrong domain">
+    Domains can't be edited. Delete the account, then add it again with the correct domain. See [Removing Accounts](/removing-accounts) and [Adding Accounts](/adding-accounts).
+  </Accordion>
+
+  <Accordion title="Do contacts cost credits?">
+    No. Contacts don't cost any credits. To change which job titles WhiteWhale looks for, go to **Settings** → **Contacts**. See [Setting Up Contacts](/contacts-overview).
   </Accordion>
 
   <Accordion title="I want to track closed-lost or revived deals">
@@ -136,9 +152,9 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   <Accordion title="I ran a search and I'm not getting results">
     Check these in order:
 
-    **1. Did the search finish?** Searches typically take a couple of hours. The page shows if it's running, how many hours are left, and what percentage is complete. Check the **Jobs** button at the top for active searches in the queue.
+    **1. Did the search finish?** Searches typically take a couple of hours. The page shows if it's running, how many hours are left, and what percentage is complete. Check the **Jobs** button at the top for searches still running in the queue.
 
-    **2. Is it a live search?** If the search isn't set to live, it won't run automatically. Make it live to start a run that continues every day.
+    **2. Is Finding New Accounts on?** If it's off, the search won't suggest new accounts. Open the search on the Accounts page and turn on the toggle at the top of the account table. Searches made from an uploaded list don't have this toggle.
 
     **3. Are your parameters too restrictive?** Click **Edit Search** and check the bottom — it shows how many companies match your filters. Under 100 is too few. Over a million will take a long time. The sweet spot is a few hundred to 20,000.
 
@@ -165,8 +181,36 @@ description: "Answers to the most common questions about WhiteWhale — signals,
     Results often start appearing within minutes. The count grows daily as WhiteWhale works through all the matching companies. A search that returns 59 results on day one may return hundreds by the end of the week.
   </Accordion>
 
-  <Accordion title="How many live searches should I have?">
-    The best results come from 3–5 searches running at any given time. Many users exceed that and run ten or more. Each search can target a different signal combination, industry, or company size.
+  <Accordion title="Why does the Industry filter only show a few options?">
+    There are two Industry filters:
+
+    - **On the Accounts page**, the filter only lists industries of accounts already in your list.
+    - **In a search**, the filter uses the full list of industries from LinkedIn. Use this one to find accounts in industries you don't have yet.
+  </Accordion>
+
+  <Accordion title="Why does an account show up in more than one search?">
+    Accounts appear in every search whose filters they fit. If you run a Find New Accounts search for companies with 50–500 employees and then upload a list, any uploaded accounts with 50–500 employees show up in that search too. There are no separate segments — everything is a search.
+
+    Deleting an account removes it from every search. To keep its history, archive it instead. See [How searches work](/setting-up-account-suggestions#how-searches-work).
+  </Accordion>
+
+  <Accordion title="How many searches should I have?">
+    We recommend starting with two:
+
+    1. **One Find New Accounts search** for your ICP. Accounts it finds show up as suggestions you can activate.
+    2. **One uploaded list** with your closed-lost, CRM and territory accounts, using **Upload a List**.
+
+    You can add more searches any time to target a different signal combination, industry or company size.
+  </Accordion>
+
+  <Accordion title="Why are accounts assigned to my reps?">
+    WhiteWhale never assigns accounts automatically. Ownership comes from three places:
+
+    - **Uploaded lists:** whoever creates an Upload a List search picks an owner, and every account in that search goes to that person.
+    - **Find New Accounts searches:** suggestions stay **Unassigned** until someone activates them and chooses an owner, unless the account already has an owner in your connected CRM.
+    - **Manual changes** by an admin.
+
+    If accounts were assigned unexpectedly, check who created the search they came from and who it was assigned to. See [Account Allocation](/account-allocation).
   </Accordion>
 
   <Accordion title="Can I assign suggestions to specific reps?">
@@ -198,11 +242,11 @@ description: "Answers to the most common questions about WhiteWhale — signals,
 
 <AccordionGroup>
   <Accordion title="I'm not seeing any new signals or alerts">
-    Check three things:
+    Check these in order:
 
-    1. **Do you have active accounts?** Monitored accounts show a green indicator on the Accounts page. If nothing is monitored, there's nothing to alert on.
+    1. **Do you have at least 100 monitored accounts and at least 20 signals?** This gives you the best odds of finding something new. Monitored accounts show a green indicator on the Accounts page. If you have fewer, start a new search to find accounts in your ICP that already have your signals. See [Setting Up Searches](/setting-up-account-suggestions).
     2. **Are your notifications turned on?** Go to **Settings** → **User Notifications** and make sure **Daily Signals** is enabled.
-    3. **Do your signals have results?** If you only have a few signals on a small number of accounts, alerts will be infrequent. Add more accounts (up to your plan limit) and aim for 15–20 signals.
+    3. **Has enough time passed?** Depending on your plan, new signals show up with at most a bi-daily, weekly or monthly delay.
   </Accordion>
 
   <Accordion title="I want to be tagged in Slack alerts">
@@ -221,6 +265,14 @@ description: "Answers to the most common questions about WhiteWhale — signals,
 <AccordionGroup>
   <Accordion title="How do I connect HubSpot or Salesforce?">
     Go to **Settings** → **Integrations** → find your CRM and click **Set Up**. Use the one-click setup for a standard configuration. You'll need to create a handful of custom fields first — the setup screen shows you exactly which ones. See [HubSpot](/hub-spot) or [Salesforce](/salesforce).
+  </Accordion>
+
+  <Accordion title="Which CRMs are supported?">
+    HubSpot and Salesforce are the only native CRM integrations. For other tools, use the [API](/api-reference) or [webhooks](/webhooks).
+  </Accordion>
+
+  <Accordion title="Can I filter accounts by my CRM's custom fields?">
+    Not inside WhiteWhale. Because WhiteWhale syncs all its data to your CRM, build the list or segment in HubSpot or Salesforce instead, combining your custom fields with the WhiteWhale fields. See [HubSpot](/hub-spot) or [Salesforce](/salesforce).
   </Accordion>
 
   <Accordion title="How often does WhiteWhale sync with my CRM?">
@@ -267,6 +319,10 @@ description: "Answers to the most common questions about WhiteWhale — signals,
 
   <Accordion title="What happens to accounts when I remove a user?">
     Removing a user deletes their profile and settings. Their accounts remain in the system but lose their assignment. Reassign accounts to another rep before removing the user. See [Removing Users](/removing-users).
+  </Accordion>
+
+  <Accordion title="How do I change or reset my password?">
+    Log out of WhiteWhale. On the login page, enter your email and select **Forgot password**. Follow the steps to set a new password.
   </Accordion>
 
   <Accordion title="I want to change my email address">

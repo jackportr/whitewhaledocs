@@ -1,6 +1,6 @@
 ---
 title: "Improving Signals"
-description: "Fix WhiteWhale signals returning wrong-geography results, casting too wide a net, or surfacing stale data. Tips for tightening signal accuracy and relevance."
+description: "Fix signals that are returning results from the wrong geography, casting too wide a net, or surfacing stale information."
 ---
 
 <iframe src="https://www.loom.com/embed/12d93ebdaded42fc9ad809a73ca5b3bb" title="How to Improve Signals in WhiteWhale" className="w-full aspect-video rounded-xl" frameBorder="0" allowFullScreen />
@@ -60,15 +60,28 @@ When a signal is casting too wide a net, you have two options depending on how m
 
 ## Fix 3: Results are stale
 
-By default, WhiteWhale searches across all time so you get the full picture on every account. If you only want recent activity, add a time constraint to the signal.
+When you upload an account, WhiteWhale looks back **12 months** for historical signals by default, so you get the full recent picture on day one. To only see more recent activity, edit the signal and add a time limit.
 
 Open the signal editor or Context Window and add language like:
 
-- _In the last 90 days_
-- _Recently_
-- _In the last 6 months_
+- _Only in the last 3 months_
+- _Only in the last 6 months_
 
 Once you save, WhiteWhale will re-run the signal and update both your account scores and your Account Suggestions with the fresh results.
+
+### How recent are new signals?
+
+The 12-month lookback only applies to historical signals when an account is first uploaded. After that, WhiteWhale checks your monitored accounts on an ongoing basis, so new signals are recent. Depending on your plan, a new signal shows up with at most a bi-daily, weekly or monthly delay.
+
+<Note>
+  The **Signal Recency** filter on the Accounts page only changes which accounts you see. It doesn't change what WhiteWhale looks for. To change what a signal detects, edit the signal.
+</Note>
+
+## When a signal result is wrong
+
+Occasionally WhiteWhale won't get the right information for an account. No signal system is perfect. If you see a result that's wrong, flag it to the WhiteWhale team at [hello@getwhitewhale.com](mailto:hello@getwhitewhale.com) so we can keep improving.
+
+In most cases you can fix it yourself. Add clarification to the signal so it's clearer what you're looking for, using the fixes above. For example, _Only count a first sales hire if it's the company's first-ever sales role, not a replacement._
 
 ## Two ways to edit a signal
 
