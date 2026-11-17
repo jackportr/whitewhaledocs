@@ -22,6 +22,14 @@ curl -X POST https://app.getwhitewhale.com/v1/set_webhook \
 
 One webhook URL per account. The same endpoint receives all event types.
 
+<Note>
+  Signal events are sent only for **monitored** accounts. Suggestions don't send signals to your webhook until you activate them.
+</Note>
+
+## Sending accounts manually
+
+To push specific accounts to your webhook right away, select them on the **Accounts** page, click **Push to**, then choose **Webhook**.
+
 ---
 
 ## Testing your webhook
@@ -161,7 +169,7 @@ WhiteWhale sends two types of events.
 
 | Event | When it fires |
 | --- | --- |
-| `account.signal` | Daily, each morning when new signal matches are found |
+| `account.signal` | Daily, each morning when new signal matches are found on monitored accounts |
 | `account.upload` | Immediately when an account is uploaded or activated, and when Account Suggestions finishes pre-scoring |
 
 ---

@@ -68,7 +68,7 @@ https://app.getwhitewhale.com/mcp
 
 <Steps>
   <Step title="Open your AI tool's MCP settings">
-    - **ChatGPT:** Settings → Plugins → Developer Mode → Add Plugin → Input MCP url below.
+    - **ChatGPT:** Log in to ChatGPT → **Plugins** → **Add** → **Custom MCP Server** → input the MCP URL below. If you don't see Custom MCP Server, ask your ChatGPT admin to allow the MCP server.
     - **Claude Desktop:** Settings → Connectors → Add Custom Connector → Input MCP url below.
     - **Other tools:** Look for MCP, Plugins, or Integrations in settings
   </Step>
@@ -82,6 +82,28 @@ https://app.getwhitewhale.com/mcp
     The AI now has access to all WhiteWhale API routes as tools. Try: _"Pull my top 5 accounts from WhiteWhale"_
   </Step>
 </Steps>
+
+---
+
+## If your company manages Claude or ChatGPT
+
+On company-managed Claude or ChatGPT accounts, an admin may need to allow custom connectors or MCP servers before you can add WhiteWhale. If the option is missing or blocked, send your admin the URL above and the official guide for your tool:
+
+- **Claude:** [Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
+- **ChatGPT:** [Connecting custom MCP servers in ChatGPT](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt)
+
+Until it's approved, you can still use **Copy signals** on any account and paste the data into your AI tool. See [Using WhiteWhale without the MCP](#using-whitewhale-without-the-mcp).
+
+---
+
+## Using WhiteWhale without the MCP
+
+Every account on the Accounts page has two buttons for getting its data into an AI tool:
+
+- **Open in Claude / ChatGPT / Gemini** — copies the account's signals to your clipboard and opens the browser version of your AI tool. Start a new chat and paste (Cmd+V / Ctrl+V). To change which tool opens, go to **Settings** and pick your default AI.
+- **Copy signals** — copies the same data to your clipboard without opening anything. Use this for desktop apps like the Claude or ChatGPT desktop app, or any other AI tool.
+
+If the AI tool's website asks you to download its desktop app, that prompt comes from the tool, not WhiteWhale. You can skip it. To work directly in a desktop app, use **Copy signals** or connect the MCP.
 
 ---
 

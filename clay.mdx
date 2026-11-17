@@ -30,7 +30,11 @@ Each webhook event includes everything you need to build enrichment flows and ru
   </Step>
 </Steps>
 
-From this point forward, every new signal that fires will automatically send a payload to your Clay table each morning.
+From this point forward, every new signal that fires on a monitored account will automatically send a payload to your Clay table each morning.
+
+<Note>
+  Signals are sent only for **monitored** accounts. Suggestions (shown in orange) don't send signals to the webhook until you activate them. The notification emails you receive are account suggestions, not signals.
+</Note>
 
 <Tip>
   The payload includes all signals on the account, not just the one that triggered the webhook. This gives you the full context to build a complete Why Now story inside Clay before running any enrichment or outreach.
@@ -44,9 +48,13 @@ Once the data is flowing, you can use the WhiteWhale payload fields to power enr
 - Use the **company URL** to find contacts and enrich with email, title, and LinkedIn
 - Build outreach sequences triggered by specific signals in the payload
 
-## One-off export: get your accounts into Clay now
+## One-off push: send accounts to Clay now
 
-If you want to get your existing accounts into Clay without waiting for the webhook to run, you can export them directly as a CSV.
+To send existing accounts to your Clay webhook right away, select them on the **Accounts** page, click **Push to**, then choose **Webhook**.
+
+## One-off export: get your accounts into Clay as a CSV
+
+If you'd rather import a file, you can export your accounts directly as a CSV.
 
 <Steps>
   <Step title="Go to the Accounts page">

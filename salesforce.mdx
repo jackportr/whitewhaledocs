@@ -8,7 +8,7 @@ Connecting Salesforce keeps WhiteWhale data — scores, signals, and Why Now sum
 ## What the integration does
 
 - **Daily sync** — WhiteWhale pulls your accounts and opportunities from Salesforce each day and pushes updated scores, signals, and Why Now summaries back to the mapped fields
-- **Real-time updates** — when a new account is added or activated in WhiteWhale, it immediately syncs to Salesforce
+- **Real-time updates** — when a new account is added or activated in WhiteWhale, it syncs to Salesforce within 1–4 minutes
 - **Deal context** — mapping your opportunities lets WhiteWhale surface different signals based on where each prospect is in your pipeline
 - **Activity Tracking** — sync activity on accounts in Salesforce back to WhiteWhale, so you always know which accounts need the most attention
 
@@ -127,8 +127,8 @@ WhiteWhale identifies users by their company email address. To link WhiteWhale u
 
 ## How the sync works
 
-- **Daily sync window:** WhiteWhale runs at least one pull and push operation per day, keeping your Salesforce fields up to date automatically
-- **Real-time updates:** When a new account is added or activated in WhiteWhale, Salesforce is updated immediately
+- **Daily sync window:** WhiteWhale runs at least one pull and push operation per day (5–9 AM ET). The daily sync handles new signals and first-time account mapping.
+- **Real-time updates:** When a new account is added, activated, or pushed from WhiteWhale, the record is created in Salesforce within 1–4 minutes. You don't need to wait for the daily sync.
 - **First week:** Expect a higher sync frequency while the integration calibrates. Around 100 API calls per day is typical after the initial period.
 - **Read/write scope:** WhiteWhale only reads from the fields you map and only writes to the WhiteWhale-specific fields you create. It will not modify any other Salesforce data.
 
