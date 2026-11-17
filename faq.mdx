@@ -107,6 +107,8 @@ description: "Answers to the most common questions about WhiteWhale — signals,
 
     **Deleting** permanently removes the account and all its data. It cannot be undone.
 
+    To remove a single account you don't want, use **Reject** on its row; you can tell WhiteWhale why.
+
     When in doubt, archive. See [Archiving Accounts](/archiving-accounts) and [Removing Accounts](/removing-accounts).
   </Accordion>
 
@@ -125,10 +127,10 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   <Accordion title="I've run out of credits for the month">
     Your credit limit resets every month. If you need more accounts before the reset:
 
-    1. **Free up space** — archive or delete accounts you're no longer working
+    1. **Free up space** — archive or delete accounts you're no longer working. To archive in bulk: on the **Accounts** page, open **Filters**, set **Status** to **Monitored**, select all (uncheck any you want to keep), then click **Archive**.
     2. **Upgrade your plan** — go to **Settings** → **Manage License** to move to a higher tier
 
-    See [Credits & Billing](/credits-and-billing).
+    To check how many accounts you're using against your limit, go to **New Search** → **Upload a List**. See [Credits & Billing](/credits-and-billing).
   </Accordion>
 
   <Accordion title="An account has the wrong domain">
@@ -185,6 +187,12 @@ description: "Answers to the most common questions about WhiteWhale — signals,
     See [Adjusting Your Suggestions](/adjusting-your-suggestions).
   </Accordion>
 
+  <Accordion title="I'm getting accounts outside my territory">
+    Open the search and check that the right states, locations, employee count and industry are selected. If you cover specific states, select them instead of the whole United States — WhiteWhale only knows your territory if you set it in the search.
+
+    If you have an assigned account list, upload it directly with **New Search** → **Upload a List**. See [Setting Up Searches](/setting-up-account-suggestions).
+  </Accordion>
+
   <Accordion title="How long does it take for suggestions to appear?">
     Results often start appearing within minutes. The count grows daily as WhiteWhale works through all the matching companies. A search that returns 59 results on day one may return hundreds by the end of the week.
   </Accordion>
@@ -203,12 +211,14 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   </Accordion>
 
   <Accordion title="How many searches should I have?">
-    We recommend starting with two:
+    There's no limit, and every Find New Accounts search runs live at the same time. The fewer searches you have, the faster each one runs, so only split a search when your filters genuinely differ.
 
-    1. **One Find New Accounts search** for your ICP. Accounts it finds show up as suggestions you can activate.
+    Most teams start with:
+
+    1. **One Find New Accounts search per region or segment**, such as North America, EMEA and APAC, or one per industry group. Accounts it finds show up as suggestions you can activate.
     2. **One uploaded list** with your closed-lost, CRM and territory accounts, using **Upload a List**.
 
-    You can add more searches any time to target a different signal combination, industry or company size.
+    See [Recommended setup](/setting-up-account-suggestions#recommended-setup).
   </Accordion>
 
   <Accordion title="Why are accounts assigned to my reps?">
@@ -239,6 +249,10 @@ description: "Answers to the most common questions about WhiteWhale — signals,
     Most workable accounts score between 15 and 50. Scores above 50 are strong. Scores above 70 are rare — they'd require multiple high-ranked signals firing simultaneously. Don't anchor to a fixed number; spend a week clicking through your accounts and you'll develop a feel for what "good" looks like for your signal set.
   </Accordion>
 
+  <Accordion title="What's the difference between temperature and score?">
+    They're related. Temperature is a simple version of the score: it lets you quickly see which accounts have your highest-rated signals, shown as **hot** or **warm**. See [Score and temperature](/account-scoring-explained#score-and-temperature).
+  </Accordion>
+
   <Accordion title="Why did an account's score change?">
     Scores update daily as new signals fire and older signals age out. A score drop doesn't mean the account is less interesting — it just means nothing new happened recently.
   </Accordion>
@@ -261,8 +275,16 @@ description: "Answers to the most common questions about WhiteWhale — signals,
     Go to **Settings** and enter your **Slack Member ID**. To find it: in Slack, click your profile → three-dot menu (⋯) → **Copy Member ID**. Paste it into WhiteWhale and save.
   </Accordion>
 
-  <Accordion title="I want to change which AI tool opens (Claude, Gemini, ChatGPT)">
-    Go to **Settings** and change the default AI option to whichever tool you prefer.
+  <Accordion title="What does the Claude / ChatGPT / Gemini button on an account do?">
+    It copies the account's signals to your clipboard and opens the browser version of your AI tool. Start a new chat and paste (Cmd+V / Ctrl+V), and the AI will have the full context.
+
+    To change which tool opens, go to **Settings** and change the default AI option.
+
+    If the AI tool's website asks you to download its desktop app, that prompt comes from the tool, not WhiteWhale. You can skip it.
+  </Accordion>
+
+  <Accordion title="Can it open the Claude or ChatGPT desktop app instead?">
+    Use the **Copy signals** button instead, then paste into the desktop app. Or connect the [WhiteWhale MCP](/mcp-claude-chat-gpt-etc) so the desktop app can read your WhiteWhale data directly.
   </Accordion>
 </AccordionGroup>
 
@@ -284,7 +306,7 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   </Accordion>
 
   <Accordion title="How often does WhiteWhale sync with my CRM?">
-    WhiteWhale runs a full sync daily between 5–9 AM ET. It also updates your CRM immediately when a new account is added or activated. See [HubSpot](/hub-spot) for full sync details.
+    When a new account is added, activated, or pushed from WhiteWhale, the record is created in your CRM within 1–4 minutes. WhiteWhale also runs a full sync daily between 5–9 AM ET for new signals and first-time account mapping. See [HubSpot](/hub-spot) or [Salesforce](/salesforce) for full sync details.
   </Accordion>
 
   <Accordion title="How do I get signal alerts in Slack?">
@@ -296,7 +318,13 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   </Accordion>
 
   <Accordion title="How do I connect WhiteWhale to Claude?">
-    The fastest way: go to Claude → **Settings** → **Connectors** → **Custom Connectors** → add `https://app.getwhitewhale.com/mcp`. Then start a new chat and give Claude your API key and email. See [Claude MCP](/mcp-claude-chat-gpt-etc) for the full setup guide.
+    The fastest way: go to Claude → **Settings** → **Connectors** → **Custom Connectors** → add `https://app.getwhitewhale.com/mcp`. Log in to WhiteWhale when prompted (OAuth — no API key needed), then start a new chat. See [Claude MCP](/mcp-claude-chat-gpt-etc) for the full setup guide.
+
+    If your company manages Claude, an admin may need to allow custom connectors first. Send them [Claude's custom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+  </Accordion>
+
+  <Accordion title="How do I connect WhiteWhale to ChatGPT?">
+    Log in to ChatGPT → **Plugins** → **Add** → **Custom MCP Server**, then paste `https://app.getwhitewhale.com/mcp` and log in to WhiteWhale when prompted. If you don't see Custom MCP Server, ask your ChatGPT admin to allow the MCP server. See [MCP setup](/mcp-claude-chat-gpt-etc).
   </Accordion>
 
   <Accordion title="Where do I find my API key?">
@@ -309,10 +337,10 @@ description: "Answers to the most common questions about WhiteWhale — signals,
 ## Team & Permissions
 
 <AccordionGroup>
-  <Accordion title="What's the difference between Super Admin and Member?">
-    **Super Admins** can see all accounts across the platform, edit signals, manage Account Suggestions, and administer the team.
+  <Accordion title="What's the difference between Admin and Rep?">
+    **Admins** can see all accounts across the platform, edit signals, manage Account Suggestions, and administer the team.
 
-    **Members** can only see accounts assigned to them. They can optionally be given viewer access to see another user's accounts, or admin access for elevated permissions.
+    **Reps** can only see accounts assigned to them and don't see the Signals page. They can optionally be given viewer access to see another user's accounts, or admin access for elevated permissions.
 
     See [Roles & Permissions](/roles-and-permissions).
   </Accordion>
@@ -322,7 +350,11 @@ description: "Answers to the most common questions about WhiteWhale — signals,
   </Accordion>
 
   <Accordion title="A team member can't see certain accounts">
-    They're most likely a **Member** without viewer access. Members only see accounts assigned to them by default. Either make them a viewer of the relevant user's accounts, or make them a Super Admin if they need full visibility. See [Roles & Permissions](/roles-and-permissions).
+    They're most likely a **Rep** without viewer access. Reps only see accounts assigned to them by default, so make sure accounts are assigned to them. Either make them a viewer of the relevant user's accounts, or make them an Admin if they need full visibility. See [Roles & Permissions](/roles-and-permissions).
+  </Accordion>
+
+  <Accordion title="A team member can't see the Signals page">
+    Only Admins see the Signals page. Reps don't. If someone needs to view or edit signals, make them an Admin or give them admin access. See [Roles & Permissions](/roles-and-permissions).
   </Accordion>
 
   <Accordion title="What happens to accounts when I remove a user?">
